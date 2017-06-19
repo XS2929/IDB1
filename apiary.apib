@@ -236,16 +236,27 @@ The API is currently tracking Overwatch Heros, Maps, Roles, Events, Players and 
     
 ## Players Collection [/players]
 
-### List All Players [GET /players/]
-
-+ Response 200 (application/json)
-
-### Find Players [GET /players/{id}]
+### Find Player [GET /players/{id}]
 
 + Parameters
     + id (optional, integer, `1`) ... Players ID
 
 + Response 200 (application/json)
+
+        {
+            "_request": {
+                "api_ver": 3,
+                "route": "/api/v3/u/Dad-12262/blob"
+            },
+            "kr": null,
+            "eu": null,
+            "us": {
+                "stats": {},
+                "heroes": {},
+                "achievements": {}
+            },
+            "any": null
+        }
 
 ## Reward Collection [/rewards]
 
@@ -253,12 +264,74 @@ The API is currently tracking Overwatch Heros, Maps, Roles, Events, Players and 
 
 + Response 200 (application/json)
 
-### Find Rewards [GET /rewards/{id}]
+        {
+          "total": 2,
+          "data": [
+            {
+              "id": 1,
+              "name": "Logo",
+              "cost": null,
+              "url": "https://overwatch-api.net/api/v1/reward/1",
+              "type": {
+                "id": 1,
+                "name": "spray",
+                "url": "https://overwatch-api.net/api/v1/reward-type/1"
+              },
+              "quality": {
+                "name": "common"
+              }
+            },
+            {
+              "id": 2,
+              "name": "You Are Not Prepared!",
+              "cost": null,
+              "url": "https://overwatch-api.net/api/v1/reward/2",
+              "type": {
+                "id": 1,
+                "name": "spray",
+                "url": "https://overwatch-api.net/api/v1/reward-type/1"
+              },
+              "quality": {
+                "name": "common"
+              }
+            }
+          ]
+        }   
+
+### Find Reward [GET /rewards/{id}]
 
 + Parameters
     + id (optional, integer, `1`) ... Rewards ID
 
 + Response 200 (application/json)
+
+        {  
+           "id":50,
+           "name":"Cracked",
+           "cost":{  
+              "currency":"credit",
+              "value":25
+           },
+           "type":{
+              "id":1,
+              "name":"spray"
+           },
+           "hero":{  
+              "id":1,
+              "name":"Ana",
+              "health":200,
+              "armour":0,
+              "shield":0,
+              "real_name":"Ana Amari",
+              "affiliation":"Overwatch",
+              "difficulty":3,
+              "description":"Ana’s versatile arsenal allows her to affect heroes all over the battlefield. Her Biotic Rifle rounds and Biotic Grenades heal allies and damage or impair enemies; her sidearm tranquilizes key targets, and Nano Boost gives one of her comrades a considerable increase in power."
+           },
+           "quality":{  
+              "name":"common"
+           },
+           "event":null
+        }
 
 ## Achievements Collection [/achievements]
 
@@ -266,9 +339,79 @@ The API is currently tracking Overwatch Heros, Maps, Roles, Events, Players and 
 
 + Response 200 (application/json)
 
-### Find Achievements [GET /achievements/{id}]
+        {
+                "total": 2,
+                "data": [
+                        {
+                                "id": 1,
+                                "name": "Level 10",
+                                "description": "Reach level 10.",
+                                "url": "https://overwatch-api.net/api/v1/achievement/1",
+                                "hero": null,
+                                "reward": {
+                                        "id": 30,
+                                        "name": "Forge Onward",
+                                        "cost": null,
+                                        "url": "https://overwatch-api.net/api/v1/reward/30",
+                                        "type": {
+                                                "id": 1,
+                                                "name": "spray",
+                                                "url": "https://overwatch-api.net/api/v1/reward-type/1"
+                                        },
+                                        "quality": {
+                                                "name": "common"
+                                        }
+                                }
+                        },
+                        {
+                                "id": 2,
+                                "name": "Level 25",
+                                "description": "Reach level 25.",
+                                "url": "https://overwatch-api.net/api/v1/achievement/2",
+                                "hero": null,
+                                "reward": {
+                                        "id": 40,
+                                        "name": "Rise",
+                                        "cost": null,
+                                        "url": "https://overwatch-api.net/api/v1/reward/40",
+                                        "type": {
+                                                "id": 1,
+                                                "name": "spray",
+                                                "url": "https://overwatch-api.net/api/v1/reward-type/1"
+                                        },
+                                        "quality": {
+                                                "name": "common"
+                                        }
+                                }
+                        }
+                ]
+        }
+
+
+### Find Achievement [GET /achievements/{id}]
 
 + Parameters
     + id (optional, integer, `1`) ... Achievements ID
 
 + Response 200 (application/json)
+
+        {  
+           "id":1,
+           "name":"Level 10",
+           "description":"Reach level 10.",
+           "url":"https://overwatch-api.net/api/v1/achievement/1",
+           "hero":null,
+           "reward":{  
+              "id":30,
+              "name":"Forge Onward",
+              "cost":null,
+              "url":"https://overwatch-api.net/api/v1/reward/30",
+              "type":{
+                 "id":1,
+                 "name":"spray"
+              },
+              "quality":{  
+                 "name":"common"
+              }
+           }
+        }
