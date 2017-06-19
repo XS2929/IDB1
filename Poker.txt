@@ -1,0 +1,11 @@
+TASK									HOURS ESTIMATED		HOURS TAKEN
+Find Sources for Scraping				2					5
+Integrate tools with Github Repository	1					0.5
+Setup Static Data Files					5					3
+Design Website							3					1
+Decide on Models and Attributes			13					5
+Connect Domain Name to Web Server		1					1
+Write Technical Report					8					9
+Document API via Apiary					5					5
+Setup hosting on AWS and FLask			2					2
+Get NameCheap Domain					½					0.1
