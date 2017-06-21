@@ -23,6 +23,12 @@
   /* Add a gray color to all navbar links */
   .navbar li a, .navbar .navbar-brand {
       color: #d5d5d5 !important;
+    }
+
+  /* overwatch logo placement */
+  .navbar-brand>img {
+    margin-left: 15px;
+    margin-top: -10px;    
   }
 
   /* On hover, the links will turn white */
@@ -41,9 +47,13 @@
       border-color: transparent;
   }
 
-  </style>
+    </style>
+
+
+
 </head>
 <body background="https://raw.githubusercontent.com/XS2929/idb/master/static/Background_pic/BackgroundLogo.jpg">
+
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -52,6 +62,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+        <a class="navbar-brand" href="index.html"> <img src="static/Overwatch_circle_logo.svg" width="40" height="40" alt="logo"></a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
@@ -62,8 +73,8 @@
           <li><a href="Players.html">PLAYER</a></li>
           <li><a href="About.html">ABOUT</a></li>
         </ul>
-      </div>
-    </div>
+      </div> <!-- collapse nav -->
+    </div> <!-- containter fluid -->
   </nav>
 
   <div id="heroes" class="container text-center">
