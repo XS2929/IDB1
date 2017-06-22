@@ -1,0 +1,30 @@
+{  
+   "last":"http://overwatch-api.net/api/v1/event?page=1",
+   "first":"http://overwatch-api.net/api/v1/event?page=1",
+   "next":null,
+   "total":3,
+   "data":[  
+      {  
+         "url":"https://overwatch-api.net/api/v1/event/1",
+         "start_date":"2016-08-02",
+         "id":1,
+         "end_date":"2016-08-22",
+         "name":"Summer Games 2016"
+      },
+      {  
+         "url":"https://overwatch-api.net/api/v1/event/2",
+         "start_date":"2016-10-11",
+         "id":2,
+         "end_date":"2016-11-01",
+         "name":"Halloween Terror"
+      },
+      {  
+         "url":"https://overwatch-api.net/api/v1/event/3",
+         "start_date":"2016-12-13",
+         "id":3,
+         "end_date":"2017-01-02",
+         "name":"Winter Wonderland"
+      }
+   ],
+   "previous":null
+}

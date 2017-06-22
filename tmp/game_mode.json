@@ -1,0 +1,39 @@
+{  
+   "last":"http://overwatch-api.net/api/v1/game-mode?page=1",
+   "first":"http://overwatch-api.net/api/v1/game-mode?page=1",
+   "next":null,
+   "total":6,
+   "data":[  
+      {  
+         "url":"https://overwatch-api.net/api/v1/game-mode/1",
+         "id":1,
+         "name":"Practice Range"
+      },
+      {  
+         "url":"https://overwatch-api.net/api/v1/game-mode/2",
+         "id":2,
+         "name":"Play/Practice vs A.I."
+      },
+      {  
+         "url":"https://overwatch-api.net/api/v1/game-mode/3",
+         "id":3,
+         "name":"Quick Play"
+      },
+      {  
+         "url":"https://overwatch-api.net/api/v1/game-mode/4",
+         "id":4,
+         "name":"Custom Game"
+      },
+      {  
+         "url":"https://overwatch-api.net/api/v1/game-mode/5",
+         "id":5,
+         "name":"Weekly Brawl"
+      },
+      {  
+         "url":"https://overwatch-api.net/api/v1/game-mode/6",
+         "id":6,
+         "name":"Competitive Play"
+      }
+   ],
+   "previous":null
+}
