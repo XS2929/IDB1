@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+<link href="../static/css/heroes.css" rel="stylesheet">
+  <div id="heroes" class="container text-center">
+    <br>
+    <br>
+    <br>
+    <div class="row">
+      <p style="font-size:30px;color:black" class="text-center"><strong>Mercy</strong></p><br>
+      <a href="{{ url_for('views.hero',hero_name='Mercy') }}">
+        <img src="https://raw.githubusercontent.com/XS2929/idb/master/static/hero_pic/MERCY.jpg" class="img-circle person" alt="Random Name" width="500" height="400">
+      </a>
+    </div>
+    <br>
+    <div class="row">
+      <p style="font-size:30px;color:black" class="text-center"><strong>Winston</strong></p><br>
+      <a href="{{ url_for('views.hero',hero_name='Winston') }}"> 
+        <img src="https://raw.githubusercontent.com/XS2929/idb/master/static/hero_pic/WINSTON.jpg" class="img-circle person" alt="Random Name" width="500" height="400">
+      </a>
+    </div>
+    <br>
+    <div class="row">
+      <p style="font-size:30px;color:black" class="text-center"><strong>Hanzo</strong></p><br>
+      <a href="{{ url_for('views.hero',hero_name='Hanzo') }}">
+        <img src="https://raw.githubusercontent.com/XS2929/idb/master/static/hero_pic/HANZO.jpg" class="img-circle person" alt="Random Name" width="500" height="400">
+      </a>
+    </div>
+  </div>
+{% endblock %}
