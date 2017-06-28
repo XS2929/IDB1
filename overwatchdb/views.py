@@ -14,7 +14,7 @@ def index():
 @views.route('/players/')
 def players():
     """ Returns Players Page """
-    return render_template('players.html')
+    return render_template('Players.html')
 
 
 @views.route('/p/<string:player_id>')
@@ -35,14 +35,14 @@ def heroes():
 @views.route('/heroes/<string:hero_name>')
 def hero(hero_name):
     """ Returns Page for a single Hero """
-    return render_template('hero.html', name=hero_name)
+    return render_template('HeroHtmls/'+hero_name+'.html', name=hero_name)
 
 
 @views.route('/r/')
 @views.route('/rewards/')
 def rewards():
     """ Returns Rewards Page """
-    return render_template('rewards.html')
+    return render_template('Rewards.html')
 
 
 @views.route('/r/<reward_id>')
@@ -55,10 +55,19 @@ def reward(reward_id):
 @views.route('/a/')
 @views.route('/achievements/')
 def achievements():
-    return render_template('/achievements.html', id=achievement_id)
+    """ Returns Achievements Page """
+    return render_template('/Achievements.html') # id=achievement_id)
 
 
 @views.route('/a/<achievement_id>')
 @views.route('/achievements/<achievement_id>')
 def achievement(achievement_id):
     return render_template('/achievements.html', id=achievement_id)
+
+
+@views.route('/ab/')
+@views.route('/about/')
+def about():
+    """ Returns Heroes Page """
+    return render_template('about.html')
+
