@@ -1,0 +1,19 @@
+<!-- Extend base.html here? -->
+{%block content%}
+<!-- Unsure of how to get data for players based on our json-->
+<!-- Need to change the art thing below -->
+<link rel="stylesheet" type="text/css" href="../static/css/players.css">
+<div id="instance-main">
+	<h1><strong>{{Players_Instance.name}}</strong></h1>
+	<img src=
+		{% if Players_Instance.art.lower() != "none" %}
+			{{ Players_Instance.art }}
+		{% else %}
+			{{"https://wiki.gamedetectives.net/images/b/bf/Overwatch_logo.jpg"}}
+		{% endif %}
+	class="img-fluid">
+
+
+</div>
+
+{% endblock%}

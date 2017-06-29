@@ -1,0 +1,22 @@
+<!-- Extend base.html here? -->
+{%block content%}
+<!-- Need to change the art thing below -->
+<link rel="stylesheet" type="text/css" href="../static/css/heroes.css">
+<div id="instance-main">
+	<h1><strong>{{Heroes_Instance.name}}</strong></h1>
+	<img src=
+		{% if Heroes_Instance.art.lower() != "none" %}
+			{{ Heroes_Instance.art }}
+		{% else %}
+			{{"https://wiki.gamedetectives.net/images/b/bf/Overwatch_logo.jpg"}}
+		{% endif %}
+	class="img-fluid">
+
+	<h4><strong>Real Name: </strong>{{Heroes_Instance.real_name}}</h4>
+	<h4><strong>Description: </strong>{{Heroes_Instance.description}}</h4>
+	<h4><strong>Age: </strong>{{Heroes_Instance.age}}</h4>
+	<h4><strong>Difficulty: </strong>{{Heroes_Instance.difficulty}}</h4>
+	<h4><strong>Affiliation: </strong>{{Heroes_Instance.affiliation}}</h4>
+</div>
+
+{% endblock%}
