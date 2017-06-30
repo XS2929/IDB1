@@ -2,7 +2,7 @@
 
 [Hero|id: int; description:text; name: text; affiliation: text; age: text],
 [Reward|id: int; name: text; quality: text; cost: text],
-[Achievement|id: int; name: text; description: text ; level: text],
+[Achievement|id: int; name: text; description: text ; type: text],
 [Player|id: int; name: text; server: text; level: text],
 
 [Player]1..*-1[Hero], 
