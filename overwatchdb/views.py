@@ -13,38 +13,43 @@ def index():
     return render_template('index.html')
 
 
+@views.route('/api/player/<player_id>', methods=['GET'])
 @views.route('/api/players/<player_id>', methods=['GET'])
-def get_player(player_id):
+def player(player_id):
     """ Returns Page for a single Player """
     data = models.Player.query.get(player_id)
     if not data:
         return render_template('404.html', thing='Player')
     return render_template('player.html', data=data)
 
-
+@views.route('/api/hero', methods=['GET'])
 @views.route('/api/heroes', methods=['GET'])
-def get_heroes():
+def heroes():
     """ Returns Heroes Page """
     return render_template('heroes.html')
 
 
+@views.route('/api/hero/<int:hero_id>', methods=['GET'])
 @views.route('/api/heroes/<int:hero_id>', methods=['GET'])
-def get_hero(hero_id):
+def hero(hero_id):
     """ Returns Page for a single Hero """
     data = models.Hero.query.get(hero_id)
     if not data:
         return render_template('404.html', thing='Hero')
+    print(data)
     return render_template('heroes_instance.html', data=data)
 
 
+@views.route('/api/reward', methods=['GET'])
 @views.route('/api/rewards', methods=['GET'])
-def get_rewards():
+def rewards():
     """ Returns Rewards Page """
     return render_template('rewards.html')
 
 
+@views.route('/api/reward/<int:reward_id>', methods=['GET'])
 @views.route('/api/rewards/<int:reward_id>', methods=['GET'])
-def get_reward(reward_id):
+def reward(reward_id):
     """ Returns Page for a single Reward """
     data = models.Reward.query.get(reward_id)
     if not data:
@@ -52,14 +57,16 @@ def get_reward(reward_id):
     return render_template('rewards_instance.html', data=data)
 
 
+@views.route('/api/achievement', methods=['GET'])
 @views.route('/api/achievements', methods=['GET'])
-def get_achievements():
+def achievements():
     """ Returns Achievements Page """
     return render_template('achievements.html')  # id=achievement_id)
 
 
+@views.route('/api/achievement/<int:achievement_id>', methods=['GET'])
 @views.route('/api/achievements/<int:achievement_id>', methods=['GET'])
-def get_achievement(achievement_id):
+def achievement(achievement_id):
     data = models.Achievement.query.get(achievement_id)
     if not data:
         return render_template('404.html', thing='Achievement')
