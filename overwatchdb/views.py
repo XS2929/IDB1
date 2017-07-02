@@ -13,7 +13,7 @@ def index():
     return render_template('index.html')
 
 
-@views.route('/api/player/<int:player_id>', methods=['GET'])
+@views.route('/api/players/<int:player_id>', methods=['GET'])
 @views.route('/api/players/<int:player_id>', methods=['GET'])
 def players(player_id):
     """ Returns Page for a single Player """
@@ -22,14 +22,14 @@ def players(player_id):
         return render_template('404.html', thing='Player')
     return render_template('player.html', data=data)
 
-@views.route('/api/hero', methods=['GET'])
+@views.route('/api/heroes', methods=['GET'])
 @views.route('/api/heroes', methods=['GET'])
 def heroes():
     """ Returns Heroes Page """
     return render_template('heroes.html')
 
 
-@views.route('/api/hero/<int:hero_id>', methods=['GET'])
+@views.route('/api/heroes/<int:hero_id>', methods=['GET'])
 @views.route('/api/heroes/<int:hero_id>', methods=['GET'])
 def hero(hero_id):
     """ Returns Page for a single Hero """
@@ -40,14 +40,14 @@ def hero(hero_id):
     return render_template('heroes_instance.html', data=data)
 
 
-@views.route('/api/reward', methods=['GET'])
+@views.route('/api/rewards', methods=['GET'])
 @views.route('/api/rewards', methods=['GET'])
 def rewards():
     """ Returns Rewards Page """
     return render_template('rewards.html')
 
 
-@views.route('/api/reward/<int:reward_id>', methods=['GET'])
+@views.route('/api/rewards/<int:reward_id>', methods=['GET'])
 @views.route('/api/rewards/<int:reward_id>', methods=['GET'])
 def reward(reward_id):
     """ Returns Page for a single Reward """
@@ -57,14 +57,14 @@ def reward(reward_id):
     return render_template('rewards_instance.html', data=data)
 
 
-@views.route('/api/achievement', methods=['GET'])
+@views.route('/api/achievements', methods=['GET'])
 @views.route('/api/achievements', methods=['GET'])
 def achievements():
     """ Returns Achievements Page """
     return render_template('achievements.html')  # id=achievement_id)
 
 
-@views.route('/api/achievement/<int:achievement_id>', methods=['GET'])
+@views.route('/api/achievements/<int:achievement_id>', methods=['GET'])
 @views.route('/api/achievements/<int:achievement_id>', methods=['GET'])
 def achievement(achievement_id):
     data = models.Achievement.query.get(achievement_id)
