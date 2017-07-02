@@ -1,0 +1,22 @@
+<!-- Extend base.html here? -->
+{% extend 'layout.html' %}
+{%block content%}
+<!-- Need to change the art thing below -->
+<link rel="stylesheet" type="text/css" href="../static/css/achievements.css">
+<div id="instance-main">
+	<h1><strong>{{Achievements_Instance.name}}</strong></h1>
+	<img src=
+		{% if Achievements_Instance.art.lower() != "none" %}
+			{{ Achievements_Instance.art }}
+		{% else %}
+			{{"https://wiki.gamedetectives.net/images/b/bf/Overwatch_logo.jpg"}}
+		{% endif %}
+	class="img-fluid">
+
+	<h4><strong>Name: </strong>{{data.name}}</h4>
+	<h4><strong>Description: </strong>{{data.description}}</h4>
+	<h4><strong>Hero: </strong>{{data.hero.name}}</h4>
+	<h4><strong>Reward: </strong>{{data.reward.name}}</h4>
+</div>
+
+{% endblock%}

@@ -1,10 +1,15 @@
-{% extends "layout.html" %}
+{% extend "layout.html" %}
 
 
 {% block content %}
 <link href="../static/css/heroes.css" rel="stylesheet">
   <div id="heroes" class="container text-center">
-    <br>
+    <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Heroes</h1>
+            </div>
+    </div>
+    <!-- <br>
     <br>
     <br>
     <div class="row">
@@ -26,6 +31,6 @@
       <a href="{{ url_for('views.hero',hero_name='Hanzo') }}">
         <img src="https://raw.githubusercontent.com/XS2929/idb/master/static/hero_pic/HANZO.jpg" class="img-circle person" alt="Random Name" width="500" height="400">
       </a>
-    </div>
+    </div> -->
   </div>
 {% endblock %}
