@@ -20,7 +20,7 @@ def players():
 
 
 @views.route('/api/players/<int:player_id>', methods=['GET'])
-def players(player_id):
+def player(player_id):
     """ Returns Page for a single Player """
     data = models.Player.query.get(player_id)
     if not data:
