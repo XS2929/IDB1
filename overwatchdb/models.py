@@ -15,7 +15,7 @@ class Hero(db.Model):
 	description = db.Column(db.String)
 	affiliation = db.Column(db.String)
 	age = db.Column(db.String)
-	player_id = db.relationship("db.")
+	players = db.relationship("Player", backref="hero_id")
 
     def __repr__(self):
         return "<Hero(name='%s', description=%s, affiliation=%s, age=%s)>" % (
@@ -55,7 +55,7 @@ class Reward(db.Model):
 	achievement_id = db.Column(db.Integer, db.ForeignKey("achievement.id"))
 
     def __repr__(self):
-        return "<Star(name='%s', quality=%s, cost=%s)>" % (
+        return "<Reward(name='%s', quality=%s, cost=%s)>" % (
             self.name, self.quality, self.cost)
 
     def search_result(self):
@@ -74,7 +74,7 @@ class Achievement(db.Model):
 	reward_id = db.relationship("Reward", backref="achievement_id")
 
     def __repr__(self):
-        return "<Star(name='%s', description=%s, type=%s)>" % (
+        return "<Achievement(name='%s', description=%s, type=%s)>" % (
             self.name, self.description, self.type)
 
     def search_result(self):
