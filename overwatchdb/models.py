@@ -5,6 +5,15 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+player_achievement = db.Table('player_achievement',
+    db.Column('player_id', db.Integer, db.ForeignKey('hero.id')),
+    db.Column('achievement_id', db.Integer, db.ForeignKey('achievement.id'))
+)
+
+player_reward = db.Table('player_reward',
+    db.Column('player_id', db.Integer, db.ForeignKey('player.id')),
+    db.Column('reward_id', db.Integer, db.ForeignKey('reward.id'))
+)
 
 class Hero(db.Model):
 	"""model for hero"""
