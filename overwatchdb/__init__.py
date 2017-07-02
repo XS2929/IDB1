@@ -8,7 +8,7 @@ from overwatchdb.models import db
 from overwatchdb.views import views
 
 
-def create_app(env):
+def create_app():
     """ Application factory function """
     SQLALCHEMY_DATABASE_URI = \
         '{engine}://{username}:{password}@{hostname}/{database}'.format(
