@@ -13,8 +13,8 @@ def index():
     return render_template('index.html')
 
 
-@views.route('/api/players', methods=['GET'])
-@views.route('/api/players', methods=['GET'])
+@views.route('/api/players/<int:player_id', methods=['GET'])
+@views.route('/api/players/<int:player_id', methods=['GET'])
 def players(player_id):
     """ Returns Page for a single Player """
     data = models.Player.query.get(player_id)
