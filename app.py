@@ -1,5 +1,6 @@
 """ Launch the application """
 import os
+
 from overwatchdb import create_app
 
 # pylint:disable=invalid-name
