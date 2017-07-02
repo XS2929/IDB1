@@ -36,12 +36,12 @@ class Player(db.Model):
 	level = db.Column(db.String)
 
     def __repr__(self):
-        return "<Player(name='%s', server=%s, level=%s, temperature=%s, radius=%s)>" % (
-            self.name, self.mass, self.luminosity, self.temperature, self.radius)
+        return "<Player(name='%s', server=%s, level=%s)>" % (
+            self.name, self.server, self.level)
 
     def search_result(self):
         """ Returns result format for the player """
-        return {"model": "hero", "id": self.id}
+        return {"model": "player", "id": self.id}
 
 class Reward(db.Model):
 	"""model for reward"""
@@ -55,12 +55,12 @@ class Reward(db.Model):
 	achievement_id = db.Column(db.Integer, db.ForeignKey("achievement.id"))
 
     def __repr__(self):
-        return "<Star(name='%s', mass=%s, luminosity=%s, temperature=%s, radius=%s)>" % (
-            self.name, self.mass, self.luminosity, self.temperature, self.radius)
+        return "<Star(name='%s', quality=%s, cost=%s)>" % (
+            self.name, self.quality, self.cost)
 
     def search_result(self):
         """ Returns result format for the reward """
-        return {"model": "hero", "id": self.id}
+        return {"model": "reward", "id": self.id}
 
 class Achievement(db.Model):
 	"""model for achievement"""
@@ -74,10 +74,10 @@ class Achievement(db.Model):
 	reward_id = db.relationship("Reward", backref="achievement_id")
 
     def __repr__(self):
-        return "<Star(name='%s', mass=%s, luminosity=%s, temperature=%s, radius=%s)>" % (
-            self.name, self.mass, self.luminosity, self.temperature, self.radius)
+        return "<Star(name='%s', description=%s, type=%s)>" % (
+            self.name, self.description, self.type)
 
     def search_result(self):
         """ Returns result format for the achievement """
-        return {"model": "hero", "id": self.id}
+        return {"model": "achievement", "id": self.id}
 
