@@ -13,11 +13,11 @@ def create_app():
     """ Application factory function """
     SQLALCHEMY_DATABASE_URI = \
         '{engine}://{username}:{password}@{hostname}/{database}'.format(
-            engine='',
+            engine='postgresql',
             username='',
             password='',
-            hostname='',
-            database='')
+            hostname='overwatchdb.culm9jl6euht.us-east-2.rds.amazonaws.com:5432',
+            database='overwatchdb')
 
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
