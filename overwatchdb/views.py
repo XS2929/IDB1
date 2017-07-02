@@ -13,9 +13,9 @@ def index():
     return render_template('index.html')
 
 
-@views.route('/api/player/<player_id>', methods=['GET'])
-@views.route('/api/players/<player_id>', methods=['GET'])
-def player(player_id):
+@views.route('/api/player/<int:player_id>', methods=['GET'])
+@views.route('/api/players/<int:player_id>', methods=['GET'])
+def players(player_id):
     """ Returns Page for a single Player """
     data = models.Player.query.get(player_id)
     if not data:

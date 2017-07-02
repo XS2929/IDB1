@@ -14,8 +14,8 @@ def create_app():
     SQLALCHEMY_DATABASE_URI = \
         '{engine}://{username}:{password}@{hostname}/{database}'.format(
             engine='postgresql',
-            username='',
-            password='',
+            username='overwatchdb',
+            password='cs373summer',
             hostname='overwatchdb.culm9jl6euht.us-east-2.rds.amazonaws.com:5432',
             database='overwatchdb')
 
