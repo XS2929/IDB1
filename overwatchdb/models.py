@@ -6,7 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 player_achievement = db.Table('player_achievement',
-    db.Column('player_id', db.Integer, db.ForeignKey('hero.id')),
+    db.Column('player_id', db.Integer, db.ForeignKey('player.id')),
     db.Column('achievement_id', db.Integer, db.ForeignKey('achievement.id'))
 )
 
