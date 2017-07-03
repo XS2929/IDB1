@@ -1,5 +1,8 @@
 from flask import Blueprint, render_template
+import json
+import traceback
 
+import overwatchdb.models as models
 
 views = Blueprint('views', __name__)
 
@@ -10,64 +13,86 @@ def index():
     return render_template('index.html')
 
 
-@views.route('/p/')
-@views.route('/players/')
+@views.route('/api/players', methods=['GET'])
 def players():
     """ Returns Players Page """
-    return render_template('Players.html')
+    data = models.Player.query.all()
+    if not data:
+        return render_template('404.html', thing='Players')
+    print(data)
+    return render_template('players.html', data=data)
 
 
-@views.route('/p/<string:player_id>')
-@views.route('/players/<string:player_id>')
+@views.route('/api/players/<int:player_id>', methods=['GET'])
 def player(player_id):
     """ Returns Page for a single Player """
-    return render_template('player.html', id=player_id)
+    data = models.Player.query.get(player_id)
+    if not data:
+        return render_template('404.html', thing='Player')
+    print(data)
+    return render_template('players_instance.html', data=data)
 
 
-@views.route('/h/')
-@views.route('/heroes/')
+@views.route('/api/heroes', methods=['GET'])
 def heroes():
     """ Returns Heroes Page """
-    return render_template('Heroes.html')
+    data = models.Hero.query.all()
+    if not data:
+        return render_template('404.html', thing='Heroes')
+    print(data)
+    return render_template('heroes.html', data=data)
 
 
-@views.route('/h/<string:hero_name>')
-@views.route('/heroes/<string:hero_name>')
-def hero(hero_name):
+@views.route('/api/heroes/<int:hero_id>', methods=['GET'])
+def hero(hero_id):
     """ Returns Page for a single Hero """
-    return render_template('HeroHtmls/'+hero_name+'.html', name=hero_name)
+    data = models.Hero.query.get(hero_id)
+    if not data:
+        return render_template('404.html', thing='Hero')
+    print(data)
+    return render_template('heroes_instance.html', data=data)
 
 
-@views.route('/r/')
-@views.route('/rewards/')
+@views.route('/api/rewards', methods=['GET'])
 def rewards():
     """ Returns Rewards Page """
-    return render_template('Rewards.html')
+    data = models.Reward.query.all()
+    if not data:
+        return render_template('404.html', thing='Rewards')
+    print(data)
+    return render_template('rewards.html', data=data)
 
 
-@views.route('/r/<reward_id>')
-@views.route('/rewards/<reward_id>')
+@views.route('/api/rewards/<int:reward_id>', methods=['GET'])
 def reward(reward_id):
     """ Returns Page for a single Reward """
-    return render_template('reward.html', id=reward_id)
+    data = models.Reward.query.get(reward_id)
+    if not data:
+        return render_template('404.html', thing='Reward')
+    print(data)
+    return render_template('rewards_instance.html', data=data)
 
 
-@views.route('/a/')
-@views.route('/achievements/')
+@views.route('/api/achievements', methods=['GET'])
 def achievements():
     """ Returns Achievements Page """
-    return render_template('/Achievements.html') # id=achievement_id)
+    data = models.Achievement.query.all()
+    if not data:
+        return render_template('404.html', thing='Achievements')
+    print(data)
+    return render_template('achievements.html', data=data)  # id=achievement_id)
 
 
-@views.route('/a/<achievement_id>')
-@views.route('/achievements/<achievement_id>')
+@views.route('/api/achievements/<int:achievement_id>', methods=['GET'])
 def achievement(achievement_id):
-    return render_template('/achievements.html', id=achievement_id)
+    data = models.Achievement.query.get(achievement_id)
+    if not data:
+        return render_template('404.html', thing='Achievement')
+    print(data)
+    return render_template('achievements_instance.html', data=data)
 
 
-@views.route('/ab/')
 @views.route('/about/')
 def about():
     """ Returns Heroes Page """
     return render_template('about.html')
-

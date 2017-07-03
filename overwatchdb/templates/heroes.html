@@ -19,29 +19,7 @@
 
     <div class="row text-center" id="pagination"></div>
 
-    <!-- <br>
-    <br>
-    <br>
-    <div class="row">
-      <p style="font-size:30px;color:black" class="text-center"><strong>Mercy</strong></p><br>
-      <a href="{{ url_for('views.hero',hero_name='Mercy') }}">
-        <img src="https://raw.githubusercontent.com/XS2929/idb/master/static/hero_pic/MERCY.jpg" class="img-circle person" alt="Random Name" width="500" height="400">
-      </a>
-    </div>
-    <br>
-    <div class="row">
-      <p style="font-size:30px;color:black" class="text-center"><strong>Winston</strong></p><br>
-      <a href="{{ url_for('views.hero',hero_name='Winston') }}"> 
-        <img src="https://raw.githubusercontent.com/XS2929/idb/master/static/hero_pic/WINSTON.jpg" class="img-circle person" alt="Random Name" width="500" height="400">
-      </a>
-    </div>
-    <br>
-    <div class="row">
-      <p style="font-size:30px;color:black" class="text-center"><strong>Hanzo</strong></p><br>
-      <a href="{{ url_for('views.hero',hero_name='Hanzo') }}">
-        <img src="https://raw.githubusercontent.com/XS2929/idb/master/static/hero_pic/HANZO.jpg" class="img-circle person" alt="Random Name" width="500" height="400">
-      </a>
-    </div> -->
+  
 
     <script type = "text/babel">
       var baseUrl = "/api/heroes/";
@@ -80,4 +58,5 @@
       ReactDOM.render(<Pagination />, document.getElementById("pagination");
     </script>
   </div> 
+
 {% endblock %}

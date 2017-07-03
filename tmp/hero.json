@@ -1,9 +1,4 @@
-{  
-   "last":"http://overwatch-api.net/api/v1/hero?page=1",
-   "first":"http://overwatch-api.net/api/v1/hero?page=1",
-   "next":null,
-   "total":24,
-   "data":[  
+[  
       {  
          "shield":0,
          "affiliation":"Overwatch",
@@ -17,7 +12,7 @@
          "difficulty":3,
          "real_name":"Ana Amari",
          "id":1,
-         "description":"Ana\u2019s versatile arsenal allows her to affect heroes all over the battlefield. Her Biotic Rifle rounds and Biotic Grenades heal allies and damage or impair enemies; her sidearm tranquilizes key targets, and Nano Boost gives one of her comrades a considerable increase in power."
+         "description":"The versatile arsenal allows her to affect heroes all over the battlefield. Her Biotic Rifle rounds and Biotic Grenades heal allies and damage or impair enemies; her sidearm tranquilizes key targets, and Nano Boost gives one of her comrades a considerable increase in power."
       },
       {  
          "shield":0,
@@ -137,7 +132,7 @@
          "difficulty":3,
          "real_name":"Mei-Link Zhou",
          "id":9,
-         "description":"Mei\u2019s weather-altering devices slow opponents and protect locations. Her Endothermic Blaster unleashes damaging icicles and frost streams, and she can Cryo-Freeze herself to guard against counterattacks, or obstruct the opposing team's movements with an Ice Wall."
+         "description":"The weather-altering devices slow opponents and protect locations. Her Endothermic Blaster unleashes damaging icicles and frost streams, and she can Cryo-Freeze herself to guard against counterattacks, or obstruct enemy movements with an Ice Wall."
       },
       {  
          "shield":0,
@@ -347,7 +342,7 @@
          "difficulty":3,
          "real_name":"\u2591\u2591\u2591\u2591\u2591\u2591",
          "id":23,
-         "description":"Stealth and debilitating attacks make Sombra a powerful infiltrator. Her hacking can disrupt her enemies, ensuring they're easier to take out, while her EMP provides the upper hand against multiple foes at once. Sombra\u2019s ability to Translocate and camouflage herself makes her a hard target to pin down."
+         "description":"Stealth and debilitating attacks make Sombra a powerful infiltrator. Her hacking can disrupt her enemies, ensuring they are easier to take out, while her EMP provides the upper hand against multiple foes at once. Sombra\u2019s ability to Translocate and camouflage herself makes her a hard target to pin down."
       },
       {  
          "shield":0,
@@ -364,6 +359,4 @@
          "id":24,
          "description":"Orisa serves as the central anchor of her team, and defends her teammates from the frontline with a protective barrier. She can attack from long range, fortify her own defenses, launch graviton charges to slow and move enemies, and deploy a Supercharger to boost the damage output of multiple allies at once."
       }
-   ],
-   "previous":null
-}
+   ]
