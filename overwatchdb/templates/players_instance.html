@@ -5,14 +5,12 @@
 <!-- Need to change the art thing below -->
 <link rel="stylesheet" type="text/css" href="../static/css/players.css">
 <div id="instance-main">
-	<h1><strong>{{Players_Instance.name}}</strong></h1>
-	<img src=
-		{% if Players_Instance.art.lower() != "none" %}
-			{{ Players_Instance.art }}
-		{% else %}
-			{{"https://wiki.gamedetectives.net/images/b/bf/Overwatch_logo.jpg"}}
-		{% endif %}
-	class="img-fluid">
+	<h1><strong>{{data.name}}</strong></h1>
+	<img src= "{{data.url}}" class="img-fluid">
+
+	<h4><strong>Name: </strong>{{data.name}}</h4>
+	<h4><strong>Server: </strong>{{data.server}}</h4>
+	<h4><strong>Level: </strong>{{data.level}}</h4>
 
 
 </div>
