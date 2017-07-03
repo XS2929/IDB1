@@ -19,6 +19,7 @@ def players():
     data = models.Player.query.all()
     if not data:
         return render_template('404.html', thing='Players')
+    print(data)
     return render_template('players.html', data=data)
 
 
@@ -28,15 +29,17 @@ def player(player_id):
     data = models.Player.query.get(player_id)
     if not data:
         return render_template('404.html', thing='Player')
+    print(data)
     return render_template('player_instance.html', data=data)
 
 
 @views.route('/api/heroes', methods=['GET'])
 def heroes():
     """ Returns Heroes Page """
-    data = models.Player.query.all()
+    data = models.Hero.query.all()
     if not data:
         return render_template('404.html', thing='Heroes')
+    print(data)
     return render_template('heroes.html', data=data)
 
 
@@ -53,9 +56,10 @@ def hero(hero_id):
 @views.route('/api/rewards', methods=['GET'])
 def rewards():
     """ Returns Rewards Page """
-    data = models.Player.query.all()
+    data = models.Reward.query.all()
     if not data:
         return render_template('404.html', thing='Rewards')
+    print(data)
     return render_template('rewards.html', data=data)
 
 
@@ -65,15 +69,17 @@ def reward(reward_id):
     data = models.Reward.query.get(reward_id)
     if not data:
         return render_template('404.html', thing='Reward')
+    print(data)
     return render_template('rewards_instance.html', data=data)
 
 
 @views.route('/api/achievements', methods=['GET'])
 def achievements():
     """ Returns Achievements Page """
-    data = models.Player.query.all()
+    data = models.Achievement.query.all()
     if not data:
         return render_template('404.html', thing='Achievements')
+    print(data)
     return render_template('achievements.html', data=data)  # id=achievement_id)
 
 
@@ -82,6 +88,7 @@ def achievement(achievement_id):
     data = models.Achievement.query.get(achievement_id)
     if not data:
         return render_template('404.html', thing='Achievement')
+    print(data)
     return render_template('achievements_instance.html', data=data)
 
 
