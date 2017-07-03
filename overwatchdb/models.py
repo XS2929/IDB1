@@ -24,10 +24,10 @@ class Hero(db.Model):
 	description = db.Column(db.String, nullable=False)
 	affiliation = db.Column(db.String, nullable=False)
 	age = db.Column(db.String, nullable=False)
-	players = db.relationship("Player", backref="played_by")
-	# achievement_id = db.Column(db.Integer, db.ForeignKey("achievement.id"))
-	reward_id = db.Column(db.Integer, db.ForeignKey("reward.id"))
 	url = db.Column(db.String, nullable=False)
+	players = db.relationship('Player', backref='Hero',lazy='dynamic')
+	# achievement_id = db.Column(db.Integer, db.ForeignKey("achievement.id"))
+	reward = db.relationship('Reward', backref('Hero'),lazy='dynamic')
 
 	def __repr__(self):
 		return "<Hero(name='%s', description=%s, affiliation=%s, age=%s, url=%s)>" % (
@@ -45,7 +45,7 @@ class Player(db.Model):
 	name = db.Column(db.String, nullable=False)
 	server = db.Column(db.String, nullable=False)
 	hero_id = db.Column(db.Integer, db.ForeignKey("hero.id"), nullable=False)
-	level = db.Column(db.String, nullable=False)
+	type = db.Column(db.String, nullable=False)
 	url = db.Column(db.String, nullable=False)
       
 	def __repr__(self):
@@ -65,7 +65,7 @@ class Reward(db.Model):
 	quality = db.Column(db.String, nullable=False)
 	url = db.Column(db.String, nullable=False)
 	cost = db.Column(db.String, nullable=False)
-	hero_id = db.relationship("Hero", backref="earned_by")
+	hero_id = db.Column(db.Integer, db.ForeignKey("hero.id"), nullable=True)
 	achievement_id = db.Column(db.Integer, db.ForeignKey("achievement.id"), nullable=True)
 
 	def __repr__(self):
@@ -85,8 +85,11 @@ class Achievement(db.Model):
 	description = db.Column(db.String, nullable=False)
 	type = db.Column(db.String, nullable=False)
 	url = db.Column(db.String, nullable=False)
-	# hero_id = db.relationship("Hero", backref="achievement_id")
-	reward_id = db.relationship("Reward", backref="awards")
+	hero_id = db.Column(db.Integer, db.ForeignKey("hero.id"), nullable=True)
+	achievement_id = db.Column(db.Integer, db.ForeignKey("achievement.id"), nullable=True)
+	
+	hero = db.relationship("Hero", backref="Achievement",lazy='dynamic')
+	reward = db.relationship("Reward",backref('Achievement'),lazy='dynamic')
 
 	def __repr__(self):
 		return "<Achievement(name='%s', description=%s, type=%s, url=%s)>" % (
