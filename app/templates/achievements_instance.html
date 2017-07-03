@@ -14,8 +14,18 @@
 	<h4><strong>Name: </strong>{{data.name}}</h4>
 	<h4><strong>Description: </strong>{{data.description}}</h4>
 	<h4><strong>Type: </strong>{{data.type}}</h4>
-	<h4><strong>Hero: </strong>{{data.hero.name}}</h4>
-	<h4><strong>Reward: </strong>{{data.reward.name}}</h4>
+	<h4><strong>Hero: {%if data.hero_id%}
+		<a href = "/api/heroes/{{data.hero_id}}"></strong>{{data.hero.name}}</a>
+		{%else%}
+		<a href = "/api/heroes"></strong>No hero available</a>
+		{%endif%}
+	</h4>
+	<h4><strong>Reward: {%if data.reward_id%}
+		<a href = "/api/rewards/{{data.reward_id}}"></strong>{{data.reward.name}}</a>
+		{%else%}
+		<a href = "/api/rewards"></strong>No Reward available</a>
+		{%endif%}
+		</h4>
 	</center>
 </div>
 

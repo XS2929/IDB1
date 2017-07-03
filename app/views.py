@@ -2,7 +2,7 @@ from flask import Blueprint, render_template
 import json
 import traceback
 
-import app.models as models
+import overwatchdb.models as models
 
 views = Blueprint('views', __name__)
 

@@ -14,6 +14,18 @@
 	<h4><strong>Name: </strong>{{data.name}}</h4>
 	<h4><strong>Cost: </strong>{{data.cost}}</h4>
 	<h4><strong>Quality: </strong>{{data.quality}}</h4>
+	<h4><strong>Achievement: {%if data.achievement_id%}
+		<a href = "/api/achievements/{{data.achievement_id}}"> </strong>{{data.achievement.name}}</a>
+		{%else%}
+		<a href = "/api/achievements"></strong>No achievement available</a>
+		{%endif%}
+	</h4>
+	<h4><strong>Hero: {%if data.hero_id%}
+		<a href = "/api/heroes/{{data.hero_id}}"></strong>{{data.hero.name}}</a>
+		{%else%}
+		<a href = "/api/heroes"></strong>No hero available</a>
+		{%endif%}
+	</h4>
 </center>
 </div>
 
