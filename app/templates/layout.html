@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Overwatch Central</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{ url_for('views.index') }}"> <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgIHhtbG5zOmNjPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9ucyMiCiAgIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIKICAgdmVyc2lvbj0iMS4xIgogICB3aWR0aD0iNjAwIgogICBoZWlnaHQ9IjYwMCIKICAgaWQ9InN2ZzM5NjAiPgogIDxkZWZzCiAgICAgaWQ9ImRlZnMzOTYyIj4KICAgIDxsaW5lYXJHcmFkaWVudAogICAgICAgaWQ9ImxpbmVhckdyYWRpZW50NDk1OSI+CiAgICAgIDxzdG9wCiAgICAgICAgIGlkPSJzdG9wNDk2MSIKICAgICAgICAgc3R5bGU9InN0b3AtY29sb3I6IzAwMDAwMDtzdG9wLW9wYWNpdHk6MSIKICAgICAgICAgb2Zmc2V0PSIwIiAvPgogICAgICA8c3RvcAogICAgICAgICBpZD0ic3RvcDQ5NjMiCiAgICAgICAgIHN0eWxlPSJzdG9wLWNvbG9yOiNmZmZmZmY7c3RvcC1vcGFjaXR5OjEiCiAgICAgICAgIG9mZnNldD0iMSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQKICAgICAgIHgxPSIzMDAiCiAgICAgICB5MT0iOTYuNzM0MzgzIgogICAgICAgeDI9IjMwMCIKICAgICAgIHkyPSI1MDUuMDYyNSIKICAgICAgIGlkPSJsaW5lYXJHcmFkaWVudDQ5NjUiCiAgICAgICB4bGluazpocmVmPSIjbGluZWFyR3JhZGllbnQ0OTU5IgogICAgICAgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIC8+CiAgICA8bGluZWFyR3JhZGllbnQKICAgICAgIHgxPSIzMDAuMDAwNDkiCiAgICAgICB5MT0iNTgzLjYyNzg3IgogICAgICAgeDI9IjMwMC4wMDA0OSIKICAgICAgIHkyPSIxNi4zNjkxNjUiCiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQ0OTczIgogICAgICAgeGxpbms6aHJlZj0iI2xpbmVhckdyYWRpZW50NDk1OSIKICAgICAgIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiAvPgogIDwvZGVmcz4KICA8bWV0YWRhdGEKICAgICBpZD0ibWV0YWRhdGEzOTY1Ij4KICAgIDxyZGY6UkRGPgogICAgICA8Y2M6V29yawogICAgICAgICByZGY6YWJvdXQ9IiI+CiAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+CiAgICAgICAgPGRjOnR5cGUKICAgICAgICAgICByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIiAvPgogICAgICAgIDxkYzp0aXRsZT48L2RjOnRpdGxlPgogICAgICA8L2NjOldvcms+CiAgICA8L3JkZjpSREY+CiAgPC9tZXRhZGF0YT4KICA8cGF0aAogICAgIGQ9Ik0gMjk2LjcwNDA1LDAuMDA0MjQxNDkgQyAyMjkuOTM3NzksMC40MzIyMTE0OSAxNjMuOTMyMiwyNC4yMzI2ODEgMTEyLjA3NDM3LDY2LjA4NzQ1MSBsIDU2LjY2MTY0LDY1Ljc4NTY4OSBDIDIxNi41NTczLDk0LjEzNDEzMSAyODAuOTkxNzMsNzguNzU1MTgxIDM0MC43NTQyNyw5MC42MzYwOTEgYyAzMi44NDM0NCw2LjMxODM2IDY0LjA5NTQ4LDIwLjczOTY3OSA5MC40NjMzMyw0MS4yMzcwNDkgTCA0ODcuODc5MjQsNjYuMDg3NDUxIEMgNDM0LjI0MDc1LDIyLjgwNDM0MSAzNjUuNzY2NjcsLTEuMDMwNjc4NSAyOTYuNzA0MDUsMC4wMDQyNDE0OSB6IgogICAgIGlkPSJwYXRoMzk2MSIKICAgICBzdHlsZT0iY29sb3I6IzAwMDAwMDtmaWxsOiNmYTljMWU7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjk7bWFya2VyOm5vbmU7dmlzaWJpbGl0eTp2aXNpYmxlO2Rpc3BsYXk6aW5saW5lO292ZXJmbG93OnZpc2libGU7ZW5hYmxlLWJhY2tncm91bmQ6YWNjdW11bGF0ZSIgLz4KICA8cGF0aAogICAgIGQ9Ik0gOTMuNjI3OTMyLDgyLjI1Mjg4MSBDIDMzLjkyNDA2MiwxMzguMzQyNDQgLTEuMDgyMTk4MywyMTkuODc3MzEgMC4wMjU1MjE2NiwzMDIuMTIyNDYgMC4wNjA5MjE2NiwzODcuNDkzNjMgMzkuMDA0MjEyLDQ3MS4zNTI3NyAxMDMuNjc3Niw1MjYuODE4NjggYyA1OS43ODEwOCw1Mi4yODQ1IDE0MS4wODU3Nyw3OC45MTg4MiAyMjAuNDYxMzYsNzIuMTgxMDkgODYuMDEwMzUsLTYuNDA1MTggMTY3LjY0NzgyLC01Mi4zNDQ1OCAyMTguMTE3MTYsLTEyMi4xNDI4NCA0OS4xMjQ1NCwtNjYuMzI4NTMgNjguMzcwODMsLTE1My43OTcxIDUyLjA2NDAxLC0yMzQuOTA4ODIgQyA1ODIuMzMyNTIsMTc5Ljg1Njc4IDU0OS43Nzk1NywxMjIuMzEzMDEgNTAzLjQ4MjY4LDc5LjU0MjExMSBMIDQ0Ni44MjEwNCwxNDUuMzI3OCBjIDQ1LjY1NTc4LDQzLjAzNDQyIDcwLjU4NTA4LDEwNi41NTcxMyA2NS44ODQ4NiwxNjkuMjI0NTkgLTIuMDU2MDQsMzEuMDQ4NTYgLTExLjA3MzYsNjEuNjkwMzMgLTI2LjMxNDI3LDg4Ljk1OTQ0IGwgLTExNS40NzIwNywtMTExLjUzODE0IC01OC4yNiwtMTI1LjU4MjY2IC0wLjA4NzYsMTkwLjE3ODI1IDExNi42OTUyMiwxMTIuOTI2NTkgYyAtNTIuMDAxOSw0MC40MDIwOCAtMTIzLjM1Mjk1LDUzLjgwMjQ5IC0xODYuNTc3NzMsMzUuODk0MDMgLTI1Ljc0Mzg5LC03LjE4MTI0IC01MC4xMjE4NSwtMTkuMjMwMzQgLTcxLjMwODc5LC0zNS4zOTgxNiBMIDI4OC44NjkyNywzNTYuNTY5MjggYyAtMC4yMDQ4MSwtNjEuODMwNzggMC43MTc1LC0xMjguNTc2ODEgLTYuOWUtNCwtMTkwLjM4MjYgTCAyMzAuNTIxNjYsMjkxLjk3MzY5IDExNC4wNTc4NSw0MDQuNDM3NDYgYyAtMzUuNTMwNDY4LC02Mi4wMjQ4OCAtMzYuMzgwMzc4LC0xNDIuMjEwNSAtMi4xODE4MywtMjA0LjkyNzM4IDEwLjY5MTAzLC0yMC4wOTE5IDI0Ljg0MTA2LC0zOC40MjgwMSA0MS4yNTY1NSwtNTQuMTgyMjggTCA5Ni40NzA5MzIsNzkuNTQyMTExIGMgLTAuOTQ3NjcsMC45MDM1OSAtMS44OTUzNCwxLjgwNzE3IC0yLjg0MywyLjcxMDc3IHoiCiAgICAgaWQ9InBhdGg0MDUyIgogICAgIHN0eWxlPSJjb2xvcjojMDAwMDAwO2ZpbGw6IzRhNGM0ZTtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6OTttYXJrZXI6bm9uZTt2aXNpYmlsaXR5OnZpc2libGU7ZGlzcGxheTppbmxpbmU7b3ZlcmZsb3c6dmlzaWJsZTtlbmFibGUtYmFja2dyb3VuZDphY2N1bXVsYXRlIiAvPgo8L3N2Zz4K" width="40" height="40" alt="logo"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{ url_for('views.index') }}">HOME</a></li>
+          <li><a href="{{ url_for('views.heroes') }}">HEROES</a></li>
+          <li><a href="{{ url_for('views.achievements') }}">ACHIEVEMENTS</a></li>
+          <li><a href="{{ url_for('views.rewards') }}">REWARDS</a></li>
+          <li><a href="{{ url_for('views.players') }}">PLAYER</a></li>
+          <li><a href="{{ url_for('views.about') }}">ABOUT</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% block content %}
+{% endblock %}
+
+ </body>
+</html>

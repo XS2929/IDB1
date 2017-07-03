@@ -1,0 +1,20 @@
+<!-- Extend base.html here? -->
+{% extends 'layout.html' %}
+{%block content%}
+<!-- Need to change the art thing below -->
+<link rel="stylesheet" type="text/css" href="../static/css/reward.css">
+<div id="instance-main">
+	<br>
+	<br>
+	<br>
+
+	<h1><strong>{{data.name}}</strong></h1>
+	<img src= "{{data.url}}" class="img-fluid" width="500" height="500">
+
+	<h4><strong>Name: </strong>{{data.name}}</h4>
+	<h4><strong>Cost: </strong>{{data.cost}}</h4>
+	<h4><strong>Quality: </strong>{{data.quality}}</h4>
+
+</div>
+
+{% endblock%}
