@@ -30,8 +30,8 @@ class Hero(db.Model):
 	url = db.Column(db.String, nullable=False)
 
 	def __repr__(self):
-		return "<Hero(name='%s', description=%s, affiliation=%s, age=%s)>" % (
-			self.name, self.description, self.affiliation, self.age)
+		return "<Hero(name='%s', description=%s, affiliation=%s, age=%s, url=%s)>" % (
+			self.name, self.description, self.affiliation, self.age, self.url)
 
 	def search_result(self):
 		""" Returns result format for the hero """
@@ -49,8 +49,8 @@ class Player(db.Model):
 	url = db.Column(db.String, nullable=False)
       
 	def __repr__(self):
-		return "<Player(name='%s', server=%s, level=%s)>" % (
-			self.name, self.server, self.level)
+		return "<Player(name='%s', server=%s, level=%s, url=%s)>" % (
+			self.name, self.server, self.level, self.url)
 
 	def search_result(self):
 		""" Returns result format for the player """
@@ -69,8 +69,8 @@ class Reward(db.Model):
 	achievement_id = db.Column(db.Integer, db.ForeignKey("achievement.id"), nullable=True)
 
 	def __repr__(self):
-		return "<Reward(name='%s', quality=%s, cost=%s)>" % (
-			self.name, self.quality, self.cost)
+		return "<Reward(name='%s', quality=%s, url=%s, cost=%s)>" % (
+			self.name, self.quality, self.url, self.cost)
 
 	def search_result(self):
 		""" Returns result format for the reward """
@@ -89,8 +89,8 @@ class Achievement(db.Model):
 	reward_id = db.relationship("Reward", backref="awards")
 
 	def __repr__(self):
-		return "<Achievement(name='%s', description=%s, type=%s)>" % (
-			self.name, self.description, self.type)
+		return "<Achievement(name='%s', description=%s, type=%s, url=%s)>" % (
+			self.name, self.description, self.type, self.url)
 
 	def search_result(self):
 		""" Returns result format for the achievement """
