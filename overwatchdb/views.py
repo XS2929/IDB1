@@ -30,7 +30,7 @@ def player(player_id):
     if not data:
         return render_template('404.html', thing='Player')
     print(data)
-    return render_template('player_instance.html', data=data)
+    return render_template('players_instance.html', data=data)
 
 
 @views.route('/api/heroes', methods=['GET'])

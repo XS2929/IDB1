@@ -1,6 +1,9 @@
 """models for the database"""
 # pylint: disable=too-few-public-methods,invalid-name
 
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
