@@ -1,14 +1,19 @@
-{% extend "layout.html" %}
+{% extends "layout.html" %}
 
 
 {% block content %}
 <link href="../static/css/heroes.css" rel="stylesheet">
-  <div id="heroes" class="container text-center">
+  <div class="container text-center">
     <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Heroes</h1>
-            </div>
+      <div class="col-lg-12">
+        <h1 class="page-header">Heroes</h1>
+      </div>
     </div>
+
+    <hr>
+
+    <!-- <div class="row text-center" id="pagination"></div> -->
+
     <!-- <br>
     <br>
     <br>
@@ -32,5 +37,17 @@
         <img src="https://raw.githubusercontent.com/XS2929/idb/master/static/hero_pic/HANZO.jpg" class="img-circle person" alt="Random Name" width="500" height="400">
       </a>
     </div> -->
-  </div>
+    <!--<script type = "text/babel">
+      function Pagination(props) {
+        return (
+          <ul className={"pagination pagination-centered"}>
+            <li className={"page-item"} id={"prev"}><a className={"page-link"} onClick={prevPage} href={"#"}>Previous</a></li>
+            <li className={"page-item"} id={"next"}><a className={"page-link"} onClick={nextPage} href={"#"}>Next</a></li>
+          </ul>
+        )}
+
+
+      ReactDOM.render(<Pagination />, document.getElementById("pagination");
+    </script>
+  </div> -->
 {% endblock %}
