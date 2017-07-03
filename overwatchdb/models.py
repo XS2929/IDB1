@@ -1,6 +1,9 @@
 """models for the database"""
 # pylint: disable=too-few-public-methods,invalid-name
 
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -25,9 +28,9 @@ class Hero(db.Model):
 	affiliation = db.Column(db.String, nullable=False)
 	age = db.Column(db.String, nullable=False)
 	url = db.Column(db.String, nullable=False)
-	players = db.relationship('Player', backref='Hero',lazy='dynamic')
+	players = db.relationship('Player', backref='Hero')
 	# achievement_id = db.Column(db.Integer, db.ForeignKey("achievement.id"))
-	reward = db.relationship('Reward', backref('Hero'),lazy='dynamic')
+	reward = db.relationship('Reward', backref='Hero')
 
 	def __repr__(self):
 		return "<Hero(name='%s', description=%s, affiliation=%s, age=%s, url=%s)>" % (
@@ -45,7 +48,7 @@ class Player(db.Model):
 	name = db.Column(db.String, nullable=False)
 	server = db.Column(db.String, nullable=False)
 	hero_id = db.Column(db.Integer, db.ForeignKey("hero.id"), nullable=False)
-	type = db.Column(db.String, nullable=False)
+	level = db.Column(db.String, nullable=False)
 	url = db.Column(db.String, nullable=False)
       
 	def __repr__(self):
@@ -86,10 +89,10 @@ class Achievement(db.Model):
 	type = db.Column(db.String, nullable=False)
 	url = db.Column(db.String, nullable=False)
 	hero_id = db.Column(db.Integer, db.ForeignKey("hero.id"), nullable=True)
-	achievement_id = db.Column(db.Integer, db.ForeignKey("achievement.id"), nullable=True)
+	reward = db.Column(db.Integer, db.ForeignKey("reward.id"), nullable=True)
 	
-	hero = db.relationship("Hero", backref="Achievement",lazy='dynamic')
-	reward = db.relationship("Reward",backref('Achievement'),lazy='dynamic')
+	hero = db.relationship("Hero", backref="Achievement")
+	reward = db.relationship("Reward",backref='Achievement')
 
 	def __repr__(self):
 		return "<Achievement(name='%s', description=%s, type=%s, url=%s)>" % (
