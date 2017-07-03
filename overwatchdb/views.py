@@ -19,7 +19,7 @@ def players():
     data = models.Player.query.all()
     if not data:
         return render_template('404.html', thing='Players')
-    print(data)
+   
     return render_template('players.html', data=data)
 
 
@@ -29,7 +29,7 @@ def player(player_id):
     data = models.Player.query.get(player_id)
     if not data:
         return render_template('404.html', thing='Player')
-    print(data)
+    
     return render_template('players_instance.html', data=data)
 
 
@@ -39,7 +39,7 @@ def heroes():
     data = models.Hero.query.all()
     if not data:
         return render_template('404.html', thing='Heroes')
-    print(data)
+    
     return render_template('heroes.html', data=data)
 
 
@@ -49,7 +49,7 @@ def hero(hero_id):
     data = models.Hero.query.get(hero_id)
     if not data:
         return render_template('404.html', thing='Hero')
-    print(data)
+    
     return render_template('heroes_instance.html', data=data)
 
 
@@ -59,7 +59,7 @@ def rewards():
     data = models.Reward.query.all()
     if not data:
         return render_template('404.html', thing='Rewards')
-    print(data)
+    
     return render_template('rewards.html', data=data)
 
 
@@ -69,7 +69,7 @@ def reward(reward_id):
     data = models.Reward.query.get(reward_id)
     if not data:
         return render_template('404.html', thing='Reward')
-    print(data)
+    
     return render_template('rewards_instance.html', data=data)
 
 
@@ -79,7 +79,7 @@ def achievements():
     data = models.Achievement.query.all()
     if not data:
         return render_template('404.html', thing='Achievements')
-    print(data)
+    
     return render_template('achievements.html', data=data)  # id=achievement_id)
 
 
@@ -88,7 +88,7 @@ def achievement(achievement_id):
     data = models.Achievement.query.get(achievement_id)
     if not data:
         return render_template('404.html', thing='Achievement')
-    print(data)
+    
     return render_template('achievements_instance.html', data=data)
 
 
