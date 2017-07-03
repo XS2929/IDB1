@@ -16,7 +16,10 @@ def index():
 @views.route('/api/players', methods=['GET'])
 def players():
     """ Returns Players Page """
-    return render_template('players.html')
+    data = models.Player.query.all()
+    if not data:
+        return render_template('404.html', thing='Players')
+    return render_template('players.html', data=data)
 
 
 @views.route('/api/players/<int:player_id>', methods=['GET'])
@@ -31,7 +34,10 @@ def player(player_id):
 @views.route('/api/heroes', methods=['GET'])
 def heroes():
     """ Returns Heroes Page """
-    return render_template('heroes.html')
+    data = models.Player.query.all()
+    if not data:
+        return render_template('404.html', thing='Heroes')
+    return render_template('heroes.html', data=data)
 
 
 @views.route('/api/heroes/<int:hero_id>', methods=['GET'])
@@ -47,7 +53,10 @@ def hero(hero_id):
 @views.route('/api/rewards', methods=['GET'])
 def rewards():
     """ Returns Rewards Page """
-    return render_template('rewards.html')
+    data = models.Player.query.all()
+    if not data:
+        return render_template('404.html', thing='Rewards')
+    return render_template('rewards.html', data=data)
 
 
 @views.route('/api/rewards/<int:reward_id>', methods=['GET'])
@@ -62,7 +71,10 @@ def reward(reward_id):
 @views.route('/api/achievements', methods=['GET'])
 def achievements():
     """ Returns Achievements Page """
-    return render_template('achievements.html')  # id=achievement_id)
+    data = models.Player.query.all()
+    if not data:
+        return render_template('404.html', thing='Achievements')
+    return render_template('achievements.html', data=data)  # id=achievement_id)
 
 
 @views.route('/api/achievements/<int:achievement_id>', methods=['GET'])

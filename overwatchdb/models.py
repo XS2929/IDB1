@@ -26,6 +26,7 @@ class Hero(db.Model):
 	age = db.Column(db.String, nullable=False)
 	players = db.relationship("Player", backref="played_by")
 	# achievement_id = db.Column(db.Integer, db.ForeignKey("achievement.id"))
+	reward_id = db.Column(db.Integer, db.ForeignKey("reward.id"))
 
 	def __repr__(self):
 		return "<Hero(name='%s', description=%s, affiliation=%s, age=%s)>" % (
