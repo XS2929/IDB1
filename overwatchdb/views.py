@@ -29,7 +29,7 @@ def player(player_id):
     data = models.Player.query.get(player_id)
     if not data:
         return render_template('404.html', thing='Player')
-    print(data)
+    print(data.url)
     return render_template('players_instance.html', data=data)
 
 
