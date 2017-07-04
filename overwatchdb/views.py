@@ -13,6 +13,13 @@ def index():
     return render_template('index.html')
 
 
+@views.route('/tests/run')
+def run_tests():
+    """ Runs all the unittests and returns the text result with verbosity 2 """
+    import overwatchdb.test_runner as test_runner
+    return test_runner.run_tests()
+
+
 @views.route('/api/players', methods=['GET'])
 def players():
     """ Returns Players Page """

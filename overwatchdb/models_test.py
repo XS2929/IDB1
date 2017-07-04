@@ -3,7 +3,7 @@ import os
 from flask_testing import TestCase
 
 # from __init__ import create_app
-from overwatchdb.models import db, player, hero, reward, achievement
+from overwatchdb.models import db, Player, Hero, Reward, Achievement
 
 
 class ModelsTest(TestCase):
