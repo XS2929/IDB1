@@ -1,7 +1,4 @@
-FILES :=                       \           
-    overwatchdb/models_test.py    \
-    overwatchdb/test_runner.py    \
-    overwatchdb/models.py      
+.DEFAULT_GOAL := all
     
 ifeq ($(shell uname), Darwin)          # Apple
     PYTHON   := python3.5
@@ -37,11 +34,11 @@ else                                   # UTCS
     AUTOPEP8 := autopep8
 endif
 
-.PHONY: testsout.tmp
-testsout.tmp: .pylintrc
-	-$(MYPY) overwatchdb/test_runner.py
-	-$(PYLINT) overwatchdb/test_runner.py
-	-$(COVERAGE) run    --branch overwatchdb/test_runner.py >  testsout.tmp 2>&1
-	-$(COVERAGE) report -m                      >> testsout.tmp
-	cat TestCollatz.tm
+all:
+
+test:
+	-$(COVERAGE) run    --branch overwatchdb/test_runner.py >  tests.out 2>&1
+	cat tests.out
+Contact GitHub API Training Shop Blog About
+
 
