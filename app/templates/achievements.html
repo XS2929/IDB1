@@ -1,74 +1,190 @@
-{% extends "layout.html" %}
 
+{% include "layout.html" %}
 
-{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
 <link href="../static/css/achievements.css" rel="stylesheet">
-  <div id="achievements" class="container text-center">
-    <div class="row">
-      <div class="col-lg-12">
-        <br>
-        <h1 class="page-header">Achievements</h1>
-      </div>
-    </div>
-    <!-- br>
-    <br>
-    <br>
-    <div class="row">
-        <p style="font-size:40px;color:white" class="text-center"><strong> Achievements<strong></p>
-    <hr>
+<style>
+* {
+  box-sizing: border-box;
+}
 
-     <p style="font-size:25px;color:white" class="text-center">Anger Management</p><br>
-      <a href="AchiHtmls/AngerManagement.html">
-        <img src="https://raw.githubusercontent.com/XS2929/idb/master/static/achi_pic/anger_management.jpg" class="img-circle person" alt="Random Name" width="500" height="400">
-      </a>
-    </div>
-    <br>
-    <hr>
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
 
-    <div class="row">
-      <p style="font-size:25px;color:black" class="text-center"><strong>Group Health Plan</strong></p><br>
-      <a href="AchiHtmls/GroupHealthPlan.html"> 
-        <img src="https://raw.githubusercontent.com/XS2929/idb/master/static/achi_pic/group_health_plan.jpg" class="img-circle person" alt="Random Name" width="500" height="400">
-      </a>
-    </div>
-    <br>
-    <hr>
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
 
-    <div class="row">
-      <p style="font-size:25px;color:white" class="text-center"><strong>Huge Rez</strong></p><br>
-      <a href="AchiHtmls/HugeRez.html"> 
-        <img src="https://raw.githubusercontent.com/XS2929/idb/master/static/achi_pic/huge_rez.jpg" class="img-circle person" alt="Random Name" width="500" height="400">
-      </a>
-    </div>
-    <br>
-    <hr>
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
 
-    <div class="row">
-      <p style="font-size:25px;color:black" class="text-center"><strong>Mine Sweeper</strong></p><br>
-      <a href="AchiHtmls/MineSweeper.html"> 
-        <img src="https://raw.githubusercontent.com/XS2929/idb/master/static/achi_pic/mine_sweeper.jpg" class="img-circle person" alt="Random Name" width="500" height="400">
-      </a>
-    </div>
-    <br>
-    <hr>
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
 
-    <div class="row">
-      <p style="font-size:25px;color:white" class="text-center"><strong>Simple Geometry</strong></p><br>
-      <a href="AchiHtmls/SimpleGeometry.html"> 
-        <img src="https://raw.githubusercontent.com/XS2929/idb/master/static/achi_pic/simple_geometry.jpg" class="img-circle person" alt="Random Name" width="500" height="400">
-      </a>
-    </div>
-    <br>
-    <hr>
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
+</head>
+<body>
+<br>
+<br>
+<h2>Rewards</h2>
+<br>
+<h4>Click on a name</h4>
 
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Filter by names.." title="Type in a name"> 
 
-    <div class="row">
-      <p style="font-size:25px;color:black" class="text-center"><strong>The Dragon Is Sated</strong></p><br>
-      <a href="AchiHtmls/TheDragonIsSated.html"> 
-        <img src="https://raw.githubusercontent.com/XS2929/idb/master/static/achi_pic/the%20_dragon_is_sated.jpg" class="img-circle person" alt="Random Name" width="500" height="400">
-      </a>
-    </div>
-    <br> -->
-  </div>
+<table id="myTable">
+  <tr class="header">
+    <th style="width:100%;">Name</th>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/1'">Level 10</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/2'">Level 25</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/3'">Level 50</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/4'">Centenary</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/5'">Die Die Die... Die</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/6'">The Friend Zone</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/7'">Slice and Dice</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/8'">Undying</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/9'">The Path is Closed</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/10'">Survival Expert</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/11'">Decorated</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/12'">Decked Out</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/13'">Their Own Worst Enemy</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/14'">Overwatch</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/15'">Whoa There!</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/16'">It's High Noon</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/17'">Death From Above</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/18'">Clearing the Area</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/19'">Blackjack</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/20'">Rocket Man</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/21'">Target Rich Environment</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/22'">Special Delivery</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/23'">Power Overwhelming</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/24'">The Power of Attraction</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/25'">The Floor Is Lava</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/26'">Supersonic</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/27'">Group Health Plan</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/28'">Huge Rez</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/29'">The Car Wash</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/30'">Anger Management</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/31'">Huge Success</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/40'">Rapid Discord</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/59'">I Am Your Shield</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/65'"> Survived the Night</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='achievements/75'">Overclocked</td>
+  </tr>
 
-{% endblock %}
+  
+</table>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, table;
+
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+</body>
+</html>
+

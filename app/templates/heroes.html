@@ -1,66 +1,157 @@
-{% extends "layout.html" %}
 
+{% include "layout.html" %}
 
-{% block content %}
-<link href="../static/css/heroes.css" rel="stylesheet">
-  <div class="container text-center">
-    <div class="row">
-      <div class="col-lg-12">
-        <br>
-        <h1 class="page-header">Heroes</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-10 col-sm-10">
-        <div id="grid_location"> </div>
-      </div>
-    </div>
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../static/css/achievements.css" rel="stylesheet">
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    <hr>
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
 
-    <div class="row text-center" id="pagination"></div>
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
+</head>
+<body>
+<br>
+<br>
+<h2>Heroes</h2>
+<br>
+<h4>Click on a name</h4>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Filter by names.." title="Type in a name"> 
+
+<table id="myTable">
+  <tr class="header">
+    <th style="width:100%;">Name</th>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/1'">Ana</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/2'">Bastion</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/3'">D.Va</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/4'">Genji</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/5'">Hanzo</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/6'">Junkrat</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/7'">Lúcio</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/8'">McCree</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/9'">Mei</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/10'">Mercy</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/11'">Pharah</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/12'">Reaper</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/13'">Reinhardt</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/14'">Roadhog</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/15'">Soldier: 76</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/16'">Symmetra</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/17'">Torbjörn</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/18'">Tracer</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/19'">Widowmaker</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/20'">Winston</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/21'">Zarya</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/22'">Zenyatta</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/23'">Sombra</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='heroes/24'">Orisa</td>
+  </tr>
 
   
+</table>
 
-    <script type = "text/babel">
-      var baseUrl = "/api/heroes/";
-      {% include 'table_builder.jsx' %}
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, table;
 
-      var i
-
-      function buildModels(list, init)
-      {
-            var chars = [];
-            for(i = 0; i < list.length; i++)
-            {
-                chars.push(<Hero hero={list[i]} />);
-            }
-            return chars
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
       }
+    }       
+  }
+}
+</script>
 
-      function Hero(props){
-          return (
-            <div className={"panel-container panel-font"}>
-              <img className={"img-responsive grid-images"} src={props.data.url} alt={""} />
-              <a href={"heroes/"+props.data.id}><h2 className={"text-center"}>{props.data.name}</h2></a>
+</body>
+</html>
 
-            </div>
-        )}
-
-      function Pagination(props) {
-        return (
-          <ul className={"pagination pagination-centered"}>
-            <li className={"page-item"} id={"prev"}><a className={"page-link"} onClick={prevPage} href={"#"}>Previous</a></li>
-            <li className={"page-item"} id={"next"}><a className={"page-link"} onClick={nextPage} href={"#"}>Next</a></li>
-          </ul>
-        )}
-
-
-      ReactDOM.render(<Pagination />, document.getElementById("pagination");
-
-      reload();
-      
-    </script>
-  </div> 
-
-{% endblock %}

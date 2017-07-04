@@ -1,37 +1,113 @@
-{% extends "layout.html" %}
 
+{% include "layout.html" %}
 
-{% block content %}
-  <link href="../static/css/players.css" rel="stylesheet">
-  <div id="players" class="container text-center">
-    <div class="row">
-      <div class="col-lg-12">
-        <br>
-        <h1 class="page-header">Players</h1>
-      </div>
-    </div>
-    <!-- <br>
-    <br>
-    <br>
-    <div class="row">
-      <p style="font-size:30px;color:black" class="text-center"><strong>KAFEEEEEE-2350</strong></p><br>
-      <a href="PlayersHtmls/player1.html">
-        <img src="https://raw.githubusercontent.com/XS2929/idb/master/static/Background_pic/Kafeeeeee.png" class="img-circle person" alt="Random Name" width="256" height="256">
-      </a>
-    </div>
-    <br>
-    <div class="row">
-      <p style="font-size:30px;color:black" class="text-center"><strong>SILKTHREAD-1324</strong></p><br>
-      <a href="PlayersHtmls/player2.html"> 
-        <img src="https://raw.githubusercontent.com/XS2929/idb/master/static/Background_pic/Silkthread.png" class="img-circle person" alt="Random Name" width="256" height="256">
-      </a>
-    </div>
-    <br>
-    <div class="row">
-      <p style="font-size:30px;color:black" class="text-center"><strong>FANCYHAT-4714</strong></p><br>
-      <a href="PlayersHtmls/player3.html">
-        <img src="https://raw.githubusercontent.com/XS2929/idb/master/static/Background_pic/FancyHat.png" class="img-circle person" alt="Random Name" width="256" height="256">
-      </a> 
-    </div> -->
-  </div>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../static/css/achievements.css" rel="stylesheet">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
+</head>
+<body>
+<br>
+<br>
+<h2>Top 10 Players</h2>
+<br>
+<h4>Click on a name</h4>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Filter by names.." title="Type in a name"> 
+
+<table id="myTable">
+  <tr class="header">
+    <th style="width:100%;">Name</th>
+  </tr>
+  <tr>
+    <td onclick="location.href='players/1'">Agilities#11974</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='players/2'">Boombox#11925</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='players/3'">dafran#2671</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='players/4'">Danteh#11137</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='players/5'">expheR#1609</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='players/6'">HaventMetYou#2451</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='players/7'">Kragie#2307</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='players/8'">silkthread#1324</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='players/9'">SPACE#12232</td>
+  </tr>
+  <tr>
+    <td onclick="location.href='players/10'">Wraxu#1747</td>
+  </tr>
+</table>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, table;
+
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+</body>
+</html>
+
