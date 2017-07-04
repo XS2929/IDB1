@@ -1,7 +1,7 @@
-FILES :=              \           
-    models_test.py    \
-    test_runner.py    \
-    models.py      
+FILES :=                       \           
+    overwatchdb/models_test.py    \
+    overwatchdb/test_runner.py    \
+    overwatchdb/models.py      
     
 ifeq ($(shell uname), Darwin)          # Apple
     PYTHON   := python3.5
@@ -37,7 +37,11 @@ else                                   # UTCS
     AUTOPEP8 := autopep8
 endif
 
-test:
+.PHONY: testsout.tmp
+testsout.tmp: .pylintrc
+	-$(MYPY) overwatchdb/test_runner.py
+	-$(PYLINT) overwatchdb/test_runner.py
 	-$(COVERAGE) run    --branch overwatchdb/test_runner.py >  testsout.tmp 2>&1
-        -$(COVERAGE) report -m                      >> testsout.tmp
-	cat tests.out
+	-$(COVERAGE) report -m                      >> testsout.tmp
+	cat TestCollatz.tm
+
