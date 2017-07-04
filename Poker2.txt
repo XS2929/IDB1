@@ -1,0 +1,10 @@
+TASK													HOURS ESTIMATED 			HOURS TAKEN
+Set-up Dynamic Website											8						15
+Set-up Database													40						25
+Implement API													25						20
+Complete Technical Report										2						3
+Website Design													5						10
+Implement Sorting, Pagination, Filtering						10						20
+Create UML diagram												1						0.5
+Implement unit tests											2						2
+Implement set of models via PostgreSQL and SQLAlchemy			5						3
