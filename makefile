@@ -37,8 +37,9 @@ endif
 all:
 
 test:
-	-$(COVERAGE) run    --branch app/test_runner.py >  tests.out 2>&1
-	cat tests.out
+	-$(COVERAGE) run    --branch app/test_runner.py >  tests.tmp 2>&1
+	-$(COVERAGE) report -m                      >> tests.tmp
+	cat tests.tmp
 
 
 versions:
