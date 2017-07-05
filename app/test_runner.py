@@ -3,7 +3,7 @@
 import unittest
 from io import StringIO
 
-from overwatchdb.models_test import ModelsTest
+from app.models_test import ModelsTest
 
 
 def run_tests():
