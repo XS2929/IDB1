@@ -34,7 +34,8 @@ else                                   # UTCS
     AUTOPEP8 := autopep8
 endif
 
-all:
+.pylintrc: 
+	$(PYLINT) --disable=locally-disabled --reports=no --generate-rcfile > $@ 
 
 test:
 	-$(COVERAGE) run    --branch app/test_runner.py >  tests.tmp 2>&1
