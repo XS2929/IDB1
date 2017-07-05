@@ -37,8 +37,8 @@ endif
 all:
 
 test:
-	-$(COVERAGE) run    --branch overwatchdb/test_runner.py >  tests.out 2>&1
+	-$(COVERAGE) run    --branch app/test_runner.py >  tests.out 2>&1
 	cat tests.out
-Contact GitHub API Training Shop Blog About
+
 
 
