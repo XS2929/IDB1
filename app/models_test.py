@@ -3,7 +3,7 @@ import os
 from flask_testing import TestCase
 
 # from __init__ import create_app
-from app.models import db, Player, Hero, Reward, Achievement
+from models import db, Player, Hero, Reward, Achievement
 
 
 class ModelsTest(TestCase):
