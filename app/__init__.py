@@ -5,8 +5,8 @@ import os
 from flask import Flask, render_template, jsonify, request
 # from flask.ext.cors import CORS
 
-from app.models import db
-from app.views import views
+from models import db
+from views import views
 
 
 def create_app():
