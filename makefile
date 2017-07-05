@@ -44,8 +44,7 @@ tests.tmp: .pylintrc
 	cat tests.tmp
 
 test: tests.tmp
-      ls -al
-      make check
+
 
 versions:
 	which make
