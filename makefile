@@ -43,6 +43,9 @@ tests.tmp: .pylintrc
 	-$(COVERAGE) report -m                      >> tests.tmp
 	cat tests.tmp
 
+test: tests.tmp
+      ls -al
+      make check
 
 versions:
 	which make
