@@ -37,7 +37,8 @@ endif
 .pylintrc: 
 	$(PYLINT) --disable=locally-disabled --reports=no --generate-rcfile > $@ 
 
-test:
+.PHONY: tests.tmp
+tests.tmp: .pylintrc
 	-$(COVERAGE) run    --branch app/test_runner.py >  tests.tmp 2>&1
 	-$(COVERAGE) report -m                      >> tests.tmp
 	cat tests.tmp
