@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := all
+.DEFAULT_GOAL := test
     
 ifeq ($(shell uname), Darwin)          # Apple
     PYTHON   := python3.5
