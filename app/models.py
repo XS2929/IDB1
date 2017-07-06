@@ -43,6 +43,11 @@ class Hero(db.Model):
         """ Returns result format for the hero """
         return {"model": "hero", "id": self.id}
 
+    def serialize(self):
+        result = {"search_url": "/api/heroes/" + str(self.id)}
+        result = dict(result, **{column.name: getattr(self, column.name) for column in self.__table__.columns})
+        return result
+
 class Player(db.Model):
     """model for player"""
     __tablename__ = 'player'
@@ -65,6 +70,11 @@ class Player(db.Model):
     def search_result(self):
         """ Returns result format for the player """
         return {"model": "player", "id": self.id}
+
+    def serialize(self):
+        result = {"search_url": "/api/players/" + str(self.id)}
+        result = dict(result, **{column.name: getattr(self, column.name) for column in self.__table__.columns})
+        return result
 
 class Reward(db.Model):
     """model for reward"""
@@ -89,6 +99,11 @@ class Reward(db.Model):
         """ Returns result format for the reward """
         return {"model": "reward", "id": self.id}
 
+    def serialize(self):
+        result = {"search_url": "/api/rewards/" + str(self.id)}
+        result = dict(result, **{column.name: getattr(self, column.name) for column in self.__table__.columns})
+        return result
+
 class Achievement(db.Model):
     """model for achievement"""
     __tablename__ = 'achievement'
@@ -112,4 +127,9 @@ class Achievement(db.Model):
     def search_result(self):
         """ Returns result format for the achievement """
         return {"model": "achievement", "id": self.id}
+
+    def serialize(self):
+        result = {"search_url": "/api/achievements/" + str(self.id)}
+        result = dict(result, **{column.name: getattr(self, column.name) for column in self.__table__.columns})
+        return result
 

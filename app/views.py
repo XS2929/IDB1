@@ -1,8 +1,9 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, jsonify
 import json
 import traceback
 import app.models as models
 from models import *
+from sqlalchemy import or_
 
 views = Blueprint('views', __name__)
 
@@ -227,6 +228,39 @@ def about():
     """ Returns Heroes Page """
     return render_template('about.html')
 
+@views.route('/api/search_and/<search_string>', methods=['GET'])
+def search_and(search_string):
+    search_string = "%" + search_string + "%"
+    data = models.Achievement.query.filter(or_(Achievement.name.like(search_string),
+                                               Achievement.description.like(search_string))).all()
+    data += models.Reward.query.filter(or_(Reward.name.like(search_string),
+                                           Reward.quality.like(search_string))).all()
+    data += models.Player.query.filter(or_(Player.name.like(search_string),
+                                           Player.server.like(search_string),
+                                           Player.level.like(search_string),
+                                           Player.server.like(search_string))).all()
+    data += models.Hero.query.filter(or_(Hero.name.like(search_string),
+                                         Hero.age.like(search_string),
+                                         Hero.description.like(search_string),
+                                         Hero.affiliation.like(search_string))).all()
+    return jsonify([d.serialize() for d in data])
 
-
+@views.route('/api/search_or/<search_string>', methods=['GET'])
+def search_or(search_string):
+    data = []
+    for word in search_string.split():
+        word = "%" + word + "%"
+        data += models.Achievement.query.filter(or_(Achievement.name.like(word),
+                                                   Achievement.description.like(word))).all()
+        data += models.Reward.query.filter(or_(Reward.name.like(word),
+                                               Reward.quality.like(word))).all()
+        data += models.Player.query.filter(or_(Player.name.like(word),
+                                               Player.server.like(word),
+                                               Player.level.like(word),
+                                               Player.server.like(word))).all()
+        data += models.Hero.query.filter(or_(Hero.name.like(word),
+                                             Hero.age.like(word),
+                                             Hero.description.like(word),
+                                             Hero.affiliation.like(word))).all()
+    return jsonify([d.serialize() for d in data])
 
