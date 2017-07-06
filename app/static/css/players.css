@@ -35,3 +35,21 @@
   .navbar-default .navbar-toggle {
       border-color: transparent;
   }
+
+.my-button a {
+    background-color: darkorange;
+    color: white;
+    float: center;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+.my-button a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.my-button a:hover:not(.active) {
+  background-color: #ddd;
+}

@@ -16,6 +16,18 @@
 	<h4><strong>Server: </strong>{{data.server}}</h4>
 	<h4><strong>Level: </strong>{{data.level}}</h4>
 	<h4><strong>Most Played Hero: <a href = "/api/heroes/{{data.hero_id}}"></strong>{{data.hero.name}}</a>
+	<h4><strong>Achievements:</strong> </h4>
+	<div id ="Achievements"
+        <hr>
+        {% for item in data.achievements %}
+        <div class ="col-md-4">
+			<div class="filterable-item">
+	          <h3><a href = "/api/achievements/{{item.id}}">{{item.name}}</a></h3>
+			</div>
+		</div>
+        {% endfor %}
+        </div>
+	
 	</center>
 
 </div>
