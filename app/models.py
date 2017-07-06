@@ -32,8 +32,7 @@ class Hero(db.Model):
     age = db.Column(db.String, nullable=False)
     url = db.Column(db.String, nullable=False)
     players = db.relationship('Player', backref='Hero',lazy='dynamic')
-    # achievement_id = db.Column(db.Integer, db.ForeignKey("achievement.id"))
-    rewards = db.relationship('Reward', backref='Hero',lazy='dynamic')
+    achievements = db.relationship('Achievement', backref='Hero',lazy='dynamic')
 
     def __repr__(self):
         return "<Hero(name='%s', description=%s, affiliation=%s, age=%s, url=%s)>" % (
