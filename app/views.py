@@ -29,6 +29,23 @@ def players():
    
     return render_template('players.html', data=data)
 
+@views.route('/api/players/asc', methods=['GET'])
+def players_asc():
+    """ Returns Heroes Page """
+    data = models.Player.query.order_by(models.Player.name.asc()).all()
+    if not data:
+        return render_template('404.html', thing='Heroes')
+    
+    return render_template('players.html', data=data)
+
+@views.route('/api/players/desc', methods=['GET'])
+def players_desc():
+    """ Returns Heroes Page """
+    data = models.Player.query.order_by(models.Player.name.desc()).all()
+    if not data:
+        return render_template('404.html', thing='Heroes')
+    
+    return render_template('players.html', data=data)
 
 @views.route('/api/players/<int:player_id>', methods=['GET'])
 def player(player_id):
