@@ -3,6 +3,10 @@
 
 import sys
 
+import flask
+
+from flask import jsonify
+
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -70,7 +74,7 @@ class Reward(db.Model):
     name = db.Column(db.String, nullable=False)
     quality = db.Column(db.String, nullable=False)
     url = db.Column(db.String, nullable=False)
-    cost = db.Column(db.String, nullable=False)
+    cost = db.Column(db.Integer, nullable=False)
     hero_id = db.Column(db.Integer, db.ForeignKey("hero.id"), nullable=True)
     achievement_id = db.Column(db.Integer, db.ForeignKey("achievement.id"), nullable=True)
 

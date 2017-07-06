@@ -12,11 +12,11 @@
   <center>
   <h3>Sort By</h3>
     <div class="my-button">
-      <a href="{{url_for('achievements',sorting='asc',page=1)}}"{%if sorting == 'asc'%} class = "current-button"{% endif %}>Ascending</a>
+      <a href="{{url_for('views.achievements_asc')}}">Ascending</a>
     </div>
     <br>
     <div class="my-button">
-      <a href="{{url_for('achievements',sorting='desc',page=1)}}"{%if sorting == 'desc'%} class = "current-button"{% endif %}>Descending</a>
+      <a href="{{url_for('views.achievements_desc')}}">Descending</a>
     </div>
     <hr>
   <div id ="content">

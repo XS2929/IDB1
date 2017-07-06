@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template
 import json
 import traceback
-
 import app.models as models
+from models import *
 
 views = Blueprint('views', __name__)
 
@@ -43,7 +43,7 @@ def player(player_id):
 @views.route('/api/heroes', methods=['GET'])
 def heroes():
     """ Returns Heroes Page """
-    data = models.Hero.query.all()
+    data = models.Hero.query.order_by(models.Hero.name.asc()).all()
     if not data:
         return render_template('404.html', thing='Heroes')
     
@@ -59,11 +59,28 @@ def hero(hero_id):
     
     return render_template('heroes_instance.html', data=data)
 
+@views.route('/api/heroes/asc', methods=['GET'])
+def heroes_asc():
+    """ Returns Heroes Page """
+    data = models.Hero.query.order_by(models.Hero.name.asc()).all()
+    if not data:
+        return render_template('404.html', thing='Heroes')
+    
+    return render_template('heroes.html', data=data)
+
+@views.route('/api/heroes/desc', methods=['GET'])
+def heroes_desc():
+    """ Returns Heroes Page """
+    data = models.Hero.query.order_by(models.Hero.name.desc()).all()
+    if not data:
+        return render_template('404.html', thing='Heroes')
+    
+    return render_template('heroes.html', data=data)
 
 @views.route('/api/rewards', methods=['GET'])
 def rewards():
     """ Returns Rewards Page """
-    data = models.Reward.query.all()
+    data = models.Reward.query.order_by(models.Reward.name.asc()).all()
     if not data:
         return render_template('404.html', thing='Rewards')
     
@@ -78,6 +95,24 @@ def reward(reward_id):
         return render_template('404.html', thing='Reward')
     
     return render_template('rewards_instance.html', data=data)
+
+@views.route('/api/rewards/asc', methods=['GET'])
+def rewards_asc():
+    """ Returns Heroes Page """
+    data = models.Reward.query.order_by(models.Reward.cost.asc()).all()
+    if not data:
+        return render_template('404.html', thing='Heroes')
+    
+    return render_template('rewards.html', data=data)
+
+@views.route('/api/rewards/desc', methods=['GET'])
+def rewards_desc():
+    """ Returns Heroes Page """
+    data = models.Reward.query.order_by(models.Reward.cost.desc()).all()
+    if not data:
+        return render_template('404.html', thing='Heroes')
+    
+    return render_template('rewards.html', data=data)
 
 
 @views.route('/api/achievements', methods=['GET'])
@@ -98,8 +133,29 @@ def achievement(achievement_id):
     
     return render_template('achievements_instance.html', data=data)
 
+@views.route('/api/achievements/asc', methods=['GET'])
+def achievements_asc():
+    """ Returns Heroes Page """
+    data = models.Achievement.query.order_by(models.Achievement.name.asc()).all()
+    if not data:
+        return render_template('404.html', thing='Heroes')
+    
+    return render_template('achievements.html', data=data)
+
+@views.route('/api/achievements/desc', methods=['GET'])
+def achievements_desc():
+    """ Returns Heroes Page """
+    data = models.Achievement.query.order_by(models.Achievement.name.desc()).all()
+    if not data:
+        return render_template('404.html', thing='Heroes')
+    
+    return render_template('achievements.html', data=data)
 
 @views.route('/about/')
 def about():
     """ Returns Heroes Page """
     return render_template('about.html')
+
+
+
+

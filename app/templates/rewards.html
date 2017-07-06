@@ -48,11 +48,11 @@
            
            
           <div class="my-button">
-            <a href="{{url_for('rewards',sorting='asc',page=1)}}"{%if sorting == 'asc'%} class = "current-button"{% endif %}>Ascending</a>
+            <a href="{{url_for('views.rewards_asc')}}">Cost Low to High</a>
           </div>
           <br>
           <div class="my-button">
-            <a href="{{url_for('rewards',sorting='desc',page=1)}}"{%if sorting == 'desc'%} class = "current-button"{% endif %}>Descending</a>
+            <a href="{{url_for('views.rewards_desc')}}">Cost High to Low</a>
           </div>
        
       </center>

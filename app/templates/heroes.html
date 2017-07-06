@@ -48,11 +48,11 @@
            
            
           <div class="my-button">
-            <a href="{{url_for('heroes',sorting='asc',page=1)}}"{%if sorting == 'asc'%} class = "current-button"{% endif %}>Ascending</a>
+            <a href="{{url_for('views.heroes_asc')}}">Ascending</a>
           </div>
           <br>
           <div class="my-button">
-            <a href="{{url_for('heroes',sorting='desc',page=1)}}"{%if sorting == 'desc'%} class = "current-button"{% endif %}>Descending</a>
+            <a href="{{url_for('views.heroes_desc')}}">Descending</a>
           </div>
        
       </center>
@@ -66,6 +66,8 @@
               </div>
             </div>
             {% endfor %}
+
+
 
         </div>
       </div>
