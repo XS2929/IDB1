@@ -1,190 +1,51 @@
+{% extends 'layout.html' %}
 
-{% include "layout.html" %}
 
-<!DOCTYPE html>
-<html>
-<head>
-<link href="../static/css/achievements.css" rel="stylesheet">
-<style>
-* {
-  box-sizing: border-box;
-}
+{%block content%}
+<link rel="stylesheet" type="text/css" href="../static/css/achievements.css">
 
-#myInput {
-  background-image: url('/css/searchicon.png');
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: 100%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}
-
-#myTable {
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid #ddd;
-  font-size: 18px;
-}
-
-#myTable th, #myTable td {
-  text-align: left;
-  padding: 12px;
-}
-
-#myTable tr {
-  border-bottom: 1px solid #ddd;
-}
-
-#myTable tr.header, #myTable tr:hover {
-  background-color: #f1f1f1;
-}
-</style>
-</head>
+<br>
+<br>
 <body>
-<br>
-<br>
-<h2>Rewards</h2>
-<br>
-<h4>Click on a name</h4>
+<center>
+  <h2 class="entry-title">Achievements</h2>
+  <center>
+  <h3>Sort By</h3>
+    <div class="my-button">
+      <a href="{{url_for('achievements',sorting='asc',page=1)}}"{%if sorting == 'asc'%} class = "current-button"{% endif %}>Ascending</a>
+    </div>
+    <br>
+    <div class="my-button">
+      <a href="{{url_for('achievements',sorting='desc',page=1)}}"{%if sorting == 'desc'%} class = "current-button"{% endif %}>Descending</a>
+    </div>
+    <hr>
+  <div id ="content">
+    {% for item in data %}
+      <div class ="col-md-4">
+        <div class="filterable-item">
+          <h3>{{item.name}}</h3>
+          <a href = "/api/achievements/{{item.id}}"><img src="{{item.url}}" alt="" height="300" width="300"></a>
+        </div>
+      </div>
+    {% endfor %}
+    <hr>
+  </div>
+</center>
+  <<!-- div id ="pagin">  
+    <div class="pagination">
+      <a href="#">&laquo;</a>
+      <a href="{{url_for('achievements',sorting='asc',page=1)}}">1</a>
+      <a href="{{url_for('achievements',sorting='asc',page=2)}}">2</a>
+      <a href="{{url_for('achievements',sorting='asc',page=3)}}">3</a>
+      <a href="{{url_for('achievements',sorting='asc',page=4)}}">4</a>
+      <a href="{{url_for('achievements',sorting='asc',page=5)}}">5</a>
+      <a href="{{url_for('achievements',sorting='asc',page=6)}}">6</a>
+      <a href="#">&raquo;</a>
+    </div>
+  </div> -->
 
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Filter by names.." title="Type in a name"> 
 
-<table id="myTable">
-  <tr class="header">
-    <th style="width:100%;">Name</th>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/1'">Level 10</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/2'">Level 25</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/3'">Level 50</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/4'">Centenary</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/5'">Die Die Die... Die</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/6'">The Friend Zone</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/7'">Slice and Dice</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/8'">Undying</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/9'">The Path is Closed</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/10'">Survival Expert</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/11'">Decorated</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/12'">Decked Out</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/13'">Their Own Worst Enemy</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/14'">Overwatch</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/15'">Whoa There!</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/16'">It's High Noon</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/17'">Death From Above</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/18'">Clearing the Area</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/19'">Blackjack</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/20'">Rocket Man</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/21'">Target Rich Environment</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/22'">Special Delivery</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/23'">Power Overwhelming</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/24'">The Power of Attraction</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/25'">The Floor Is Lava</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/26'">Supersonic</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/27'">Group Health Plan</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/28'">Huge Rez</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/29'">The Car Wash</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/30'">Anger Management</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/31'">Huge Success</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/40'">Rapid Discord</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/59'">I Am Your Shield</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/65'"> Survived the Night</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='achievements/75'">Overclocked</td>
-  </tr>
-
-  
-</table>
-
-<script>
-function myFunction() {
-  var input, filter, table, tr, td, i, table;
-
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-</script>
 
 </body>
-</html>
 
+{%endblock%}

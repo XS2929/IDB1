@@ -1,190 +1,88 @@
+{% extends 'layout.html' %}
 
-{% include "layout.html" %}
 
-<!DOCTYPE html>
-<html>
-<head>
-<link href="../static/css/achievements.css" rel="stylesheet">
+{%block content%}
+<link rel="stylesheet" type="text/css" href="../static/css/heroes.css">
+
 <style>
-* {
-  box-sizing: border-box;
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
 }
 
-#myInput {
-  background-image: url('/css/searchicon.png');
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: 100%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
 }
 
-#myTable {
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid #ddd;
-  font-size: 18px;
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.my-button a {
+    color: black;
+    float: center;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
 }
 
-#myTable th, #myTable td {
-  text-align: left;
-  padding: 12px;
+.my-button a.active {
+    background-color: #4CAF50;
+    color: white;
 }
 
-#myTable tr {
-  border-bottom: 1px solid #ddd;
-}
+.my-button a:hover:not(.active) {background-color: #ddd;}
 
-#myTable tr.header, #myTable tr:hover {
-  background-color: #f1f1f1;
-}
 </style>
-</head>
+
+
+<br>
+<br>
 <body>
-<br>
-<br>
-<h2>Rewards</h2>
-<br>
-<h4>Click on a name</h4>
+<center>
+          <h2 class="entry-title">Rewards</h2>
+           <center>
+           <h3>Sort By</h3>
+           
+           
+          <div class="my-button">
+            <a href="{{url_for('rewards',sorting='asc',page=1)}}"{%if sorting == 'asc'%} class = "current-button"{% endif %}>Ascending</a>
+          </div>
+          <br>
+          <div class="my-button">
+            <a href="{{url_for('rewards',sorting='desc',page=1)}}"{%if sorting == 'desc'%} class = "current-button"{% endif %}>Descending</a>
+          </div>
+       
+      </center>
+        <div id ="content"
+            <hr>
+            {% for item in data %}
+            <div class ="col-md-4">
+              <div class="filterable-item">
+                <h3>{{item.name}}</h3>
+                <a href = "/api/rewards/{{item.id}}"><img src="{{item.url}}" alt="" height="300" width="300"></a>
+              </div>
+            </div>
+            {% endfor %}
 
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Filter by names.." title="Type in a name"> 
+        </div>
+      </div>
+    
+<!-- <div class="pagination">
+      <a href="#">&laquo;</a>
+      <a href="{{url_for('rewards',sorting='asc',page=1)}}">1</a>
+      <a href="{{url_for('rewards',sorting='asc',page=2)}}">2</a>
+      <a href="{{url_for('rewards',sorting='asc',page=3)}}">3</a>
+      <a href="{{url_for('rewards',sorting='asc',page=4)}}">4</a>
+      <a href="{{url_for('rewards',sorting='asc',page=5)}}">5</a>
+      <a href="{{url_for('rewards',sorting='asc',page=6)}}">6</a>
+      <a href="#">&raquo;</a>
+</div> -->
 
-<table id="myTable">
-  <tr class="header">
-    <th style="width:100%;">Name</th>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/1'">Logo</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/2'">You are Not Prepared</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/3'">Punch</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/4'">Catcher</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/5'">Caution</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/6'">Dance</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/7'">Dark Logo</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/8'">Dark Overwatch</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/9'">Dark Title</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/10'">FOTS2</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/11'">Fuji</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/12'">Goldshire Pictures</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/13'">Leek</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/14'">Lumerico</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/15'">Numbani Statue</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/16'">Omnic Rights</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/17'">Overwatch</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/18'">Overwatch Title</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/19'">Rhino</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/20'">Rikmaru</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/21'">Sarcophogus</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/22'">Scooter</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/23'">Scroll</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/24'">Siege Mode</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/25'">Six-Gun Killer</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/26'">Sol</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/27'">Soulstone</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/28'">Vivi's Adventure</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/29'">Beyond the Moon</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/30'">Forge Onward</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/31'">GL HF</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/500'">Cute</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/589'">Orbs</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/654'"> Coming Up Explodey!</td>
-  </tr>
-  <tr>
-    <td onclick="location.href='rewards/1897'">Cute</td>
-  </tr>
 
-  
-</table>
-
-<script>
-function myFunction() {
-  var input, filter, table, tr, td, i, table;
-
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-</script>
-
+</center>
 </body>
-</html>
 
+{%endblock%}rewards

@@ -2,7 +2,7 @@ from flask import Blueprint, render_template
 import json
 import traceback
 
-import models as models
+import app.models as models
 
 views = Blueprint('views', __name__)
 
