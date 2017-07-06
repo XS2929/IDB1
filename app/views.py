@@ -94,6 +94,25 @@ def heroes_desc():
     
     return render_template('heroes.html', data=data)
 
+@views.route('/api/heroes/others', methods=['GET'])
+def heroes_others():
+    """ Returns Heroes Page """
+    data = models.Hero.query.filter(Hero.affiliation != 'Overwatch').all()
+    if not data:
+        return render_template('404.html', thing='Heroes')
+    
+    return render_template('heroes.html', data=data)
+
+@views.route('/api/heroes/overwatch', methods=['GET'])
+def heroes_overwatch():
+    """ Returns Heroes Page """
+    data = models.Hero.query.filter(Hero.affiliation == 'Overwatch').all()
+    if not data:
+        return render_template('404.html', thing='Heroes')
+    
+    return render_template('heroes.html', data=data)
+
+
 @views.route('/api/rewards', methods=['GET'])
 def rewards():
     """ Returns Rewards Page """
@@ -131,6 +150,23 @@ def rewards_desc():
     
     return render_template('rewards.html', data=data)
 
+@views.route('/api/rewards/achievements', methods=['GET'])
+def rewards_achievements_available():
+    """ Returns Achievements Page """
+    data = models.Reward.query.filter(Reward.achievement_id != None ).all()
+    if not data:
+        return render_template('404.html', thing='Achievements')
+    
+    return render_template('rewards.html', data=data)
+
+@views.route('/api/rewards/achievements-', methods=['GET'])
+def rewards_achievements_unavailable():
+    """ Returns Achievements Page """
+    data = models.Reward.query.filter(Reward.achievement_id == None ).all()
+    if not data:
+        return render_template('404.html', thing='Achievements')
+    
+    return render_template('rewards.html', data=data)
 
 @views.route('/api/achievements', methods=['GET'])
 def achievements():
@@ -165,6 +201,24 @@ def achievements_desc():
     data = models.Achievement.query.order_by(models.Achievement.name.desc()).all()
     if not data:
         return render_template('404.html', thing='Heroes')
+    
+    return render_template('achievements.html', data=data)
+
+@views.route('/api/achievements/heroes', methods=['GET'])
+def achievements_heroes_available():
+    """ Returns Achievements Page """
+    data = models.Achievement.query.filter(Achievement.hero_id != None ).all()
+    if not data:
+        return render_template('404.html', thing='Achievements')
+    
+    return render_template('achievements.html', data=data)
+
+@views.route('/api/achievements/heroes-', methods=['GET'])
+def achievements_heroes_unavailable():
+    """ Returns Achievements Page """
+    data = models.Achievement.query.filter(Achievement.hero_id == None ).all()
+    if not data:
+        return render_template('404.html', thing='Achievements')
     
     return render_template('achievements.html', data=data)
 

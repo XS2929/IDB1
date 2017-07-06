@@ -43,7 +43,7 @@
 <body>
 <center>
           <h2 class="entry-title">Heroes</h2>
-           <center>
+           
            <h3>Sort By</h3>
            
            
@@ -54,8 +54,35 @@
           <div class="my-button">
             <a href="{{url_for('views.heroes_desc')}}">Descending</a>
           </div>
-       
-      </center>
+         
+
+          
+           <h3>Filter by Affiliation</h3>
+           
+           
+          <div class="my-button">
+            <a href="{{url_for('views.heroes_overwatch')}}">Overwatch</a>
+          </div>
+          <br>
+          <div class="my-button">
+            <a href="{{url_for('views.heroes_others')}}">Others</a>
+          </div>
+           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div id ="content"
             <hr>
             {% for item in data %}

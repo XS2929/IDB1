@@ -19,6 +19,16 @@
       <a href="{{url_for('views.achievements_desc')}}">Descending</a>
     </div>
     <hr>
+
+    <h3>Filter By</h3>
+    <div class="my-button">
+      <a href="{{url_for('views.achievements_heroes_unavailable')}}">Not From Hero</a>
+    </div>
+    <br>
+    <div class="my-button">
+      <a href="{{url_for('views.achievements_heroes_available')}}">From Hero</a>
+    </div>
+
   <div id ="content">
     {% for item in data %}
       <div class ="col-md-4">
