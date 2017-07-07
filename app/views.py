@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, jsonify
 import json
 import traceback
-import app.models as models
+import models as models
 from models import *
 from sqlalchemy import or_
 
