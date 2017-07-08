@@ -292,7 +292,8 @@ def search():
 
     # Get the results for the specified page
     search_results = [search_results[0][10 * (page - 1):10 * page], search_results[1][10 * (page - 1):10 * page]]
-    return render_template('search.html', data=jsonify(search_results))
+
+    return render_template('search.html', data=search_results)
 
 # Method to find context in the values of the table entries
 def getContext(val, search):
