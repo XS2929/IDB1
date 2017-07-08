@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify
+from flask import Blueprint, render_template, jsonify, request
 import json
 import traceback
 import app.models as models
@@ -228,39 +228,100 @@ def about():
     """ Returns Heroes Page """
     return render_template('about.html')
 
-@views.route('/api/search_and/<search_string>', methods=['GET'])
-def search_and(search_string):
-    search_string = "%" + search_string + "%"
-    data = models.Achievement.query.filter(or_(Achievement.name.like(search_string),
-                                               Achievement.description.like(search_string))).all()
-    data += models.Reward.query.filter(or_(Reward.name.like(search_string),
-                                           Reward.quality.like(search_string))).all()
-    data += models.Player.query.filter(or_(Player.name.like(search_string),
-                                           Player.server.like(search_string),
-                                           Player.level.like(search_string),
-                                           Player.server.like(search_string))).all()
-    data += models.Hero.query.filter(or_(Hero.name.like(search_string),
-                                         Hero.age.like(search_string),
-                                         Hero.description.like(search_string),
-                                         Hero.affiliation.like(search_string))).all()
-    return jsonify([d.serialize() for d in data])
+# Usage example: "http://127.0.0.1:5000/api/search?search_string=her&page=1"
+@views.route('/api/search', methods=['GET'])
+def search():
+    search_string = request.args.get('search_string')
+    page = int(request.args.get('page'))
 
-@views.route('/api/search_or/<search_string>', methods=['GET'])
-def search_or(search_string):
-    data = []
+    # Find the AND search matches in the tables
+    like_search_string = "%" + search_string + "%"
+    data = [[], []]
+    data[0] += models.Achievement.query.filter(or_(Achievement.name.like(like_search_string),
+                                               Achievement.description.like(like_search_string))).all()
+    data[0] += models.Reward.query.filter(or_(Reward.name.like(like_search_string),
+                                           Reward.quality.like(like_search_string))).all()
+    data[0] += models.Player.query.filter(or_(Player.name.like(like_search_string),
+                                           Player.server.like(like_search_string),
+                                           Player.level.like(like_search_string),
+                                           Player.server.like(like_search_string))).all()
+    data[0] += models.Hero.query.filter(or_(Hero.name.like(like_search_string),
+                                         Hero.age.like(like_search_string),
+                                         Hero.description.like(like_search_string),
+                                         Hero.affiliation.like(like_search_string))).all()
+
+    # Find the OR search matches in the tables
     for word in search_string.split():
         word = "%" + word + "%"
-        data += models.Achievement.query.filter(or_(Achievement.name.like(word),
+        data[1] += models.Achievement.query.filter(or_(Achievement.name.like(word),
                                                    Achievement.description.like(word))).all()
-        data += models.Reward.query.filter(or_(Reward.name.like(word),
+        data[1] += models.Reward.query.filter(or_(Reward.name.like(word),
                                                Reward.quality.like(word))).all()
-        data += models.Player.query.filter(or_(Player.name.like(word),
+        data[1] += models.Player.query.filter(or_(Player.name.like(word),
                                                Player.server.like(word),
                                                Player.level.like(word),
                                                Player.server.like(word))).all()
-        data += models.Hero.query.filter(or_(Hero.name.like(word),
+        data[1] += models.Hero.query.filter(or_(Hero.name.like(word),
                                              Hero.age.like(word),
                                              Hero.description.like(word),
                                              Hero.affiliation.like(word))).all()
-    return jsonify([d.serialize() for d in data])
+
+    # Get the data into usable dicts
+    data = [[d.serialize() for d in data[0]], [d.serialize() for d in data[1]]]
+
+    search_results = [[], []]
+    # Search through the results for the context of search terms as well as format the search results into usable values
+    for result in data[0]:
+        context = []
+        for value in [getContext(val, search_string) for val in result.values()]:
+            if (value != []):
+                context += value
+        search_results[0].append({"name": result["name"], "search_url": result["search_url"], "matches": context})
+    for result in data[1]:
+        context = []
+        for word in search_string.split():
+            for value in [getContext(val, word) for val in result.values()]:
+                if (value != []):
+                    context += value
+        search_results[1].append({"name": result["name"], "search_url": result["search_url"], "matches": context})
+
+    # Get the results for the specified page
+    search_results = [search_results[0][10 * (page - 1):10 * page], search_results[1][10 * (page - 1):10 * page]]
+    return jsonify(search_results)
+
+# Method to find context in the values of the table entries
+def getContext(val, search):
+    context_amount = 5
+    results = []
+    if (type(val) is int):
+        try:
+            if (val == int(search)):
+                return [val]
+        except Exception:
+            return results
+    if (type(val) is unicode):
+        index = val.find(search)
+        while (index != -1):
+            front = index
+            back = index
+            frontCount = context_amount + 1
+            backCount = context_amount + 1
+            while (frontCount > 0 or backCount > 0):
+                if (front > 0 and frontCount > 0):
+                    front -= 1
+                if (back < len(val) and backCount > 0):
+                    back += 1
+                if (val[front] == ' ' or front == 0):
+                    frontCount -= 1
+                if (back == len(val) or val[back] == ' '):
+                    backCount -= 1
+            results.append(val[front:back])
+            frontCount = context_amount + 1
+            backCount = context_amount + 1
+            val = val[back::]
+            index = val.find(search)
+    return results
+
+
+
 
