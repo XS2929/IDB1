@@ -36,7 +36,7 @@
       border-color: transparent;
   }
 
-.my-button a {
+button {
     background-color: darkorange;
     color: white;
     float: center;

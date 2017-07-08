@@ -39,7 +39,7 @@
         <div class="col-md-4"></div>
       </div>
   </div>
-
+<div class = "row">
   <div id ="content"
     <hr>
     {% for item in output %}
@@ -51,12 +51,13 @@
       </div>
     {% endfor %}
   </div>
-
-    
-<div class="pagination">
-{% for i in range((data|length/54)|round(0,'ceil')|int) %}
-<button onclick="pageFunction({{i+1}})">{{i+1}}</button>
-{% endfor %} 
+</div>
+<div class = "row">    
+  <div class="pagination">
+  {% for i in range((data|length/54)|round(0,'ceil')|int) %}
+  <button onclick="pageFunction({{i+1}})">{{i+1}}</button>
+  {% endfor %} 
+  </div>
 </div>
 
 <script>
