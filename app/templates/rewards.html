@@ -2,92 +2,55 @@
 
 
 {%block content%}
-<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/heroes.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/reward.css') }}">
 
-<style>
-.pagination a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color .3s;
-}
-
-.pagination a.active {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.pagination a:hover:not(.active) {background-color: #ddd;}
-
-.my-button a {
-    color: black;
-    float: center;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color .3s;
-}
-
-.my-button a.active {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.my-button a:hover:not(.active) {background-color: #ddd;}
-
-</style>
 
 
 <br>
 <br>
 <body>
 <center>
-          <h2 class="entry-title">Rewards</h2>
-           <center>
-           <h3>Sort By</h3>
-           
-           
-          <div class="my-button">
-            <a href="{{url_for('views.rewards_asc')}}">Cost Low to High</a>
-          </div>
-          <br>
-          <div class="my-button">
-            <a href="{{url_for('views.rewards_desc')}}">Cost High to Low</a>
-          </div>
-       
-
-         <h3>Filter By</h3>
-           
-           
-          <div class="my-button">
-            <a href="{{url_for('views.rewards_achievements_available')}}">From Achievement</a>
-          </div>
-          <br>
-          <div class="my-button">
-            <a href="{{url_for('views.rewards_achievements_unavailable')}}">Not From Achievement</a>
-          </div>
-
-
-
-
-
-
-
-
-      </center>
-        <div id ="content"
-            <hr>
-            {% for item in data %}
-            <div class ="col-md-4">
-              <div class="filterable-item">
-                <h3>{{item.name}}</h3>
-                <a href = "/api/rewards/{{item.id}}"><img src="{{item.url}}" alt="" height="300" width="300"></a>
-              </div>
-            </div>
-            {% endfor %}
-
+  <h2 class="entry-title">Rewards</h2>
+  <div class="row">
+    <h3>Sort By</h3>
+    <div class="my-button">
+      <div class="col-md-5"></div>
+      <div class="col-md-1">
+        <a href="{{url_for('views.rewards_asc')}}" class ="btn btn-info" role="button">Low Cost</a>
+      </div>
+      <div class="col-md-1">
+        <a href="{{url_for('views.rewards_desc')}}" class ="btn btn-info" role="button">High Cost</a>
+      </div>
+      <div class="col-md-5"></div>
+    </div>
+  </div>
+  <br>
+  <hr>
+  <div class="row">
+    <h3>Filter by Affiliation</h3>
+      <div class="my-button">
+        <div class="col-md-4"></div>
+        <div class="col-md-2" "container-fluid">
+          <a href="{{url_for('views.rewards_achievements_available')}}" class ="btn btn-info" role="button">From Achievements</a>
+        </div>
+        <div class="col-md-2">
+          <a href="{{url_for('views.rewards_achievements_unavailable')}}" class ="btn btn-info" role="button">Not From achievements</a>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+  </div>
+  <div id ="content"
+    <hr>
+    {% for item in data %}
+      <div class ="col-md-4">
+        <div class="container-fluid">
+          <h3>{{item.name}}</h3>
+          <a href = "/api/rewards/{{item.id}}"><img src="{{item.url}}" alt="" height="300" width="300"></a>
         </div>
       </div>
+    {% endfor %}
+  </div>
+
     
 <!-- <div class="pagination">
       <a href="#">&laquo;</a>
@@ -104,4 +67,4 @@
 </center>
 </body>
 
-{%endblock%}rewards
+{%endblock%}

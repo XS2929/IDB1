@@ -18,6 +18,23 @@
 	<h4><strong>Description: </strong>{{data.description}}</h4>
 	<h4><strong>Age: </strong>{{data.age}}</h4>
 	<h4><strong>Affiliation: </strong>{{data.affiliation}}</h4>
+	<h4><strong>Players who play this hero:</strong> </h4>
+	{% if data.players[0] %}
+		{% for item in data.players %}
+	      <div class="filterable-item">
+	      	<h4><a href = "/api/players/{{item.id}}">{{item.name}}</a></h4>
+	      </div>
+	    {% endfor %}
+	{% else %}
+     	<h4><a href = "/api/players"><h4>This hero isn't mained by our top players</a></h4>
+    {% endif %}
+
+    <h4><strong>Achievements associated with the hero:</strong> </h4>
+    	{% for item in data.achievements %}
+	      <div class="filterable-item">
+	      	<h4><a href = "/api/achievements/{{item.id}}">{{item.name}}</a></h4>
+	      </div>
+	    {% endfor %}
 	</center>
 </div>
 

@@ -9,25 +9,35 @@
 <center>
   <h2 class="entry-title">Achievements</h2>
   <center>
-  <h3>Sort By</h3>
-    <div class="my-button">
-      <a href="{{url_for('views.achievements_asc')}}">Ascending</a>
-    </div>
+  <div class="row">
+    <h3>Sort By</h3>
+      <div class="my-button">
+        <div class="col-md-5"></div>
+        <div class="col-md-1">
+          <a href="{{url_for('views.achievements_asc')}}">Ascending</a>
+        </div>
+        <div class="col-md-1">
+          <a href="{{url_for('views.achievements_desc')}}">Descending</a>
+        </div>
+        <div class="col-md-5"></div>
+      </div>
+  </div>
     <br>
-    <div class="my-button">
-      <a href="{{url_for('views.achievements_desc')}}">Descending</a>
-    </div>
     <hr>
-
+  <div class="row">
     <h3>Filter By</h3>
     <div class="my-button">
-      <a href="{{url_for('views.achievements_heroes_unavailable')}}">Not From Hero</a>
+      <div class="col-md-5"></div>
+      <div class="col-md-1">
+        <a href="{{url_for('views.achievements_heroes_unavailable')}}" class ="btn btn-info" role="button">Not Linked </a>
+      </div>
+      <div class="col-md-1">
+        <a href="{{url_for('views.achievements_heroes_available')}}" class ="btn btn-info" role="button">Linked to Hero</a>
+      </div>
+      <div class="col-md-5"></div>
     </div>
-    <br>
-    <div class="my-button">
-      <a href="{{url_for('views.achievements_heroes_available')}}">From Hero</a>
-    </div>
-
+  </div>
+<br>
   <div id ="content">
     {% for item in data %}
       <div class ="col-md-4">
@@ -40,7 +50,7 @@
     <hr>
   </div>
 </center>
-  <<!-- div id ="pagin">  
+  <!-- div id ="pagin">  
     <div class="pagination">
       <a href="#">&laquo;</a>
       <a href="{{url_for('achievements',sorting='asc',page=1)}}">1</a>

@@ -35,27 +35,17 @@
   .navbar-default .navbar-toggle {
       border-color: transparent;
   }
-  .pagination a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color .3s;
-}
-
-.pagination a.active {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.pagination a:hover:not(.active) {background-color: #ddd;}
 
 .my-button a {
-    color: black;
+    background-color: darkorange;
+    color: white;
     float: center;
     padding: 8px 16px;
     text-decoration: none;
     transition: background-color .3s;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
 }
 
 .my-button a.active {
@@ -65,15 +55,4 @@
 
 .my-button a:hover:not(.active) {
   background-color: #ddd;
-}
-.entry{
-  margin:10px auto 0px;
-}
-.pagin {
-   width: 500px;
-    height: 300px;
-    /*margin-left: auto;
-    margin-right: auto;*/
-    margin:10px auto 0px;
-    border: 1px solid black;
 }
