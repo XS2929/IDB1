@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify, request
+from flask import Blueprint, render_template, jsonify, request, session
 import json
 import traceback
 import models as models
@@ -36,7 +36,6 @@ def players_asc():
     data = models.Player.query.order_by(models.Player.name.asc()).all()
     if not data:
         return render_template('404.html', thing='Heroes')
-    
     return render_template('players.html', data=data)
 
 @views.route('/api/players/desc', methods=['GET'])
@@ -60,11 +59,21 @@ def player(player_id):
 
 @views.route('/api/heroes', methods=['GET'])
 def heroes():
+    if ("hero page" not in session):
+        session["hero page"] = 1
+    if type(request.args.get('page')) is unicode:
+        session["hero page"] = int(request.args.get('page'))
+    if ("hero order" not in session):
+        session["hero order"] = "ascending"
+
     """ Returns Heroes Page """
-    data = models.Hero.query.order_by(models.Hero.name.asc()).all()
+    if (session["hero order"] == "ascending"):
+        data = models.Hero.query.order_by(models.Hero.name.asc()).all()
+    else:
+        data = models.Hero.query.order_by(models.Hero.name.desc()).all()
     if not data:
         return render_template('404.html', thing='Heroes')
-    
+    data = data[9 * (session["hero page"] - 1): 9 * session["hero page"]]
     return render_template('heroes.html', data=data)
 
 
@@ -80,20 +89,16 @@ def hero(hero_id):
 @views.route('/api/heroes/asc', methods=['GET'])
 def heroes_asc():
     """ Returns Heroes Page """
-    data = models.Hero.query.order_by(models.Hero.name.asc()).all()
-    if not data:
-        return render_template('404.html', thing='Heroes')
+
+    session["hero order"] = "ascending"
     
-    return render_template('heroes.html', data=data)
+    return heroes()
 
 @views.route('/api/heroes/desc', methods=['GET'])
 def heroes_desc():
-    """ Returns Heroes Page """
-    data = models.Hero.query.order_by(models.Hero.name.desc()).all()
-    if not data:
-        return render_template('404.html', thing='Heroes')
+    session["hero order"] = "descending"
     
-    return render_template('heroes.html', data=data)
+    return heroes()
 
 @views.route('/api/heroes/others', methods=['GET'])
 def heroes_others():
