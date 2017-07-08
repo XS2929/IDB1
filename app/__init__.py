@@ -20,6 +20,7 @@ def create_app():
             database='overwatchdb')
 
     app = Flask(__name__)
+    app.secret_key = "super secret key"
     app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
     app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
