@@ -2,7 +2,7 @@
 
 
 {%block content%}
-<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/heroes.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/reward.css') }}">
 
 
 
@@ -29,21 +29,21 @@
   <div class="row">
     <h3>Filter by Affiliation</h3>
       <div class="my-button">
-      <div class="col-md-4"></div>
-      <div class="col-md-2">
-        <a href="{{url_for('views.rewards_achievements_available')}}">From Achievements</a>
+        <div class="col-md-4"></div>
+        <div class="col-md-2" "container-fluid">
+          <a href="{{url_for('views.rewards_achievements_available')}}">From Achievements</a>
+        </div>
+        <div class="col-md-2">
+          <a href="{{url_for('views.rewards_achievements_unavailable')}}">Not From achievements</a>
+        </div>
+        <div class="col-md-4"></div>
       </div>
-      <div class="col-md-2">
-        <a href="{{url_for('views.rewards_achievements_unavailable')}}">Not From achievements</a>
-      </div>
-      <div class="col-md-4"></div>
-    </div>
   </div>
   <div id ="content"
     <hr>
     {% for item in data %}
       <div class ="col-md-4">
-        <div class="filterable-item">
+        <div class="container-fluid">
           <h3>{{item.name}}</h3>
           <a href = "/api/rewards/{{item.id}}"><img src="{{item.url}}" alt="" height="300" width="300"></a>
         </div>
@@ -67,4 +67,4 @@
 </center>
 </body>
 
-{%endblock%}rewards
+{%endblock%}
