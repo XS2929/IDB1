@@ -2,6 +2,7 @@
 
 
 {%block content%}
+
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/heroes.css') }}">
 
 <br>
@@ -14,10 +15,10 @@
     <div class="my-button">
       <div class="col-md-5"></div>
       <div class="col-md-1">
-        <a href="{{url_for('views.heroes_asc')}}" class ="btn btn-info" role="button">Ascending</a>
+        <button onclick="sortFunction('ascending')">Ascending</button>
       </div>
       <div class="col-md-1">
-        <a href="{{url_for('views.heroes_desc')}}" class ="btn btn-info" role="button">Descending</a>
+        <button onclick="sortFunction('descending')">Descending</button>
       </div>
       <div class="col-md-5"></div>
     </div>
@@ -29,16 +30,17 @@
       <div class="my-button">
       <div class="col-md-4"></div>
       <div class="col-md-2">
-        <a href="{{url_for('views.heroes_overwatch')}}" class ="btn btn-info" role="button">Heroes Affiliated With Overwatch</a>
+        <button onclick="filterFunction('Overwatch')">Heroes Affiliated With Overwatch</button>
       </div>
       <div class="col-md-2">
-        <a href="{{url_for('views.heroes_others')}}" class ="btn btn-info" role="button">Heroes Not Affiliated With Overwatch</a>
+        <button onclick="filterFunction('nonOverwatch')">Heroes Not Affiliated With Overwatch</button>
       </div>
       <div class="col-md-4"></div>
     </div>
   </div>
     <br>
-      {% for item in data %}
+    <div class="row">
+      {% for item in output %}
         <div class ="col-md-4">
           <div class="filterable-item">
             <h3>{{item.name}}</h3>
@@ -47,15 +49,25 @@
         </div>
       {% endfor %}
     </div>
+  </div>
 
-<div class="pagination">
-    <button onclick="myFunction(1)">1</button>
-    <button onclick="myFunction(2)">2</button>
-    <button onclick="myFunction(3)">3</button>
+<div class="row">
+  <div class="pagination">
+  {% for i in range((data|length/9)|round(0,'ceil')|int) %}
+  <button onclick="pageFunction({{i+1}})">{{i+1}}</button>
+  {% endfor %} 
+  </div>
 </div>
+
 <script>
-function myFunction(i) {
-    window.location.href = "/api/heroes?page=" + i
+function pageFunction(int) {
+    window.location.href = "/api/heroes?page=" + int;
+}
+function sortFunction(str) {
+    window.location.href = "/api/heroes?order=" + str + "&page=1";
+}
+function filterFunction(str) {
+    window.location.href = "/api/heroes?filter=" + str+ "&page=1";
 }
 </script>
 

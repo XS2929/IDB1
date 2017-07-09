@@ -61,20 +61,40 @@ def player(player_id):
 def heroes():
     if ("hero page" not in session):
         session["hero page"] = 1
-    if type(request.args.get('page')) is unicode:
-        session["hero page"] = int(request.args.get('page'))
     if ("hero order" not in session):
         session["hero order"] = "ascending"
+    if ("hero filter" not in session):
+        session["hero filter"] = "non"
+    
+    if type(request.args.get('page')) is unicode:
+        session["hero page"] = int(request.args.get('page'))
+    if type(request.args.get('order')) is unicode:
+        session["hero order"] = str(request.args.get('order'))
+    if type(request.args.get('filter')) is unicode:
+        session["hero filter"] = str(request.args.get('filter'))
 
     """ Returns Heroes Page """
-    if (session["hero order"] == "ascending"):
-        data = models.Hero.query.order_by(models.Hero.name.asc()).all()
+    if session["hero order"] == "ascending":
+        if session["hero filter"] == "non":
+            data = models.Hero.query.order_by(models.Hero.name.asc()).all()
+        elif session["hero filter"] == "Overwatch":
+            data = models.Hero.query.order_by(models.Hero.name.asc()).filter(Hero.affiliation == 'Overwatch').all()
+        else:
+            data = models.Hero.query.order_by(models.Hero.name.asc()).filter(Hero.affiliation != 'Overwatch').all()
     else:
-        data = models.Hero.query.order_by(models.Hero.name.desc()).all()
+        if session["hero filter"] == "non":
+            data = models.Hero.query.order_by(models.Hero.name.desc()).all()
+        elif session["hero filter"] == "Overwatch":
+            data = models.Hero.query.order_by(models.Hero.name.desc()).filter(Hero.affiliation == 'Overwatch').all()
+        else:
+            data = models.Hero.query.order_by(models.Hero.name.desc()).filter(Hero.affiliation != 'Overwatch').all()
+        
+    
     if not data:
         return render_template('404.html', thing='Heroes')
-    data = data[9 * (session["hero page"] - 1): 9 * session["hero page"]]
-    return render_template('heroes.html', data=data)
+    output = data[9 * (session["hero page"] - 1): 9 * session["hero page"]]
+
+    return render_template('heroes.html', data=data, output=output)
 
 
 @views.route('/api/heroes/<int:hero_id>', methods=['GET'])
@@ -86,47 +106,44 @@ def hero(hero_id):
     
     return render_template('heroes_instance.html', data=data)
 
-@views.route('/api/heroes/asc', methods=['GET'])
-def heroes_asc():
-    """ Returns Heroes Page """
-
-    session["hero order"] = "ascending"
-    
-    return heroes()
-
-@views.route('/api/heroes/desc', methods=['GET'])
-def heroes_desc():
-    session["hero order"] = "descending"
-    
-    return heroes()
-
-@views.route('/api/heroes/others', methods=['GET'])
-def heroes_others():
-    """ Returns Heroes Page """
-    data = models.Hero.query.filter(Hero.affiliation != 'Overwatch').all()
-    if not data:
-        return render_template('404.html', thing='Heroes')
-    
-    return render_template('heroes.html', data=data)
-
-@views.route('/api/heroes/overwatch', methods=['GET'])
-def heroes_overwatch():
-    """ Returns Heroes Page """
-    data = models.Hero.query.filter(Hero.affiliation == 'Overwatch').all()
-    if not data:
-        return render_template('404.html', thing='Heroes')
-    
-    return render_template('heroes.html', data=data)
-
 
 @views.route('/api/rewards', methods=['GET'])
 def rewards():
-    """ Returns Rewards Page """
-    data = models.Reward.query.order_by(models.Reward.name.asc()).all()
+    if ("reward page" not in session):
+        session["reward page"] = 1
+    if ("reward order" not in session):
+        session["reward order"] = "Low Cost"
+    if ("reward filter" not in session):
+        session["reward filter"] = "non"
+    
+    if type(request.args.get('page')) is unicode:
+        session["reward page"] = int(request.args.get('page'))
+    if type(request.args.get('order')) is unicode:
+        session["reward order"] = str(request.args.get('order'))
+    if type(request.args.get('filter')) is unicode:
+        session["reward filter"] = str(request.args.get('filter'))
+
+    """ Returns Heroes Page """
+    if session["reward order"] == "Low Cost":
+        if session["reward filter"] == "non":
+            data = models.Reward.query.order_by(models.Reward.cost.asc()).all()
+        elif session["reward filter"] == "From Achievements":
+            data = models.Reward.query.order_by(models.Reward.cost.asc()).filter(Reward.achievement_id != None).all()
+        else:
+            data = models.Reward.query.order_by(models.Reward.cost.asc()).filter(Reward.achievement_id == None).all()
+    else:
+        if session["reward filter"] == "non":
+            data = models.Reward.query.order_by(models.Reward.cost.desc()).all()
+        elif session["reward filter"] == "From Achievements":
+            data = models.Reward.query.order_by(models.Reward.cost.desc()).filter(Reward.achievement_id != None).all()
+        else:
+            data = models.Reward.query.order_by(models.Reward.cost.desc()).filter(Reward.achievement_id == None).all()
+    
     if not data:
         return render_template('404.html', thing='Rewards')
-    
-    return render_template('rewards.html', data=data)
+    output = data[54 * (session["reward page"] - 1): 54 * session["reward page"]]
+
+    return render_template('rewards.html', data=data, output=output)
 
 
 @views.route('/api/rewards/<int:reward_id>', methods=['GET'])
@@ -138,95 +155,57 @@ def reward(reward_id):
     
     return render_template('rewards_instance.html', data=data)
 
-@views.route('/api/rewards/asc', methods=['GET'])
-def rewards_asc():
-    """ Returns Heroes Page """
-    data = models.Reward.query.order_by(models.Reward.cost.asc()).all()
-    if not data:
-        return render_template('404.html', thing='Heroes')
-    
-    return render_template('rewards.html', data=data)
 
-@views.route('/api/rewards/desc', methods=['GET'])
-def rewards_desc():
-    """ Returns Heroes Page """
-    data = models.Reward.query.order_by(models.Reward.cost.desc()).all()
-    if not data:
-        return render_template('404.html', thing='Heroes')
-    
-    return render_template('rewards.html', data=data)
-
-@views.route('/api/rewards/achievements', methods=['GET'])
-def rewards_achievements_available():
-    """ Returns Achievements Page """
-    data = models.Reward.query.filter(Reward.achievement_id != None ).all()
-    if not data:
-        return render_template('404.html', thing='Achievements')
-    
-    return render_template('rewards.html', data=data)
-
-@views.route('/api/rewards/achievements-', methods=['GET'])
-def rewards_achievements_unavailable():
-    """ Returns Achievements Page """
-    data = models.Reward.query.filter(Reward.achievement_id == None ).all()
-    if not data:
-        return render_template('404.html', thing='Achievements')
-    
-    return render_template('rewards.html', data=data)
 
 @views.route('/api/achievements', methods=['GET'])
 def achievements():
     """ Returns Achievements Page """
-    data = models.Achievement.query.all()
-    if not data:
-        return render_template('404.html', thing='Achievements')
+    if ("achievement page" not in session):
+        session["achievement page"] = 1
+    if ("achievement order" not in session):
+        session["achievement order"] = "ascending"
+    if ("achievement filter" not in session):
+        session["achievement filter"] = "non"
     
-    return render_template('achievements.html', data=data)  # id=achievement_id)
+    if type(request.args.get('page')) is unicode:
+        session["achievement page"] = int(request.args.get('page'))
+    if type(request.args.get('order')) is unicode:
+        session["achievement order"] = str(request.args.get('order'))
+    if type(request.args.get('filter')) is unicode:
+        session["achievement filter"] = str(request.args.get('filter'))
 
+    """ Returns Heroes Page """
+    if session["achievement order"] == "ascending":
+        if session["achievement filter"] == "non":
+            data = models.Achievement.query.order_by(models.Achievement.name.asc()).all()
+        elif session["achievement filter"] == "Linked to Hero":
+            data = models.Achievement.query.order_by(models.Achievement.name.asc()).filter(Achievement.hero_id != None).all()
+        else:
+            data = models.Achievement.query.order_by(models.Achievement.name.asc()).filter(Achievement.hero_id == None).all()
+    else:
+        if session["achievement filter"] == "non":
+            data = models.Achievement.query.order_by(models.Achievement.name.desc()).all()
+        elif session["achievement filter"] == "Linked to Hero":
+            data = models.Achievement.query.order_by(models.Achievement.name.desc()).filter(Achievement.hero_id != None).all()
+        else:
+            data = models.Achievement.query.order_by(models.Achievement.name.desc()).filter(Achievement.hero_id == None).all()
+    
+    if not data:
+        return render_template('404.html', thing='Rewards')
+    output = data[12 * (session["achievement page"] - 1): 12 * session["achievement page"]]
+
+    return render_template('achievements.html', data=data, output=output)
 
 @views.route('/api/achievements/<int:achievement_id>', methods=['GET'])
 def achievement(achievement_id):
+    """ Returns Page for a single Achievement """
     data = models.Achievement.query.get(achievement_id)
     if not data:
-        return render_template('404.html', thing='Achievement')
+        return render_template('404.html', thing='Reward')
     
     return render_template('achievements_instance.html', data=data)
 
-@views.route('/api/achievements/asc', methods=['GET'])
-def achievements_asc():
-    """ Returns Heroes Page """
-    data = models.Achievement.query.order_by(models.Achievement.name.asc()).all()
-    if not data:
-        return render_template('404.html', thing='Heroes')
-    
-    return render_template('achievements.html', data=data)
 
-@views.route('/api/achievements/desc', methods=['GET'])
-def achievements_desc():
-    """ Returns Heroes Page """
-    data = models.Achievement.query.order_by(models.Achievement.name.desc()).all()
-    if not data:
-        return render_template('404.html', thing='Heroes')
-    
-    return render_template('achievements.html', data=data)
-
-@views.route('/api/achievements/heroes', methods=['GET'])
-def achievements_heroes_available():
-    """ Returns Achievements Page """
-    data = models.Achievement.query.filter(Achievement.hero_id != None ).all()
-    if not data:
-        return render_template('404.html', thing='Achievements')
-    
-    return render_template('achievements.html', data=data)
-
-@views.route('/api/achievements/heroes-', methods=['GET'])
-def achievements_heroes_unavailable():
-    """ Returns Achievements Page """
-    data = models.Achievement.query.filter(Achievement.hero_id == None ).all()
-    if not data:
-        return render_template('404.html', thing='Achievements')
-    
-    return render_template('achievements.html', data=data)
 
 @views.route('/about/')
 def about():

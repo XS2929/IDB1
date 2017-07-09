@@ -14,10 +14,10 @@
       <div class="my-button">
         <div class="col-md-5"></div>
         <div class="col-md-1">
-          <a href="{{url_for('views.achievements_asc')}}">Ascending</a>
+          <button onclick="sortFunction('ascending')">Ascending</button>
         </div>
         <div class="col-md-1">
-          <a href="{{url_for('views.achievements_desc')}}">Descending</a>
+           <button onclick="sortFunction('descending')">Descending</button>
         </div>
         <div class="col-md-5"></div>
       </div>
@@ -29,18 +29,19 @@
     <div class="my-button">
       <div class="col-md-5"></div>
       <div class="col-md-1">
-        <a href="{{url_for('views.achievements_heroes_unavailable')}}" class ="btn btn-info" role="button">Not Linked </a>
+        <button onclick="filterFunction('Linked to Hero')">Linked to Hero</button>
       </div>
       <div class="col-md-1">
-        <a href="{{url_for('views.achievements_heroes_available')}}" class ="btn btn-info" role="button">Linked to Hero</a>
+        <button onclick="filterFunction('No Linked to Hero')">No Linked to Hero</button>
       </div>
       <div class="col-md-5"></div>
     </div>
   </div>
 <br>
+<div class = "row">
   <div id ="content">
-    {% for item in data %}
-      <div class ="col-md-4">
+    {% for item in output %}
+      <div class ="col-md-3">
         <div class="filterable-item">
           <h3>{{item.name}}</h3>
           <a href = "/api/achievements/{{item.id}}"><img src="{{item.url}}" alt="" height="300" width="300"></a>
@@ -49,19 +50,37 @@
     {% endfor %}
     <hr>
   </div>
+</div>
+
+<div class = "row">
+  <div class="pagination">
+  {% for i in range((data|length/12)|round(0,'ceil')|int) %}
+  <button onclick="pageFunction({{i+1}})">{{i+1}}</button>
+  {% endfor %} 
+  </div>
+</div>
+
+
+
+
+<script>
+function pageFunction(int) {
+    window.location.href = "/api/achievements?page=" + int;
+}
+function sortFunction(str) {
+    window.location.href = "/api/achievements?order=" + str + "&page=1";
+}
+function filterFunction(str) {
+    window.location.href = "/api/achievements?filter=" + str+ "&page=1";
+}
+</script>
+
+
+
+
+
 </center>
-  <!-- div id ="pagin">  
-    <div class="pagination">
-      <a href="#">&laquo;</a>
-      <a href="{{url_for('achievements',sorting='asc',page=1)}}">1</a>
-      <a href="{{url_for('achievements',sorting='asc',page=2)}}">2</a>
-      <a href="{{url_for('achievements',sorting='asc',page=3)}}">3</a>
-      <a href="{{url_for('achievements',sorting='asc',page=4)}}">4</a>
-      <a href="{{url_for('achievements',sorting='asc',page=5)}}">5</a>
-      <a href="{{url_for('achievements',sorting='asc',page=6)}}">6</a>
-      <a href="#">&raquo;</a>
-    </div>
-  </div> -->
+
 
 
 

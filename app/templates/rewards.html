@@ -16,10 +16,10 @@
     <div class="my-button">
       <div class="col-md-5"></div>
       <div class="col-md-1">
-        <a href="{{url_for('views.rewards_asc')}}" class ="btn btn-info" role="button">Low Cost</a>
+    <button onclick="sortFunction('Low Cost')">Low Cost</button>
       </div>
       <div class="col-md-1">
-        <a href="{{url_for('views.rewards_desc')}}" class ="btn btn-info" role="button">High Cost</a>
+        <button onclick="sortFunction('High Cost')">High Cost</button>
       </div>
       <div class="col-md-5"></div>
     </div>
@@ -31,37 +31,46 @@
       <div class="my-button">
         <div class="col-md-4"></div>
         <div class="col-md-2" "container-fluid">
-          <a href="{{url_for('views.rewards_achievements_available')}}" class ="btn btn-info" role="button">From Achievements</a>
+          <button onclick="filterFunction('From Achievements')">From Achievements</button>
         </div>
         <div class="col-md-2">
-          <a href="{{url_for('views.rewards_achievements_unavailable')}}" class ="btn btn-info" role="button">Not From achievements</a>
+          <button onclick="filterFunction('Not From Achievements')">Not From Achievements</button>
         </div>
         <div class="col-md-4"></div>
       </div>
   </div>
+<div class = "row">
   <div id ="content"
     <hr>
-    {% for item in data %}
-      <div class ="col-md-4">
+    {% for item in output %}
+      <div class ="col-md-2">
         <div class="container-fluid">
-          <h3>{{item.name}}</h3>
-          <a href = "/api/rewards/{{item.id}}"><img src="{{item.url}}" alt="" height="300" width="300"></a>
+          <h6>{{item.name}}</h6>
+          <a href = "/api/rewards/{{item.id}}"><img src="{{item.url}}" alt="" height="80" width="80"></a>
         </div>
       </div>
     {% endfor %}
   </div>
+</div>
+<div class = "row">    
+  <div class="pagination">
+  {% for i in range((data|length/54)|round(0,'ceil')|int) %}
+  <button onclick="pageFunction({{i+1}})">{{i+1}}</button>
+  {% endfor %} 
+  </div>
+</div>
 
-    
-<!-- <div class="pagination">
-      <a href="#">&laquo;</a>
-      <a href="{{url_for('rewards',sorting='asc',page=1)}}">1</a>
-      <a href="{{url_for('rewards',sorting='asc',page=2)}}">2</a>
-      <a href="{{url_for('rewards',sorting='asc',page=3)}}">3</a>
-      <a href="{{url_for('rewards',sorting='asc',page=4)}}">4</a>
-      <a href="{{url_for('rewards',sorting='asc',page=5)}}">5</a>
-      <a href="{{url_for('rewards',sorting='asc',page=6)}}">6</a>
-      <a href="#">&raquo;</a>
-</div> -->
+<script>
+function pageFunction(int) {
+    window.location.href = "/api/rewards?page=" + int;
+}
+function sortFunction(str) {
+    window.location.href = "/api/rewards?order=" + str + "&page=1";
+}
+function filterFunction(str) {
+    window.location.href = "/api/rewards?filter=" + str + "&page=1";
+}
+</script>
 
 
 </center>
