@@ -198,7 +198,14 @@ def achievements():
 
     return render_template('achievements.html', data=data, output=output)
 
-
+@views.route('/api/achievements/<int:achievement_id>', methods=['GET'])
+def achievement(achievement_id):
+    """ Returns Page for a single Achievement """
+    data = models.Achievement.query.get(achievement_id)
+    if not data:
+        return render_template('404.html', thing='Reward')
+    
+    return render_template('achievements_instance.html', data=data)
 
 
 
