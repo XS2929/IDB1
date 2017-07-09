@@ -25,24 +25,13 @@
           <li><a href="/api/heroes?page=1&order=ascending&filter=non">HEROES</a></li>
           <li><a href="/api/achievements?page=1&order=ascending&filter=non">ACHIEVEMENTS</a></li>
           <li><a href="/api/rewards?page=1&order=Low Cost&filter=non">REWARDS</a></li>
-          <li><a href="{{ url_for('views.players') }}">PLAYER</a></li>
+          <li><a href="{{ url_for('views.players') }}">PLAYERS</a></li>
           <li><a href="{{ url_for('views.about') }}">ABOUT</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<script>
-function gotoHeroes() {
-    window.location.href = "/api/heroes?page=1&order='ascending'&filter='non'";
-}
-function gotoRewards() {
-    window.location.href = "/api/rewards?page=1&order='ascending'&filter='non'";
-}
-function filterFunction() {
-    window.location.href = "/api/achievements?page=1&order='ascending'&filter='non'";
-}
-</script>
 
 
 {% block content %}
