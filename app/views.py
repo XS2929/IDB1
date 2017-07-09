@@ -291,7 +291,7 @@ def search():
         search_results[1].append({"name": result["name"], "search_url": result["search_url"], "matches": context})
 
     # Get the results for the specified page
-    search_results = [search_results[0][10 * (page - 1):10 * page], search_results[1][10 * (page - 1):10 * page]]
+    # search_results = [search_results[0][10 * (page - 1):10 * page], search_results[1][10 * (page - 1):10 * page]]
     print(search_results)
     print(json.dumps(search_results))
     return render_template('search.html', data=search_results)
