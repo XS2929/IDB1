@@ -292,7 +292,8 @@ def search():
 
     # Get the results for the specified page
     search_results = [search_results[0][10 * (page - 1):10 * page], search_results[1][10 * (page - 1):10 * page]]
-
+    print(search_results)
+    print(json.dumps(search_results))
     return render_template('search.html', data=search_results)
 
 # Method to find context in the values of the table entries
@@ -321,7 +322,7 @@ def getContext(val, search):
                     frontCount -= 1
                 if (back == len(val) or val[back] == ' '):
                     backCount -= 1
-            results.append(val[front:back])
+            results.append(val[front:back].encode('utf-8'))
             frontCount = context_amount + 1
             backCount = context_amount + 1
             val = val[back::]

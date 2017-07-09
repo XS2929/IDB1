@@ -1,135 +1,132 @@
 <!DOCTYPE html>
-<html >
-
 {% extends 'layout.html' %}
 {%block content%}
-
+<html >
 <head>
-  <meta charset="UTF-8">
-  <title>React-Table starter pen</title>
-  
-  
-  <link rel='stylesheet prefetch' href='https://unpkg.com/react-table@5.5.0/react-table.css'>
-<link rel='stylesheet prefetch' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
+	<meta charset="UTF-8">
+	<title>Search</title>
 
-      <link rel="stylesheet" href="../static/css/search.css">
+	<link rel='stylesheet prefetch' href='https://unpkg.com/react-table@5.5.0/react-table.css'>
+	<link rel='stylesheet prefetch' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
+	<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/search.css') }}">
 
-  
 </head>
 
 <body>
-  <div id="root"></div>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js'></script>
-<script src='https://unpkg.com/react-table@latest/react-table.js#1'></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+	<div id="root"></div>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js'></script>
+	<script src='https://unpkg.com/react-table@latest/react-table.js#1'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
 
-    <script type="text/babel">
+	<script type="text/babel">
 
 		const ReactTable = window.ReactTable.default
 
 		const columns = [{
-		  columns: [{
-		    Header: 'Name',
-		    accessor: 'name'
-		  }]
-		}, {
-		  columns: [{
-		    Header: 'Context',
-		    accessor: 'matches'
-		  }]
-		}]
+		columns: [{
+		Header: 'Name',
+		accessor: 'name'
+	}]
+}, {
+columns: [{
+Header: 'Context',
+accessor: 'matches'
+}]
+}]
 
-		const MyTable = (props) => {
-			return (
-				<div>
-					<h1>Search</h1>
-					<ReactTable
-						data={makeData()}
-						columns={columns}
-					/>
-				</div>
-			)
-		}
+const MyTable = (props) => {
+var mydata = {{data[0]|tojson}}
+console.log(mydata)
+return (
+<div>
+	<h1>Search</h1>
+	<ReactTable
+	data={mydata}
+	columns={columns}
+	/>
+</div>
+)
+}
 
-		ReactDOM.render(<MyTable />, document.getElementById('root'))
+ReactDOM.render(<MyTable />, document.getElementById('root'))
 
 
-		function makeData () {
-			return [
-   {
-      "matches":[
-         "Whoa There!"
-      ],
-      "search_rl":"/api/achievements/15",
-      "name":"Whoa There!"
-   },
-   {
-      "matches":[
-         " sing each of the 4 heroes."
-      ],
-      "search_rl":"/api/achievements/64",
-      "name":"For They Were"
-   },
-   {
-      "matches":[
-         " 50 nlocks for a single hero."
-      ],
-      "search_rl":"/api/achievements/12",
-      "name":"Decked Ot"
-   },
-   {
-      "matches":[
-         "Wrist Lancher"
-      ],
-      "search_rl":"/api/rewards/69",
-      "name":"Wrist Lancher"
-   },
-   {
-      "matches":[
-         "Birdwatchers"
-      ],
-      "search_rl":"/api/rewards/73",
-      "name":"Birdwatchers"
-   },
-   {
-      "matches":[
-         "Archer"
-      ],
-      "search_rl":"/api/rewards/146",
-      "name":"Archer"
-   },
-   {
-      "matches":[
-         "Rocket Lancher"
-      ],
-      "search_rl":"/api/rewards/312",
-      "name":"Rocket Lancher"
-   },
-   {
-      "matches":[
-         "Wrist Lancher"
-      ],
-      "search_rl":"/api/rewards/320",
-      "name":"Wrist Lancher"
-   },
-   {
-      "matches":[
-         "Everywhere"
-      ],
-      "search_rl":"/api/rewards/328",
-      "name":"Everywhere"
-   },
-   {
-      "matches":[
-         "Together"
-      ],
-      "search_rl":"/api/rewards/595",
-      "name":"Together"
-   }
+function makeData () {
+return [
+{
+	"matches":[
+	"Whoa There!"
+	],
+	"search_rl":"/api/achievements/15",
+	"name":"Whoa There!"
+},
+{
+	"matches":[
+	" sing each of the 4 heroes."
+	],
+	"search_rl":"/api/achievements/64",
+	"name":"For They Were"
+},
+{
+	"matches":[
+	" 50 nlocks for a single hero."
+	],
+	"search_rl":"/api/achievements/12",
+	"name":"Decked Ot"
+},
+{
+	"matches":[
+	"Wrist Lancher"
+	],
+	"search_rl":"/api/rewards/69",
+	"name":"Wrist Lancher"
+},
+{
+	"matches":[
+	"Birdwatchers"
+	],
+	"search_rl":"/api/rewards/73",
+	"name":"Birdwatchers"
+},
+{
+	"matches":[
+	"Archer"
+	],
+	"search_rl":"/api/rewards/146",
+	"name":"Archer"
+},
+{
+	"matches":[
+	"Rocket Lancher"
+	],
+	"search_rl":"/api/rewards/312",
+	"name":"Rocket Lancher"
+},
+{
+	"matches":[
+	"Wrist Lancher"
+	],
+	"search_rl":"/api/rewards/320",
+	"name":"Wrist Lancher"
+},
+{
+	"matches":[
+	"Everywhere"
+	],
+	"search_rl":"/api/rewards/328",
+	"name":"Everywhere"
+},
+{
+	"matches":[
+	"Together"
+	],
+	"search_rl":"/api/rewards/595",
+	"name":"Together"
+}
 ]
-			}
-    </script>
+}
+</script>
 
 </body>
 </html>
