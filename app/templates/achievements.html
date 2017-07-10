@@ -7,37 +7,20 @@
 <br>
 <body>
 <center>
-  <h2 class="entry-title">Achievements</h2>
+  <h1 class="entry-title">Achievements</h1>
   <center>
   <div class="row">
-    <h3>Sort By</h3>
-      <div class="my-button">
-        <div class="col-md-5"></div>
-        <div class="col-md-1">
-          <button onclick="sortFunction('ascending')">Ascending</button>
-        </div>
-        <div class="col-md-1">
-           <button onclick="sortFunction('descending')">Descending</button>
-        </div>
-        <div class="col-md-5"></div>
-      </div>
+  <h4>SORT BY:</h4>
+  <div class="my-button">
+    <button onclick="sortFunction('ascending')">Ascending</button>
+    <button onclick="sortFunction('descending')">Descending</button>
   </div>
-    <br>
-    <hr>
-  <div class="row">
-    <h3>Filter By</h3>
-    <div class="my-button">
-      <div class="col-md-5"></div>
-      <div class="col-md-1">
-        <button onclick="filterFunction('Linked to Hero')">Linked to Hero</button>
-      </div>
-      <div class="col-md-1">
-        <button onclick="filterFunction('No Linked to Hero')">No Linked to Hero</button>
-      </div>
-      <div class="col-md-5"></div>
-    </div>
+  <h4>FILTER BY:</h4>
+  <div class="my-button">
+    <button onclick="filterFunction('Linked to Hero')">Linked to Hero </button>
+    <button onclick="filterFunction('Not Linked to Hero')">Not Linked to Hero </button>
   </div>
-<br>
+  </div>
 <div class = "row">
   <div id ="content">
     {% for item in output %}

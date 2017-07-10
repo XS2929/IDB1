@@ -10,34 +10,18 @@
 <br>
 <body>
 <center>
-  <h2 class="entry-title">Rewards</h2>
+  <h1 class="entry-title">Rewards</h1>
   <div class="row">
-    <h3>Sort By</h3>
-    <div class="my-button">
-      <div class="col-md-5"></div>
-      <div class="col-md-1">
-    <button onclick="sortFunction('Low Cost')">Low Cost</button>
-      </div>
-      <div class="col-md-1">
-        <button onclick="sortFunction('High Cost')">High Cost</button>
-      </div>
-      <div class="col-md-5"></div>
-    </div>
+  <h4>SORT BY:</h4>
+  <div class="my-button">
+    <button onclick = "sortFunction('Low Cost')">Low Cost</button>
+    <button onclick = "sortFunction('High Cost')">High Cost</button>
   </div>
-  <br>
-  <hr>
-  <div class="row">
-    <h3>Filter by Affiliation</h3>
-      <div class="my-button">
-        <div class="col-md-4"></div>
-        <div class="col-md-2" "container-fluid">
-          <button onclick="filterFunction('From Achievements')">From Achievements</button>
-        </div>
-        <div class="col-md-2">
-          <button onclick="filterFunction('Not From Achievements')">Not From Achievements</button>
-        </div>
-        <div class="col-md-4"></div>
-      </div>
+  <h4>FILTER BY AFFILIATION:</h4>
+  <div class="my-button">
+    <button onclick = "filterFunction('From Achievements')">From Achievements</button>
+    <button onclick = "filterFunction('Not From Achievements')">Not From Achievements</button>
+  </div>
   </div>
 <div class = "row">
   <div id ="content"

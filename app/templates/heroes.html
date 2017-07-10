@@ -9,36 +9,19 @@
 <br>
 <body>
 <center>
-  <h2 class="entry-title">Heroes</h2>
+  <h1 class="entry-title">Heroes</h1>
   <div class="row">
-    <h3>Sort By</h3>
-    <div class="my-button">
-      <div class="col-md-5"></div>
-      <div class="col-md-1">
-        <button onclick="sortFunction('ascending')">Ascending</button>
-      </div>
-      <div class="col-md-1">
-        <button onclick="sortFunction('descending')">Descending</button>
-      </div>
-      <div class="col-md-5"></div>
-    </div>
+  <h4>SORT BY:</h4>
+  <div class="my-button">
+    <button onclick="sortFunction('ascending')">Ascending</button>
+    <button onclick="sortFunction('descending')">Descending</button>
   </div>
-  <br>
-  <hr>
-  <div class="row">
-    <h3>Filter by Affiliation</h3>
-      <div class="my-button">
-      <div class="col-md-4"></div>
-      <div class="col-md-2">
-        <button onclick="filterFunction('Overwatch')">Heroes Affiliated With Overwatch</button>
-      </div>
-      <div class="col-md-2">
-        <button onclick="filterFunction('nonOverwatch')">Heroes Not Affiliated With Overwatch</button>
-      </div>
-      <div class="col-md-4"></div>
-    </div>
+  <h4>FILTER BY AFFILIATION:</h4>
+  <div class="my-button">
+    <button onclick="filterFunction('Overwatch')">Heroes Affiliated With Overwatch</button>
+    <button onclick="filterFunction('nonOverwatch')">Heroes Not Affiliated With Overwatch</button>
   </div>
-    <br>
+  </div>
     <div class="row">
       {% for item in output %}
         <div class ="col-md-4">
