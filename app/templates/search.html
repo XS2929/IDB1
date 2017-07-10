@@ -94,15 +94,14 @@ ReactDOM.render(<MyTableOR />, document.getElementById('table2'))
 
 </script>
 
-
 <script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function(){
 		console.log("DOMContentLoaded")
 		setTimeout(function(){
-		elements = document.getElementsByClassName('rt-td');
+		elements = document.getElementsByClassName('rt-tr');
 		for (var i = 0; i < elements.length; i++) {
-			// if(element[i].hasChildNodes())
-				elements[i].style.backgroundColor="yellow"
+			// if(elements[i][1].hasChildNodes())
+			console.log(elements[i].children[1].innerText)
 			console.log("found")
 		}},10000)
 		console.log("waited")
