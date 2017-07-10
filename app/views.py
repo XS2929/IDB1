@@ -288,8 +288,6 @@ def search(search_string="", page=1):
 def getContext(val, search):
     context_amount = 5
     results = []
-    print(search)
-    print(val)
     if (type(val) is int):
         try:
             if (val == int(search)):
