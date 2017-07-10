@@ -68,31 +68,33 @@
             <li><a href="{{ url_for('views.players') }}">PLAYERS</a></li>
             <li><a href="{{ url_for('views.about') }}">ABOUT</a></li>
           </ul>
-        
+
         </div>
       </div>
     </div>
-<div class="navbar-header">
-            <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target="#navbar1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target="#navbar1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- add search form -->
+      <form class="navbar-form navbar-right" action="{{ url_for('views.search') }}" method="get" role="search">
+        <div class="input-group">
+          <input type="text" name="search_string" class="form-control" placeholder="Search" value="{{ search_string }}">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-default">
+              <span class="glyphicon glyphicon-search"></span>
             </button>
-            <!-- add search form -->
-            <form class="navbar-form navbar-right" role="search">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search this site">
-                <span class="input-group-btn">
-                  <button type="submit" class="btn btn-default">
-                    <span class="glyphicon glyphicon-search"></span>
-                  </button>
-                </span>
-              </div>
-            </form>
-          </div>
-
+          </span>
+        </div>
+      </form>
+      </div>
   </nav>
+  <script type="text/javascript">
+    
+  </script>
 
 
 

@@ -214,9 +214,18 @@ def about():
 
 # Usage example: "http://127.0.0.1:5000/api/search?search_string=her&page=1"
 @views.route('/api/search', methods=['GET'])
-def search():
-    search_string = request.args.get('search_string')
-    page = int(request.args.get('page'))
+def search(search_string="", page=1):
+    if request.form.get('search_string') is not None :
+        search_string = request.form.get('search_string') 
+    else:
+        search_string = request.args.get('search_string')
+    print(search_string)
+    # Disabling because of switch to client-side pagination
+    # if request.form.get('page') is not None :
+    #     page = request.form.get('page')
+    # else :
+    #     page = int(request.args.get('page'))
+    page = 1
 
     # Find the AND search matches in the tables
     like_search_string = "%" + search_string + "%"
@@ -271,8 +280,6 @@ def search():
 
     # Get the results for the specified page
     # search_results = [search_results[0][10 * (page - 1):10 * page], search_results[1][10 * (page - 1):10 * page]]
-    print(search_results)
-    print(json.dumps(search_results))
     return render_template('search.html', data=search_results)
 
 # Method to find context in the values of the table entries
