@@ -36,26 +36,26 @@
       border-color: transparent;
   }
 
-button {
-    background-color: #b0e5ea;
-    color: white;
-    float: center;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color .3s;
-    white-space: nowrap;
-    overflow: hidden;
-    display: inline-block;
-}
+  button {
+      background-color: darkorange;
+      color: white;
+      float: center;
+      padding: 8px 16px;
+      text-decoration: none;
+      transition: background-color .3s;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+  }
 
-.my-button a.active {
-    background-color: #b0e5ea;
-    color: white;
-}
+  .my-button a.active {
+      background-color: #b0e5ea;
+      color: white;
+  }
 
-.my-button a:hover:not(.active) {
-  background-color: #ddd;
-}
-ul{
-  list-style-type: none;
-}
+  .my-button a:hover:not(.active) {
+    background-color: #ddd;
+  }
+  ul{
+    list-style-type: none;
+  }
