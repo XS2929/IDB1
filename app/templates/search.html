@@ -11,7 +11,8 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/search.css') }}">
 
 </head>
-
+<br>
+<br>
 <body>
 	<div id="root"></div>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js'></script>
@@ -51,81 +52,6 @@ return (
 
 ReactDOM.render(<MyTable />, document.getElementById('root'))
 
-
-function makeData () {
-return [
-{
-	"matches":[
-	"Whoa There!"
-	],
-	"search_rl":"/api/achievements/15",
-	"name":"Whoa There!"
-},
-{
-	"matches":[
-	" sing each of the 4 heroes."
-	],
-	"search_rl":"/api/achievements/64",
-	"name":"For They Were"
-},
-{
-	"matches":[
-	" 50 nlocks for a single hero."
-	],
-	"search_rl":"/api/achievements/12",
-	"name":"Decked Ot"
-},
-{
-	"matches":[
-	"Wrist Lancher"
-	],
-	"search_rl":"/api/rewards/69",
-	"name":"Wrist Lancher"
-},
-{
-	"matches":[
-	"Birdwatchers"
-	],
-	"search_rl":"/api/rewards/73",
-	"name":"Birdwatchers"
-},
-{
-	"matches":[
-	"Archer"
-	],
-	"search_rl":"/api/rewards/146",
-	"name":"Archer"
-},
-{
-	"matches":[
-	"Rocket Lancher"
-	],
-	"search_rl":"/api/rewards/312",
-	"name":"Rocket Lancher"
-},
-{
-	"matches":[
-	"Wrist Lancher"
-	],
-	"search_rl":"/api/rewards/320",
-	"name":"Wrist Lancher"
-},
-{
-	"matches":[
-	"Everywhere"
-	],
-	"search_rl":"/api/rewards/328",
-	"name":"Everywhere"
-},
-{
-	"matches":[
-	"Together"
-	],
-	"search_rl":"/api/rewards/595",
-	"name":"Together"
-}
-]
-}
 </script>
 
 </body>
