@@ -1,19 +1,15 @@
-<!DOCTYPE html>
 {% extends 'layout.html' %}
+
+
 {%block content%}
-<html >
-<head>
-	<meta charset="UTF-8">
-	<title>Search</title>
 
 	<link rel='stylesheet prefetch' href='https://unpkg.com/react-table@5.5.0/react-table.css'>
 	<link rel='stylesheet prefetch' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
 	<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/search.css') }}">
 
-</head>
 <br>
 <br>
-<body>
+
 	<div id="root"></div>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js'></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js'></script>
@@ -54,6 +50,4 @@ ReactDOM.render(<MyTable />, document.getElementById('root'))
 
 </script>
 
-</body>
-</html>
 {%endblock%}
