@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% extends 'layout.html' %}
+{%block content%}
+<html >
+<head>
+	<meta charset="UTF-8">
+	<title>Search</title>
+
+	<link rel='stylesheet prefetch' href='https://unpkg.com/react-table@5.5.0/react-table.css'>
+	<link rel='stylesheet prefetch' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
+	<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/search.css') }}">
+
+</head>
+<br>
+<br>
+<body>
+	<div id="root"></div>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js'></script>
+	<script src='https://unpkg.com/react-table@latest/react-table.js#1'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+
+	<script type="text/babel">
+
+		const ReactTable = window.ReactTable.default
+
+		const columns = [{
+		columns: [{
+		Header: 'Name',
+		accessor: 'name'
+	}]
+}, {
+columns: [{
+Header: 'Context',
+accessor: 'matches'
+}]
+}]
+
+const MyTable = (props) => {
+var mydata = {{data[0]|tojson}}
+console.log(mydata)
+return (
+<div>
+	<h1>Search</h1>
+	<ReactTable
+	data={mydata}
+	columns={columns}
+	/>
+</div>
+)
+}
+
+ReactDOM.render(<MyTable />, document.getElementById('root'))
+
+</script>
+
+</body>
+</html>
+{%endblock%}

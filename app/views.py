@@ -107,8 +107,6 @@ def hero(hero_id):
     return render_template('heroes_instance.html', data=data)
 
 
-
-
 @views.route('/api/rewards', methods=['GET'])
 def rewards():
     if ("reward page" not in session):
@@ -216,9 +214,20 @@ def about():
 
 # Usage example: "http://127.0.0.1:5000/api/search?search_string=her&page=1"
 @views.route('/api/search', methods=['GET'])
-def search():
-    search_string = request.args.get('search_string')
-    page = int(request.args.get('page'))
+def search(search_string="", page=1):
+    if request.form.get('search_string') is not None :
+        search_string = request.form.get('search_string') 
+    else:
+        search_string = request.args.get('search_string')
+    print(search_string)
+    # Disabling because of switch to client-side pagination
+    # if request.form.get('page') is not None :
+    #     page = request.form.get('page')
+    # else :
+    #     page = int(request.args.get('page'))
+    page = 1
+    if not search_string :
+        return render_template('search.html', data=[[], []])
 
     # Find the AND search matches in the tables
     like_search_string = "%" + search_string + "%"
@@ -272,13 +281,15 @@ def search():
         search_results[1].append({"name": result["name"], "search_url": result["search_url"], "matches": context})
 
     # Get the results for the specified page
-    search_results = [search_results[0][10 * (page - 1):10 * page], search_results[1][10 * (page - 1):10 * page]]
-    return jsonify(search_results)
+    # search_results = [search_results[0][10 * (page - 1):10 * page], search_results[1][10 * (page - 1):10 * page]]
+    return render_template('search.html', data=search_results)
 
 # Method to find context in the values of the table entries
 def getContext(val, search):
     context_amount = 5
     results = []
+    print(search)
+    print(val)
     if (type(val) is int):
         try:
             if (val == int(search)):
@@ -301,7 +312,7 @@ def getContext(val, search):
                     frontCount -= 1
                 if (back == len(val) or val[back] == ' '):
                     backCount -= 1
-            results.append(val[front:back])
+            results.append(val[front:back].encode('utf-8'))
             frontCount = context_amount + 1
             backCount = context_amount + 1
             val = val[back::]
