@@ -10,7 +10,10 @@
 <br>
 <br>
 
-	<div id="root"></div>
+	<div id="root">
+		<div id="table1"></div>
+		<div id="table2"></div>
+	</div>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js'></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js'></script>
 	<script src='https://unpkg.com/react-table@latest/react-table.js#1'></script>
@@ -32,13 +35,14 @@ accessor: 'matches'
 }]
 }]
 
-const MyTable = (props) => {
+const MyTableAND = (props) => {
 var mydata = {{data[0]|tojson}}
 console.log(mydata)
 return (
 <div>
-	<h1>Search</h1>
+	<h1>Search Results for AND</h1>
 	<ReactTable
+	defaultPageSize={10}
 	data={mydata}
 	columns={columns}
 	getTdProps={(state, rowInfo, column, instance) => {
@@ -58,8 +62,51 @@ return (
 )
 }
 
-ReactDOM.render(<MyTable />, document.getElementById('root'))
+const MyTableOR = (props) => {
+var mydata = {{data[1]|tojson}}
+console.log(mydata)
+return (
+<div>
+	<h1>Search Results for OR</h1>
+	<ReactTable
+	defaultPageSize={10}
+	data={mydata}
+	columns={columns}
+	getTdProps={(state, rowInfo, column, instance) => {
+	return {
+	onClick: e => {
+	console.log('A Td Element was clicked!')
+	console.log('it produced this event:', e)
+	console.log('It was in this column:', column)
+	console.log('It was in this row:', rowInfo)
+	console.log('It was in this table instance:', instance)
+	window.location.href = "http://" + window.location.host + rowInfo.original.search_url;
+}
+}
+}}
+/>
+</div>
+)
+}
 
+ReactDOM.render(<MyTableAND />, document.getElementById('table1'))
+ReactDOM.render(<MyTableOR />, document.getElementById('table2'))
+
+</script>
+
+
+<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function(){
+		console.log("DOMContentLoaded")
+		setTimeout(function(){
+		elements = document.getElementsByClassName('rt-td');
+		for (var i = 0; i < elements.length; i++) {
+			// if(element[i].hasChildNodes())
+				elements[i].style.backgroundColor="yellow"
+			console.log("found")
+		}},10000)
+		console.log("waited")
+	}, false)
 </script>
 
 {%endblock%}
