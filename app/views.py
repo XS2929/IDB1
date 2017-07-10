@@ -226,6 +226,8 @@ def search(search_string="", page=1):
     # else :
     #     page = int(request.args.get('page'))
     page = 1
+    if not search_string :
+        return render_template('search.html', data=[[], []])
 
     # Find the AND search matches in the tables
     like_search_string = "%" + search_string + "%"
@@ -286,6 +288,8 @@ def search(search_string="", page=1):
 def getContext(val, search):
     context_amount = 5
     results = []
+    print(search)
+    print(val)
     if (type(val) is int):
         try:
             if (val == int(search)):
