@@ -1,0 +1,11 @@
+TASK													HOURS ESTIMATED 			HOURS TAKEN
+Refine the Restful API											2						1.5
+Implement Search												15						12
+Refine the Website												8						6
+Complete Technical Report										2						2
+Improve Website Design											4						4
+Refine UML diagram												1						1
+Fill in Data Gaps												2						.5
+Add Unit Tests													2						2
+Refine set of Models for SQLAlchemy and PostgreSQL				1						.5
+Update Trello Issues											.5						.5
