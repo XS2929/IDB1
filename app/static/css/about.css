@@ -35,10 +35,6 @@
   .navbar-default .navbar-toggle {
       border-color: transparent;
   }
-  body {
-      font-family: "Times New Roman", Times, serif;
-      color: #777;
-  }
 
   .container {
       padding: 80px 120px;
