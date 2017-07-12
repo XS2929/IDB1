@@ -9,8 +9,7 @@ from forms import SignupForm
 
 views = Blueprint('views', __name__)
 
-
-@views.route('/')
+@views.route('/') 
 def index():
     """ Returns Welcome Page """
     return render_template('index.html')
@@ -318,9 +317,6 @@ def getContext(val, search):
             val = val[back::]
             index = val.find(search)
     return results
-
-
-views.secret_key = "development-key"
 
 @views.route("/signup", methods=["GET", "POST"])
 def signup():

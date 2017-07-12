@@ -24,7 +24,7 @@ player_reward = db.Table('player_reward',
     db.Column('reward_id', db.Integer, db.ForeignKey('reward.id'))
 )
 
-#USER MODEL FOR SIGN IN PAGE 
+#USER MODEL FOR SIGNIN PAGE 
 class User(db.Model):
   __tablename__ = 'users'
   uid = db.Column(db.Integer, primary_key = True)
