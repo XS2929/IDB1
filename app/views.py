@@ -5,6 +5,8 @@ import models as models
 from models import *
 from sqlalchemy import or_
 
+from forms import SignupForm
+
 views = Blueprint('views', __name__)
 
 
@@ -318,5 +320,21 @@ def getContext(val, search):
     return results
 
 
+views.secret_key = "development-key"
 
+@views.route("/signup", methods=["GET", "POST"])
+def signup():
+  form = SignupForm()
+
+  if request.method == "POST":
+    if form.validate() == False:
+      return render_template('signup.html', form=form)
+    else:
+      newuser = User(form.first_name.data, form.last_name.data, form.email.data, form.password.data)
+      db.session.add(newuser)
+      db.session.commit()
+      return 'Success!'
+
+  elif request.method == "GET":
+    return render_template('signup.html', form=form)
 
