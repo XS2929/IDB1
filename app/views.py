@@ -1,11 +1,11 @@
-from flask import Blueprint, render_template, jsonify, request, session
+from flask import Blueprint, render_template, jsonify, request, session, redirect, url_for
 import json
 import traceback
 import models as models
 from models import *
 from sqlalchemy import or_
 
-from forms import SignupForm
+from forms import SignupForm, LoginForm
 
 views = Blueprint('views', __name__)
 
@@ -318,6 +318,7 @@ def getContext(val, search):
             index = val.find(search)
     return results
 
+#Signup, Login, Logout ------
 @views.route("/signup", methods=["GET", "POST"])
 def signup():
   form = SignupForm()
@@ -329,8 +330,41 @@ def signup():
       newuser = User(form.first_name.data, form.last_name.data, form.email.data, form.password.data)
       db.session.add(newuser)
       db.session.commit()
-      return 'Success!'
+
+      session['email'] = newuser.email
+      return redirect(url_for('views.index'))
 
   elif request.method == "GET":
     return render_template('signup.html', form=form)
+
+
+@views.route("/login", methods=["GET","POST"])
+def login():
+  form = LoginForm()
+
+  if request.method == "POST":
+    if form.validate() == False:
+        return render_template("login.html", form=form)
+    else:
+      email = form.email.data
+      password = form.password.data
+
+      user = User.query.filter_by(email=email).first()
+      if user is not None and user.check_password(password):
+        session['email'] = form.email.data
+        return redirect(url_for('views.index'))
+      else:
+        return redirect(url_for('views.login'))
+
+  elif request.method == "GET":
+    return render_template('login.html', form=form)
+
+
+@views.route("/logout")
+def logout():
+  session.pop('email', None)
+  return redirect(url_for('views.index'))
+
+
+
 
