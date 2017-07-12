@@ -319,6 +319,7 @@ def getContext(val, search):
     return results
 
 #Signup, Login, Logout ------
+
 @views.route("/signup", methods=["GET", "POST"])
 def signup():
   form = SignupForm()
