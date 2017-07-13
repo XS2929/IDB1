@@ -7,10 +7,10 @@
     width: 100%; /* Set width to 100% */
     margin: auto;
 }
+
 </style>
 <!-- OverwatchDB home style sheet -->
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/home.css') }}">
-
 <!--loader -->
 <div style="display:none;" id="myDiv"> 
 
@@ -56,8 +56,16 @@
       <span class="sr-only">Next</span>
     </a>
 </div>
+
+<div class="row" style="background-size: 100%; background-color: #292f33;">
+<div class="col-md-12 col-sm-12 col-xs-12 text-center">
+    <a class="twitter-timeline" data-height="600" data-theme="dark" data-link-color="#fa9c1e" href="https://twitter.com/PlayOverwatch" style="margin: auto;">Tweets by PlayOverwatch</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    
+    <a href="https://twitter.com/PlayOverwatch" class="twitter-follow-button" data-show-count="false">Follow @PlayOverwatch</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+</div>
+
 <footer></footer>
 </div> <!--loader-->
-
 {% endblock %}
 
