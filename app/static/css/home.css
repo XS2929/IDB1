@@ -1,4 +1,4 @@
-   /* Add a dark background color with a little bit see-through */
+/* Add a dark background color with a little bit see-through */
 .navbar {
     margin-bottom: 0;
     background-color: #2d2d30;
@@ -14,9 +14,11 @@
 }
 
 /* overwatch logo placement */
-  .navbar-brand>img {
+.navbar-default .navbar-brand {
     margin-left: 15px;
-    margin-top: -10px;    
+    margin-top: -10px;
+    font-size: 11px !important;
+    color: #fa9c1e !important;
   }
 
 
@@ -36,3 +38,6 @@
     border-color: transparent;
 }
 
+.dropdown-menu {
+    background-color: #2d2d30;
+}

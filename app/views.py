@@ -14,6 +14,9 @@ def index():
     """ Returns Welcome Page """
     return render_template('index.html')
 
+@views.route("/ov_loader")
+def ov_loader():
+  return render_template('ov_loader.html')
 
 @views.route('/tests/run')
 def run_tests():
@@ -322,6 +325,9 @@ def getContext(val, search):
 
 @views.route("/signup", methods=["GET", "POST"])
 def signup():
+  if 'email' in session:
+    return redirect(url_for('views.index')) 
+  
   form = SignupForm()
 
   if request.method == "POST":
@@ -341,6 +347,9 @@ def signup():
 
 @views.route("/login", methods=["GET","POST"])
 def login():
+  if 'email' in session:
+    return redirect(url_for('views.index'))  
+
   form = LoginForm()
 
   if request.method == "POST":
@@ -367,11 +376,14 @@ def logout():
   return redirect(url_for('views.index'))
 
 
+
+
 #Content Manager Tools --------
 
 #Create Hero -----
 @views.route("/createHero", methods=["GET", "POST"])
 def createHero():
+  #control access to this page
   if 'email' not in session:
     return redirect(url_for('views.login'))
   
