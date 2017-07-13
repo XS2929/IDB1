@@ -17,30 +17,52 @@
   <div class="row">
     <h4>SORT BY:</h4>
     <div class="my-button">
-        <a href="{{url_for('views.players_asc')}}" class ="btn btn-info" role="button">Ascending</a>
-        <a href="{{url_for('views.players_desc')}}" class ="btn btn-info" role="button">Descending</a>
+        <button onclick = "sortFunction('ascending')">Ascending</button>
+        <button onclick = "sortFunction('descending')">Descending</button>
+<!--  -->
     </div>
   </div>
 
   <div class="row">
-      <h4>FILTER BY:</h4>
-        <div class="my-button">
-          <a href="{{url_for('views.players')}}" class ="btn btn-info" role="button">Show All</a>
-        </div>
+    <h4>FILTER BY SERVER:</h4>
+    <div class="my-button">
+      <button onclick = "filterFunction('us')">United States</button>
+      <button onclick = "filterFunction('kr')">Korea</button>
+      <button onclick = "filterFunction('eu')">Europe</button>
+    </div>
   </div>
 
-  <div id ="content">
-  {% for item in data %}
-    <div class ="col-md-4">
-      <div class="filterable-item">
-        <h3>{{item.name}}</h3>
-        <a href = "/api/players/{{item.id}}"><img src="{{item.url}}" alt="" height="300" width="300"></a>
+  <div class = "row">
+    {% for item in output %}
+      <div class ="col-md-4">
+        <div class="filterable-item">
+          <h3>{{item.name}}</h3>
+          <a href = "/api/players/{{item.id}}"><img src="{{item.url}}" alt="" height="300" width="300"></a>
+        </div>
       </div>
+    {% endfor %}
+  </div>  
+
+  <div class="row">
+    <div class="pagination">
+    {% for i in range((data|length/9)|round(0,'ceil')|int) %}
+    <button onclick="pageFunction({{i+1}})">{{i+1}}</button>
+    {% endfor %} 
     </div>
-  {% endfor %}
   </div>  
 </center>
 
 </div> <!--loader -->
+<script>
+function pageFunction(int) {
+    window.location.href = "/api/players?page=" + int;
+}
+function sortFunction(str) {
+    window.location.href = "/api/players?order=" + str + "&page=1";
+}
+function filterFunction(str) {
+    window.location.href = "/api/players?filter=" + str + "&page=1";
+}
+</script>
 
 {%endblock%}

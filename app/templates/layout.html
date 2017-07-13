@@ -267,7 +267,7 @@
             <li><a href="/api/heroes?page=1&order=ascending&filter=non">HEROES</a></li>
             <li><a href="/api/achievements?page=1&order=ascending&filter=non">ACHIEVEMENTS</a></li>
             <li><a href="/api/rewards?page=1&order=Low Cost&filter=non">REWARDS</a></li>
-            <li><a href="{{ url_for('views.players') }}">PLAYERS</a></li>
+            <li><a href="/api/players?page=1&order=ascending&filter=non">PLAYERS</a></li>
             <li><a href="{{ url_for('views.about') }}">ABOUT</a></li>
             <form class="navbar-form navbar-right" action="{{ url_for('views.search') }}" method="get" role="search">
               <div class="input-group">

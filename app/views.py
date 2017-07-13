@@ -28,28 +28,48 @@ def run_tests():
 @views.route('/api/players', methods=['GET'])
 def players():
     """ Returns Players Page """
-    data = models.Player.query.all()
+    if ("player page" not in session):
+        session["player page"] = 1
+    if ("player order" not in session):
+        session["player order"] = "ascending"
+    if ("player filter" not in session):
+        session["player filter"] = "non"
+    
+    if type(request.args.get('page')) is unicode:
+        session["player page"] = int(request.args.get('page'))
+    if type(request.args.get('order')) is unicode:
+        session["player order"] = str(request.args.get('order'))
+    if type(request.args.get('filter')) is unicode:
+        session["player filter"] = str(request.args.get('filter'))
+
+    """ Returns Players Page """
+    if session["player order"] == "ascending":
+        if session["player filter"] == "non":
+            data = models.Player.query.order_by(models.Player.name.asc()).all()
+        elif session["player filter"] == "us":
+            data = models.Player.query.order_by(models.Player.name.asc()).filter(Player.server == 'us').all()
+        elif session["player filter"] == "kr":
+            data = models.Player.query.order_by(models.Player.name.asc()).filter(Player.server == 'kr').all()
+        else:
+            data = models.Player.query.order_by(models.Player.name.asc()).filter(Player.server == 'eu').all()
+    else:
+        if session["player filter"] == "non":
+            data = models.Player.query.order_by(models.Player.name.desc()).all()
+        elif session["player filter"] == "us":
+            data = models.Player.query.order_by(models.Player.name.desc()).filter(Player.server == 'us').all()
+        elif session["player filter"] == "kr":
+            data = models.Player.query.order_by(models.Player.name.desc()).filter(Player.server == 'kr').all()
+        else:
+            data = models.Player.query.order_by(models.Player.name.desc()).filter(Player.server == 'eu').all()
+        
+    
     if not data:
         return render_template('404.html', thing='Players')
-   
-    return render_template('players.html', data=data)
+    output = data[9 * (session["player page"] - 1): 9 * session["player page"]]
 
-@views.route('/api/players/asc', methods=['GET'])
-def players_asc():
-    """ Returns Players Page """
-    data = models.Player.query.order_by(models.Player.name.asc()).all()
-    if not data:
-        return render_template('404.html', thing='Heroes')
-    return render_template('players.html', data=data)
-
-@views.route('/api/players/desc', methods=['GET'])
-def players_desc():
-    """ Returns Players Page """
-    data = models.Player.query.order_by(models.Player.name.desc()).all()
-    if not data:
-        return render_template('404.html', thing='Heroes')
+    return render_template('players.html', data=data, output=output)
     
-    return render_template('players.html', data=data)
+
 
 @views.route('/api/players/<int:player_id>', methods=['GET'])
 def player(player_id):
