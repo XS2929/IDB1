@@ -5,7 +5,7 @@ import models as models
 from models import *
 from sqlalchemy import or_
 
-from forms import SignupForm, LoginForm
+from forms import SignupForm, LoginForm, HeroForm
 
 views = Blueprint('views', __name__)
 
@@ -317,6 +317,24 @@ def getContext(val, search):
             val = val[back::]
             index = val.find(search)
     return results
+
+
+
+@views.route("/createHero", methods=["GET", "POST"])
+def createHero():
+  form = HeroForm()
+
+  if request.method == "POST":
+    if form.validate() == False:
+      return render_template('createHero.html', form=form)
+    else:
+      hero = Hero(form.name.data, form.description.data, form.affiliation.data, form.age.data, form.url.data)
+      db.session.add(hero)
+      db.session.commit()
+      return redirect(url_for('views.index'))
+
+  elif request.method == "GET":
+    return render_template('createHero.html', form=form)
 
 #Signup, Login, Logout ------
 

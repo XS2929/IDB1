@@ -83,11 +83,15 @@
             <li><a href="/api/rewards?page=1&order=Low Cost&filter=non">REWARDS</a></li>
             <li><a href="{{ url_for('views.players') }}">PLAYERS</a></li>
             <li><a href="{{ url_for('views.about') }}">ABOUT</a></li>
+            <li><a href="{{ url_for('views.createHero') }}">Create Hero</a></li>
+
+
           </ul>
           <button class="btn btn-primary navbar-btn">  <a href="{{ url_for('views.login') }}" style="color: #fa9c1e;">Login</a>
           </button>
           <button class="btn btn-primary navbar-btn">  <a href="{{ url_for('views.logout') }}" style="color: #fa9c1e;">Logout</a>
           </button> 
+
           <form class="navbar-form navbar-right" action="{{ url_for('views.search') }}" method="get" role="search">
         <div class="input-group">
           <input type="text" name="search_string" class="form-control" placeholder="Search" value="{{ search_string }}">

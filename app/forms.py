@@ -13,3 +13,13 @@ class LoginForm(Form):
   email = StringField('Email', validators=[DataRequired("Enter email address"), Email("Enter email address")])
   password = PasswordField('Password', validators=[DataRequired("Enter Password")])
   submit = SubmitField("Sign in")
+
+class HeroForm(Form):
+  name = StringField('Name', validators=[DataRequired("Please input hero name.")])
+  age = StringField('Age', validators=[DataRequired("Please input hero age.")])
+  url = StringField('url', validators=[DataRequired("Please input hero image url.")])
+  affiliation = StringField('affiliation', validators=[DataRequired("Please input hero affiliation.")])
+  description = StringField('description', validators=[DataRequired("Please input hero description.")])
+
+  submit = SubmitField("Create")
+

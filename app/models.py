@@ -50,7 +50,7 @@ class Hero(db.Model):
     """model for hero"""
     __tablename__ = 'hero'
 
-    id = db.Column(db.Integer, nullable=False, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
     affiliation = db.Column(db.String, nullable=False)
@@ -58,6 +58,14 @@ class Hero(db.Model):
     url = db.Column(db.String, nullable=False)
     players = db.relationship('Player', backref='Hero',lazy='dynamic')
     achievements = db.relationship('Achievement', backref='Hero',lazy='dynamic')
+
+    def __init__(self, name, description, affiliation, age, url):
+        self.name = name
+        self.description = description 
+        self.age = age
+        self.url = url
+        self.affiliation = affiliation
+
 
     def __repr__(self):
         return "<Hero(name='%s', description=%s, affiliation=%s, age=%s, url=%s)>" % (
