@@ -65,13 +65,13 @@
 </style>
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/home.css') }}">
 
-  <main class="container createAchievment-section">
+  <main class="container createReward-section">
     <div class="section-content">
-      <br>
-      <br>
-      <h2>Create an achievement</h2>
+    <br>
+    <br>
+      <h2>Create an reward</h2>
 
-      <form method="POST" action="/createAchievement">
+      <form method="POST" action="/createReward">
         {{ form.hidden_tag() }}
 
         <div class="form-group">
@@ -87,15 +87,15 @@
         </div>
 
         <div class="form-group">
-          {{ form.type.label }}
+          {{ form.cost.label }}
 
-          {% if form.type.errors %}
-            {% for error in form.type.errors %}
+          {% if form.cost.errors %}
+            {% for error in form.cost.errors %}
               <p class="error-message">{{ error }}</p>
             {% endfor %}
           {% endif %}
 
-          {{ form.type }}
+          {{ form.cost }}
         </div>
 
         <div class="form-group">
@@ -111,15 +111,15 @@
         </div>
 
         <div class="form-group">
-          {{ form.description.label }}
+          {{ form.quality.label }}
 
-          {% if form.description.errors %}
-            {% for error in form.description.errors %}
+          {% if form.quality.errors %}
+            {% for error in form.quality.errors %}
               <p class="error-message">{{ error }}</p>
             {% endfor %}
           {% endif %}
 
-          {{ form.description }}
+          {{ form.quality }}
         </div>
 
 

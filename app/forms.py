@@ -1,5 +1,5 @@
 from flask_wtf import Form 
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, IntegerField
 from wtforms.validators import DataRequired, Email, Length
 
 class SignupForm(Form):
@@ -34,4 +34,11 @@ class AchievementForm(Form):
   description = StringField('description', validators=[DataRequired("Please input achievement description.")])
   type = StringField('type', validators=[DataRequired("Please input achievement type")])
   url = StringField('url', validators=[DataRequired("Please input achievement image url.")])
+  submit = SubmitField("Create")
+
+class RewardForm(Form):
+  name = StringField('Name', validators=[DataRequired("Please input reward name.")])
+  quality = StringField('quality', validators=[DataRequired("Please input reward quality.")])
+  cost = IntegerField('cost', validators=[DataRequired("Please input achievement cost")])
+  url = StringField('url', validators=[DataRequired("Please input reward image url.")])
   submit = SubmitField("Create")

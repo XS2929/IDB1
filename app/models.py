@@ -118,7 +118,7 @@ class Reward(db.Model):
     """model for reward"""
     __tablename__ = 'reward'
 
-    id = db.Column(db.Integer, nullable=False, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     quality = db.Column(db.String, nullable=False)
     url = db.Column(db.String, nullable=False)
@@ -128,6 +128,12 @@ class Reward(db.Model):
 
     achievement = db.relationship("Achievement",backref='Reward',uselist=False,foreign_keys=[achievement_id])
     hero = db.relationship("Hero",backref='Reward',uselist=False,foreign_keys=[hero_id])
+
+    def __init__(self, name, quality, cost, url):
+        self.name = name
+        self.quality = quality 
+        self.cost = cost
+        self.url = url
 
     def __repr__(self):
         return "<Reward(name='%s', quality=%s, url=%s, cost=%s, achievement=%s, hero=%s)>" % (
