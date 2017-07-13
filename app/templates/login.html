@@ -65,8 +65,8 @@
 }
 
 </style>
-<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/heroes.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/home.css') }}">
+<div style="display:none;" id="myDiv"> <!-- loader -->
 
   <main class="container signup-section">
     <div class="section-content">
@@ -103,4 +103,5 @@
       </form>
     </div>
   </main>
+</div> <!--loader -->
 {% endblock %}

@@ -5,43 +5,47 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/home.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/heroes.css') }}">
 
+<div style="display:none;" id="myDiv"> <!-- loader -->
 
 <br>
 <br>
-<body>
+
 <center>
   <h1 class="entry-title">Heroes</h1>
   <div class="row">
-  <h4>SORT BY:</h4>
-  <div class="my-button">
-    <button onclick="sortFunction('ascending')">Ascending</button>
-    <button onclick="sortFunction('descending')">Descending</button>
-  </div>
-  <h4>FILTER BY AFFILIATION:</h4>
-  <div class="my-button">
-    <button onclick="filterFunction('Overwatch')">Overwatch Affiliated</button>
-    <button onclick="filterFunction('nonOverwatch')">Other</button>
-  </div>
-  </div>
-    <div class="row">
-      {% for item in output %}
-        <div class ="col-md-4">
-          <div class="filterable-item">
-            <h3>{{item.name}}</h3>
-              <a href = "/api/heroes/{{item.id}}"><img src="{{item.url}}" alt="" height="300" width="300"></a>
-           </div>
+    <h4>SORT BY:</h4>
+    <div class="my-button">
+      <button onclick="sortFunction('ascending')">Ascending</button>
+      <button onclick="sortFunction('descending')">Descending</button>
+    </div>
+    <h4>FILTER BY AFFILIATION:</h4>
+    <div class="my-button">
+      <button onclick="filterFunction('Overwatch')">Overwatch Affiliated</button>
+      <button onclick="filterFunction('nonOverwatch')">Other</button>
+    </div>
+  </div> <!--row-->
+  <div class="row">
+    {% for item in output %}
+      <div class ="col-md-4">
+        <div class="filterable-item">
+          <h3>{{item.name}}</h3>
+          <a href = "/api/heroes/{{item.id}}"><img src="{{item.url}}" alt="" height="300" width="300"></a>
         </div>
+      </div>
       {% endfor %}
+  </div>
+
+  <div class="row">
+    <div class="pagination">
+    {% for i in range((data|length/9)|round(0,'ceil')|int) %}
+    <button onclick="pageFunction({{i+1}})">{{i+1}}</button>
+    {% endfor %} 
     </div>
   </div>
 
-<div class="row">
-  <div class="pagination">
-  {% for i in range((data|length/9)|round(0,'ceil')|int) %}
-  <button onclick="pageFunction({{i+1}})">{{i+1}}</button>
-  {% endfor %} 
-  </div>
-</div>
+</center>
+
+</div> <!--loader -->
 
 <script>
 function pageFunction(int) {
@@ -54,9 +58,4 @@ function filterFunction(str) {
     window.location.href = "/api/heroes?filter=" + str+ "&page=1";
 }
 </script>
-
-
-</center>
-</body>
-
 {%endblock%}

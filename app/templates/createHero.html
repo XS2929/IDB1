@@ -63,9 +63,9 @@
   border: none; 
 }
 </style>
-<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/heroes.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/home.css') }}">
 
+<div style="display:none;" id="myDiv"> <!-- loader -->
   <main class="container createHero-section">
     <div class="section-content">
       <h2>Create an hero</h2>
@@ -138,4 +138,6 @@
       </form>
     </div>
   </main>
+</div> <!--loader -->
+  
 {% endblock %}

@@ -11,6 +11,8 @@
 <!-- OverwatchDB home style sheet -->
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/home.css') }}">
 
+<!--loader -->
+<div style="display:none;" id="myDiv"> 
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -54,9 +56,19 @@
       <span class="sr-only">Next</span>
     </a>
 </div>
+</div> <!--loader-->
 
+<script>
+var myVar;
+
+function myFunction() {
+    myVar = setTimeout(showPage, 600);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+</script>
 {% endblock %}
-
-
-    Contact GitHub API Training Shop Blog About 
 

@@ -1,6 +1,9 @@
 <!-- Extend base.html here? -->
 {% extends 'layout.html' %}
+
 {%block content%}
+
+<div style="display:none;" id="myDiv"> <!-- loader -->
 <!-- Need to change the art thing below -->
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/achievements.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/home.css') }}">
@@ -29,5 +32,5 @@
 		</h4>
 	</center>
 </div>
-
+</div>
 {% endblock%}

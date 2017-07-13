@@ -5,10 +5,11 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/reward.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/home.css') }}">
 
+<div style="display:none;" id="myDiv"> <!-- loader -->
 
 <br>
 <br>
-<body>
+
 <center>
   <h1 class="entry-title">Rewards</h1>
   <div class="row">
@@ -44,6 +45,10 @@
   </div>
 </div>
 
+</center>
+
+</div> <!--loader -->
+
 <script>
 function pageFunction(int) {
     window.location.href = "/api/rewards?page=" + int;
@@ -57,7 +62,6 @@ function filterFunction(str) {
 </script>
 
 
-</center>
-</body>
+
 
 {%endblock%}

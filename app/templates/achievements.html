@@ -5,9 +5,11 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/achievements.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/home.css') }}">
 
+
+<div style="display:none;" id="myDiv"> <!-- loader -->
+
 <br>
 <br>
-<body>
 <center>
   <h1 class="entry-title">Achievements</h1>
   <div class="row">
@@ -67,7 +69,7 @@ function filterFunction(str) {
 
 
 
+</div> <!--loader -->
 
-</body>
 
 {%endblock%}
