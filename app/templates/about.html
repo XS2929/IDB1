@@ -1,8 +1,9 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 
 
 {% block content %}
-<link href="../static/css/about.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/home.css') }}">
+
     <!-- Wrapper for slides -->
 	<ul>
 		<br>
