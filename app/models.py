@@ -84,7 +84,7 @@ class Player(db.Model):
     """model for player"""
     __tablename__ = 'player'
 
-    id = db.Column(db.Integer, nullable=False, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     server = db.Column(db.String, nullable=False)
     hero_id = db.Column(db.Integer, db.ForeignKey("hero.id"), nullable=False)
@@ -94,6 +94,12 @@ class Player(db.Model):
     achievements = db.relationship('Achievement', secondary=player_achievement ,backref=db.backref('players', lazy='dynamic'))
     
     hero = db.relationship("Hero",backref='Player',uselist=False,foreign_keys=[hero_id])
+
+    def __init__(self, name, server, level, url):
+        self.name = name
+        self.server = server 
+        self.level = level
+        self.url = url
 
     def __repr__(self):
         return "<Player(name='%s', server=%s, level=%s, url=%s, hero=%s, achievements=%s)>" % (

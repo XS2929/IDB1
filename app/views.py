@@ -5,7 +5,7 @@ import models as models
 from models import *
 from sqlalchemy import or_
 
-from forms import SignupForm, LoginForm, HeroForm
+from forms import SignupForm, LoginForm, HeroForm, PlayerForm
 
 views = Blueprint('views', __name__)
 
@@ -400,6 +400,26 @@ def createHero():
 
   elif request.method == "GET":
     return render_template('createHero.html', form=form)
+
+@views.route("/createPlayer", methods=["GET", "POST"])
+def createPlayer():
+  #control access to this page
+  if 'email' not in session:
+    return redirect(url_for('views.login'))
+  
+  form = PlayerForm()
+
+  if request.method == "POST":
+    if form.validate() == False:
+      return render_template('createPlayer.html', form=form)
+    else:
+      player = Player(form.name.data, form.server.data, form.level.data, form.url.data)
+      db.session.add(player)
+      db.session.commit()
+      return redirect(url_for('views.index'))
+
+  elif request.method == "GET":
+    return render_template('createPlayer.html', form=form)
 
 
 
