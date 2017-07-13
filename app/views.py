@@ -5,7 +5,7 @@ import models as models
 from models import *
 from sqlalchemy import or_
 
-from forms import SignupForm, LoginForm, HeroForm, PlayerForm, AchievementForm
+from forms import SignupForm, LoginForm, HeroForm, PlayerForm, AchievementForm, RewardForm
 
 views = Blueprint('views', __name__)
 
@@ -441,6 +441,27 @@ def createAchievement():
 
   elif request.method == "GET":
     return render_template('createAchievement.html', form=form)
+
+
+@views.route("/createReward", methods=["GET", "POST"])
+def createReward():
+  #control access to this page
+  if 'email' not in session:
+    return redirect(url_for('views.login'))
+  
+  form = RewardForm()
+
+  if request.method == "POST":
+    if form.validate() == False:
+      return render_template('createReward.html', form=form)
+    else:
+      reward = Reward(form.name.data, form.quality.data, form.cost.data, form.url.data)
+      db.session.add(reward)
+      db.session.commit()
+      return redirect(url_for('views.index'))
+
+  elif request.method == "GET":
+    return render_template('createReward.html', form=form)
 
 
 
