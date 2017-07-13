@@ -63,16 +63,16 @@
   border: none; 
 }
 </style>
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/players.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/home.css') }}">
 
-<div style="display:none;" id="myDiv"> <!-- loader -->
-  <main class="container createHero-section">
+  <main class="container createPlayer-section">
     <div class="section-content">
       <br>
       <br>
-      <h2>Create an hero</h2>
+      <h2>Create an player</h2>
 
-      <form method="POST" action="/createHero">
+      <form method="POST" action="/createPlayer">
         {{ form.hidden_tag() }}
 
         <div class="form-group">
@@ -88,15 +88,15 @@
         </div>
 
         <div class="form-group">
-          {{ form.age.label }}
+          {{ form.level.label }}
 
-          {% if form.age.errors %}
-            {% for error in form.age.errors %}
+          {% if form.level.errors %}
+            {% for error in form.level.errors %}
               <p class="error-message">{{ error }}</p>
             {% endfor %}
           {% endif %}
 
-          {{ form.age }}
+          {{ form.level }}
         </div>
 
         <div class="form-group">
@@ -112,34 +112,20 @@
         </div>
 
         <div class="form-group">
-          {{ form.description.label }}
+          {{ form.server.label }}
 
-          {% if form.description.errors %}
-            {% for error in form.description.errors %}
+          {% if form.server.errors %}
+            {% for error in form.server.errors %}
               <p class="error-message">{{ error }}</p>
             {% endfor %}
           {% endif %}
 
-          {{ form.description }}
+          {{ form.server }}
         </div>
 
-
-        <div class="form-group">
-          {{ form.affiliation.label }}
-
-          {% if form.affiliation.errors %}
-            {% for error in form.affiliation.errors %}
-              <p class="error-message">{{ error }}</p>
-            {% endfor %}
-          {% endif %}
-
-          {{ form.affiliation }}
-        </div>
 
         {{ form.submit(class="btn-primary") }}
       </form>
     </div>
   </main>
-</div> <!--loader -->
-  
 {% endblock %}

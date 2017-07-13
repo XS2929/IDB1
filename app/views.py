@@ -5,7 +5,7 @@ import models as models
 from models import *
 from sqlalchemy import or_
 
-from forms import SignupForm, LoginForm, HeroForm
+from forms import SignupForm, LoginForm, HeroForm, PlayerForm
 
 views = Blueprint('views', __name__)
 
@@ -36,7 +36,7 @@ def players():
 
 @views.route('/api/players/asc', methods=['GET'])
 def players_asc():
-    """ Returns Heroes Page """
+    """ Returns Players Page """
     data = models.Player.query.order_by(models.Player.name.asc()).all()
     if not data:
         return render_template('404.html', thing='Heroes')
@@ -44,7 +44,7 @@ def players_asc():
 
 @views.route('/api/players/desc', methods=['GET'])
 def players_desc():
-    """ Returns Heroes Page """
+    """ Returns Players Page """
     data = models.Player.query.order_by(models.Player.name.desc()).all()
     if not data:
         return render_template('404.html', thing='Heroes')
@@ -127,7 +127,7 @@ def rewards():
     if type(request.args.get('filter')) is unicode:
         session["reward filter"] = str(request.args.get('filter'))
 
-    """ Returns Heroes Page """
+    """ Returns Rewards Page """
     if session["reward order"] == "Low Cost":
         if session["reward filter"] == "non":
             data = models.Reward.query.order_by(models.Reward.cost.asc()).all()
@@ -178,7 +178,7 @@ def achievements():
     if type(request.args.get('filter')) is unicode:
         session["achievement filter"] = str(request.args.get('filter'))
 
-    """ Returns Heroes Page """
+    """ Returns Achievements Page """
     if session["achievement order"] == "ascending":
         if session["achievement filter"] == "non":
             data = models.Achievement.query.order_by(models.Achievement.name.asc()).all()
@@ -213,7 +213,7 @@ def achievement(achievement_id):
 
 @views.route('/about/')
 def about():
-    """ Returns Heroes Page """
+    """ Returns About Page """
     return render_template('about.html')
 
 # Usage example: "http://127.0.0.1:5000/api/search?search_string=her&page=1"
@@ -400,6 +400,26 @@ def createHero():
 
   elif request.method == "GET":
     return render_template('createHero.html', form=form)
+
+@views.route("/createPlayer", methods=["GET", "POST"])
+def createPlayer():
+  #control access to this page
+  if 'email' not in session:
+    return redirect(url_for('views.login'))
+  
+  form = PlayerForm()
+
+  if request.method == "POST":
+    if form.validate() == False:
+      return render_template('createPlayer.html', form=form)
+    else:
+      player = Player(form.name.data, form.server.data, form.level.data, form.url.data)
+      db.session.add(player)
+      db.session.commit()
+      return redirect(url_for('views.index'))
+
+  elif request.method == "GET":
+    return render_template('createPlayer.html', form=form)
 
 
 
