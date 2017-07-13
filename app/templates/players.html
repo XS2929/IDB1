@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/players.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/home.css') }}">
 
+
 <div style="display:none;" id="myDiv"> <!-- loader -->
 
 <br>
@@ -17,15 +18,15 @@
   <div class="row">
     <h4>SORT BY:</h4>
     <div class="my-button">
-        <a href="{{url_for('views.players_asc')}}" class ="btn btn-info" role="button">Ascending</a>
-        <a href="{{url_for('views.players_desc')}}" class ="btn btn-info" role="button">Descending</a>
+        <button href="{{url_for('views.players_asc')}}" role="button">Ascending</button>
+        <button href="{{url_for('views.players_desc')}}" role="button">Descending</button>
     </div>
   </div>
 
   <div class="row">
       <h4>FILTER BY:</h4>
         <div class="my-button">
-          <a href="{{url_for('views.players')}}" class ="btn btn-info" role="button">Show All</a>
+          <button href="{{url_for('views.players')}}" role="button">Show All</button>
         </div>
   </div>
 
