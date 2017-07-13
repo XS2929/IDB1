@@ -29,3 +29,9 @@ class PlayerForm(Form):
   server = StringField('server', validators=[DataRequired("Please input player server.")])
   submit = SubmitField("Create")
 
+class AchievementForm(Form):
+  name = StringField('Name', validators=[DataRequired("Please input achievement name.")])
+  description = StringField('description', validators=[DataRequired("Please input achievement description.")])
+  type = StringField('type', validators=[DataRequired("Please input achievement type")])
+  url = StringField('url', validators=[DataRequired("Please input achievement image url.")])
+  submit = SubmitField("Create")

@@ -146,7 +146,7 @@ class Achievement(db.Model):
     """model for achievement"""
     __tablename__ = 'achievement'
 
-    id = db.Column(db.Integer, nullable=False, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
     type = db.Column(db.String, nullable=False)
@@ -157,6 +157,12 @@ class Achievement(db.Model):
     #hero = db.relationship("Hero", backref="Achievement",lazy='dynamic')
     reward = db.relationship("Reward",backref='Achievement',uselist=False,foreign_keys=[reward_id])
     hero = db.relationship("Hero",backref='Achievement',uselist=False,foreign_keys=[hero_id])
+    
+    def __init__(self, name, description, type, url):
+        self.name = name
+        self.description = description 
+        self.type = type
+        self.url = url
 
     def __repr__(self):
         return "<Achievement(name='%s', description=%s, type=%s, url=%s, reward=%s, hero=%s)>" % (
