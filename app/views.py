@@ -384,7 +384,7 @@ def login():
       user = models.User.query.filter_by(email=email).first()
       if user is not None and user.check_password(password):
         session['email'] = form.email.data
-        return redirect(url_for('views.contentManager'), user=user)
+        return redirect(url_for('views.contentManager'))
       else:
         return redirect(url_for('views.login'))
 
