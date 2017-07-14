@@ -400,6 +400,11 @@ def logout():
 
 #Content Manager Tools --------
 
+@views.route('/contentManager/')
+def contentManager():
+    """ Returns Content Manager Page """
+    return render_template('contentManager.html')
+
 #Create Hero -----
 @views.route("/createHero", methods=["GET", "POST"])
 def createHero():

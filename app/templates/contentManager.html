@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/home.css') }}">
+
+<style>
+  .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:visited {
+  background: #fa9c1e !important;
+  background-color: #fa9c1e !important;
+}
+
+.btn-primary {
+  background: #29292c;
+  color: #ffffff;
+  box-shadow: none;
+  outline: 0 none;
+  border: none; 
+}
+</style>
+
+<!--loader -->
+<div style="display:none;" id="myDiv"> 
+
+    <br>
+    <br>
+    <br>
+
+  <div class="container">
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Create
+      </button>
+      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <li> <a class="dropdown-item" href="{{ url_for('views.createHero') }}">Hero </a></li>
+        <li> <a class="dropdown-item" href="{{ url_for('views.createAchievement') }}">Achievement</a></li>
+        <li> <a class="dropdown-item" href="{{ url_for('views.createPlayer') }}">Player</a></li>
+        <li> <a class="dropdown-item" href="{{ url_for('views.createReward') }}">Reward</a></li>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button id="btnGroupDrop2" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Remove
+      </button>
+      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <li> <a class="dropdown-item" href="{{ url_for('views.createHero') }}">Hero </a></li>
+        <li> <a class="dropdown-item" href="{{ url_for('views.createAchievement') }}">Achievement</a></li>
+        <li> <a class="dropdown-item" href="{{ url_for('views.createPlayer') }}">Player</a></li>
+        <li> <a class="dropdown-item" href="{{ url_for('views.createReward') }}">Reward</a></li>
+      </div>
+    </div>  
+  </div> <!-- container -->  
+
+
+
+
+
+
+
+
+
+
+</div> <!-- Loader -->
+
+
+
+
+
+{% endblock %}
