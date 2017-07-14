@@ -15,14 +15,27 @@
   <div class="row">
     <h4>SORT BY:</h4>
     <div class="my-button">
-      <button onclick="sortFunction('ascending')">Ascending</button>
-      <button onclick="sortFunction('descending')">Descending</button>
+	{% if order == 'ascending' %}
+	    <button style="background-color: black" onclick="sortFunction('ascending')">Ascending</button>
+	    <button onclick="sortFunction('descending')">Descending</button>
+	{% else %}
+       <button onclick="sortFunction('ascending')">Ascending</button>
+       <button style="background-color: black" onclick="sortFunction('descending')">Descending</button>
+    {% endif %}
     </div>
     <h4>FILTER BY AFFILIATION:</h4>
     <div class="my-button">
-      <button onclick="filterFunction('Overwatch')">Overwatch Affiliated</button>
-      <button onclick="filterFunction('nonOverwatch')">Other</button>
-    </div>
+	{%if filter == 'Overwatch'%}
+	 <button style="background-color: black" onclick="filterFunction('Overwatch')">Overwatch Affiliated</button>
+	 <button onclick="filterFunction('nonOverwatch')">Other</button>
+    {% elif filter == 'nonOverwatch'%}
+    <button onclick="filterFunction('Overwatch')">Overwatch Affiliated</button>
+    <button style="background-color: black" onclick="filterFunction('nonOverwatch')">Other</button>
+    {%else%}
+     <button onclick="filterFunction('Overwatch')">Overwatch Affiliated</button>
+     <button onclick="filterFunction('nonOverwatch')">Other</button>
+    {% endif %}
+     </div>
   </div> <!--row-->
   <div class="row">
     {% for item in output %}

@@ -18,11 +18,13 @@
   <div class="row">
     <h4>SORT BY:</h4>
     <div class="my-button">
-
-        <button onclick = "sortFunction('ascending')">Ascending</button>
-        <button onclick = "sortFunction('descending')">Descending</button>
-<!--  -->
-
+	{% if order == 'ascending' %}
+	    <button style="background-color: black" onclick="sortFunction('ascending')">Ascending</button>
+	    <button onclick="sortFunction('descending')">Descending</button>
+	{% else %}
+       <button onclick="sortFunction('ascending')">Ascending</button>
+       <button style="background-color: black" onclick="sortFunction('descending')">Descending</button>
+    {% endif %}
     </div>
   </div>
 
@@ -30,9 +32,23 @@
 
     <h4>FILTER BY SERVER:</h4>
     <div class="my-button">
-      <button onclick = "filterFunction('us')">United States</button>
-      <button onclick = "filterFunction('kr')">Korea</button>
-      <button onclick = "filterFunction('eu')">Europe</button>
+	{%if filter == 'us'%}
+	 <button style="background-color: black" onclick="filterFunction('us')">United States</button>
+	 <button onclick="filterFunction('kr')">Korea</button>
+	 <button onclick="filterFunction('eu')">Europe</button>
+    {% elif filter == 'kr'%}
+    <button onclick="filterFunction('us')">United States</button>
+    <button style="background-color: black" onclick="filterFunction('kr')">Korea</button>
+    <button onclick="filterFunction('eu')">Europe</button>
+    {% elif filter == 'eu'%}
+    <button onclick="filterFunction('us')">United States</button>
+	<button onclick="filterFunction('kr')">Korea</button>
+	<button style="background-color: black" onclick="filterFunction('eu')">Europe</button>
+    {%else%}
+     <button onclick="filterFunction('us')">United States</button>
+     <button onclick="filterFunction('kr')">Korea</button>
+	 <button onclick="filterFunction('eu')">Europe</button>
+    {% endif %}	
     </div>
 
   </div>

@@ -15,13 +15,28 @@
   <div class="row">
   <h4>SORT BY:</h4>
   <div class="my-button">
-    <button onclick = "sortFunction('Low Cost')">Low Cost</button>
-    <button onclick = "sortFunction('High Cost')">High Cost</button>
+	  {% if order == 'Low Cost' %}
+	    <button style="background-color: black" onclick="sortFunction('Low Cost')">Low Cost</button>
+	    <button onclick="sortFunction('High Cost')">High Cost</button>
+	{% else %}
+       <button onclick="sortFunction('Low Cost')">Low Cost</button>
+       <button style="background-color: black" onclick="sortFunction('High Cost')">High Cost</button>
+    {% endif %}
   </div>
-  <h4>FILTER BY AFFILIATION:</h4>
+  <h4>FILTER BY:</h4>
   <div class="my-button">
-    <button onclick = "filterFunction('From Achievements')">From Achievements</button>
-    <button onclick = "filterFunction('Not From Achievements')">Not From Achievements</button>
+	  {%if filter == 'From Achievements'%}
+	 <button style="background-color: black" onclick="filterFunction('From Achievements')">From Achievements</button>
+	 <button onclick="filterFunction('Not From Achievements')">Not From Achievements</button>
+    {% elif filter == 'Not From Achievements'%}
+    <button onclick="filterFunction('From Achievements')">From Achievements</button>
+    <button style="background-color: black" onclick="filterFunction('Not From Achievements')">Not From Achievements</button>
+    {%else%}
+    <button onclick="filterFunction('From Achievements')">From Achievements</button>
+	 <button onclick="filterFunction('Not From Achievements')">Not From Achievements</button>
+    {% endif %}
+    
+
   </div>
   </div>
 <div class = "row">

@@ -9,6 +9,7 @@ from forms import SignupForm, LoginForm, HeroForm, PlayerForm, AchievementForm, 
 
 views = Blueprint('views', __name__)
 
+
 @views.route('/') 
 def index():
     """ Returns Welcome Page """
@@ -67,7 +68,7 @@ def players():
         return render_template('404.html', thing='Players')
     output = data[9 * (session["player page"] - 1): 9 * session["player page"]]
 
-    return render_template('players.html', data=data, output=output, page = session["player page"])
+    return render_template('players.html', data=data, output=output, page = session["player page"], order = session["player order"], filter = session["player filter"])
     
 
 
@@ -118,7 +119,7 @@ def heroes():
         return render_template('404.html', thing='Heroes')
     output = data[9 * (session["hero page"] - 1): 9 * session["hero page"]]
 
-    return render_template('heroes.html', data=data, output=output, page = session["hero page"])
+    return render_template('heroes.html', data=data, output=output, page = session["hero page"], filter = session["hero filter"], order = session["hero order"])
 
 
 @views.route('/api/heroes/<int:hero_id>', methods=['GET'])
@@ -167,7 +168,7 @@ def rewards():
         return render_template('404.html', thing='Rewards')
     output = data[54 * (session["reward page"] - 1): 54 * session["reward page"]]
 
-    return render_template('rewards.html', data=data, output=output, page= session["reward page"] )
+    return render_template('rewards.html', data=data, output=output, page= session["reward page"], order =  session["reward order"], filter = session["reward filter"])
 
 
 @views.route('/api/rewards/<int:reward_id>', methods=['GET'])
@@ -218,7 +219,7 @@ def achievements():
         return render_template('404.html', thing='Rewards')
     output = data[12 * (session["achievement page"] - 1): 12 * session["achievement page"]]
 
-    return render_template('achievements.html', data=data, output=output, page = session["achievement page"])
+    return render_template('achievements.html', data=data, output=output, page = session["achievement page"], order = session["achievement order"], filter = session["achievement filter"])
 
 @views.route('/api/achievements/<int:achievement_id>', methods=['GET'])
 def achievement(achievement_id):
@@ -236,20 +237,6 @@ def about():
     """ Returns About Page """
     return render_template('about.html')
 
-adminUser = "admin@overwatchdb.me"; # pass is admin123
-
-@views.route('/api/contentManager')
-def manage():
-    user = ""
-    if ("email" in session):
-        user = session['email']
-    data = [[], [], [], []]
-    data[0] += models.Achievement.query.all()
-    data[1] += models.Reward.query.all()
-    data[2] += models.Player.query.all()
-    data[3] += models.Hero.query.all()
-    data = [[d.serialize() for d in v if (d.creator == user or d.creator == None and user == adminUser)] for v in data ]
-    return jsonify(data)
 
 # Usage example: "http://127.0.0.1:5000/api/search?search_string=her&page=1"
 @views.route('/api/search', methods=['GET'])
@@ -394,10 +381,10 @@ def login():
       email = form.email.data
       password = form.password.data
 
-      user = User.query.filter_by(email=email).first()
+      user = models.User.query.filter_by(email=email).first()
       if user is not None and user.check_password(password):
         session['email'] = form.email.data
-        return redirect(url_for('views.index'))
+        return redirect(url_for('views.contentManager'), user=user)
       else:
         return redirect(url_for('views.login'))
 
@@ -415,10 +402,29 @@ def logout():
 
 #Content Manager Tools --------
 
-@views.route('/contentManager/')
+adminUser = "admin@overwatchdb.me"; # pass is admin123
+
+@views.route('/api/contentManager', methods=["GET"])
 def contentManager():
-    """ Returns Content Manager Page """
-    return render_template('contentManager.html')
+    if 'email' not in session:
+      return redirect(url_for('views.login'))
+
+    user = ""
+    if ("email" in session):
+        user = session['email']
+    data = [[], [], [], []]
+    data[0] += models.Achievement.query.all()
+    data[1] += models.Reward.query.all()
+    data[2] += models.Player.query.all()
+    data[3] += models.Hero.query.all()
+    data = [[d.serialize() for d in v if (d.creator == user or d.creator == None and user == adminUser)] for v in data ]
+    user_content = jsonify(data)
+
+    return render_template('contentManager.html', data=data, user=user) 
+        #output=output)
+
+    
+
 
 #Create Hero -----
 @views.route("/createHero", methods=["GET", "POST"])
@@ -433,7 +439,7 @@ def createHero():
     if form.validate() == False:
       return render_template('createHero.html', form=form)
     else:
-      hero = Hero(form.name.data, form.description.data, form.affiliation.data, form.age.data, form.url.data, session['email'])
+      hero = models.Hero(form.name.data, form.description.data, form.affiliation.data, form.age.data, form.url.data, session['email'])
       db.session.add(hero)
       db.session.commit()
       return redirect(url_for('views.index'))
