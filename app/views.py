@@ -236,6 +236,21 @@ def about():
     """ Returns About Page """
     return render_template('about.html')
 
+adminUser = "admin@overwatchdb.me"; # pass is admin123
+
+@views.route('/api/contentManager')
+def manage():
+    user = ""
+    if ("email" in session):
+        user = session['email']
+    data = [[], [], [], []]
+    data[0] += models.Achievement.query.all()
+    data[1] += models.Reward.query.all()
+    data[2] += models.Player.query.all()
+    data[3] += models.Hero.query.all()
+    data = [[d.serialize() for d in v if (d.creator == user or d.creator == None and user == adminUser)] for v in data ]
+    return jsonify(data)
+
 # Usage example: "http://127.0.0.1:5000/api/search?search_string=her&page=1"
 @views.route('/api/search', methods=['GET'])
 def search(search_string="", page=1):

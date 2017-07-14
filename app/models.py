@@ -56,7 +56,7 @@ class Hero(db.Model):
     affiliation = db.Column(db.String, nullable=False)
     age = db.Column(db.String, nullable=False)
     url = db.Column(db.String, nullable=False)
-    creator = db.Column(db.String)
+    creator = db.Column(db.String, nullable=False, default='admin')
 
     players = db.relationship('Player', backref='Hero',lazy='dynamic')
     achievements = db.relationship('Achievement', backref='Hero',lazy='dynamic')
@@ -68,6 +68,8 @@ class Hero(db.Model):
         self.url = url
         self.affiliation = affiliation
         self.creator = creator
+        if (self.creator is None):
+            self.creator = "admin"
 
 
 
@@ -94,7 +96,7 @@ class Player(db.Model):
     hero_id = db.Column(db.Integer, db.ForeignKey("hero.id"), nullable=False)
     level = db.Column(db.String, nullable=False)
     url = db.Column(db.String, nullable=False)
-    creator = db.Column(db.String)
+    creator = db.Column(db.String, nullable=False, default='admin')
 
     achievements = db.relationship('Achievement', secondary=player_achievement ,backref=db.backref('players', lazy='dynamic'))
     
@@ -106,6 +108,8 @@ class Player(db.Model):
         self.level = level
         self.url = url
         self.creator = creator
+        if (self.creator is None):
+            self.creator = "admin"
 
     def __repr__(self):
         return "<Player(name='%s', server=%s, level=%s, url=%s, hero=%s, achievements=%s)>" % (
@@ -129,7 +133,7 @@ class Reward(db.Model):
     quality = db.Column(db.String, nullable=False)
     url = db.Column(db.String, nullable=False)
     cost = db.Column(db.Integer, nullable=False)
-    creator = db.Column(db.String)
+    creator = db.Column(db.String, nullable=False, default='admin')
     hero_id = db.Column(db.Integer, db.ForeignKey("hero.id"), nullable=True)
     achievement_id = db.Column(db.Integer, db.ForeignKey("achievement.id"), nullable=True)
 
@@ -142,6 +146,8 @@ class Reward(db.Model):
         self.cost = cost
         self.url = url
         self.creator = creator
+        if (self.creator is None):
+            self.creator = "admin"
 
     def __repr__(self):
         return "<Reward(name='%s', quality=%s, url=%s, cost=%s, achievement=%s, hero=%s)>" % (
@@ -165,7 +171,7 @@ class Achievement(db.Model):
     description = db.Column(db.String, nullable=False)
     type = db.Column(db.String, nullable=False)
     url = db.Column(db.String, nullable=False)
-    creator = db.Column(db.String)
+    creator = db.Column(db.String, nullable=False, default='admin', onupdate='admin')
     hero_id = db.Column(db.Integer, db.ForeignKey("hero.id"), nullable=True)
     reward_id = db.Column(db.Integer, db.ForeignKey("reward.id"), nullable=True)
     
