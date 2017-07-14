@@ -413,7 +413,7 @@ def createHero():
     if form.validate() == False:
       return render_template('createHero.html', form=form)
     else:
-      hero = Hero(form.name.data, form.description.data, form.affiliation.data, form.age.data, form.url.data)
+      hero = Hero(form.name.data, form.description.data, form.affiliation.data, form.age.data, form.url.data, session['email'])
       db.session.add(hero)
       db.session.commit()
       return redirect(url_for('views.index'))
@@ -433,7 +433,7 @@ def createPlayer():
     if form.validate() == False:
       return render_template('createPlayer.html', form=form)
     else:
-      player = Player(form.name.data, form.server.data, form.level.data, form.url.data)
+      player = Player(form.name.data, form.server.data, form.level.data, form.url.data, session['email'])
       db.session.add(player)
       db.session.commit()
       return redirect(url_for('views.index'))
@@ -454,7 +454,7 @@ def createAchievement():
     if form.validate() == False:
       return render_template('createAchievement.html', form=form)
     else:
-      achievement = Achievement(form.name.data, form.description.data, form.type.data, form.url.data)
+      achievement = Achievement(form.name.data, form.description.data, form.type.data, form.url.data, session['email'])
       db.session.add(achievement)
       db.session.commit()
       return redirect(url_for('views.index'))
@@ -475,7 +475,7 @@ def createReward():
     if form.validate() == False:
       return render_template('createReward.html', form=form)
     else:
-      reward = Reward(form.name.data, form.quality.data, form.cost.data, form.url.data)
+      reward = Reward(form.name.data, form.quality.data, form.cost.data, form.url.data, session['email'])
       db.session.add(reward)
       db.session.commit()
       return redirect(url_for('views.index'))
