@@ -462,6 +462,30 @@ def createAchievement():
   elif request.method == "GET":
     return render_template('createAchievement.html', form=form)
 
+@views.route("/delete", methods=["POST"])
+def delete():
+  #control access to this page
+  if 'email' not in session:
+    return redirect(url_for('views.login'))
+  
+  form = AchievementForm()
+
+    if form.validate() == False:
+      return render_template('delete.html', form=form)
+    else:
+      achievement = Achievement(form.name.data, form.description.data, form.type.data, form.url.data)
+    elif form.model.data is "Hero"
+        models.Hero.query.filter_by(name=form.name.data).delete()
+    elif form.model.data is "Achievement"
+        models.Achievement.query.filter_by(name=form.name.data).delete()
+    elif form.model.data is "Reward"
+        models.Reward.query.filter_by(name=form.name.data).delete()
+    elif form.model.data is "Player"
+        models.Player.query.filter_by(name=form.name.data).delete()
+
+      db.session.commit()
+      return redirect(url_for('views.index'))    
+
 
 @views.route("/createReward", methods=["GET", "POST"])
 def createReward():
