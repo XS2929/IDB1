@@ -56,15 +56,19 @@ class Hero(db.Model):
     affiliation = db.Column(db.String, nullable=False)
     age = db.Column(db.String, nullable=False)
     url = db.Column(db.String, nullable=False)
+    creator = db.Column(db.String)
+
     players = db.relationship('Player', backref='Hero',lazy='dynamic')
     achievements = db.relationship('Achievement', backref='Hero',lazy='dynamic')
 
-    def __init__(self, name, description, affiliation, age, url):
+    def __init__(self, name, description, affiliation, age, url, creator):
         self.name = name
         self.description = description 
         self.age = age
         self.url = url
         self.affiliation = affiliation
+        self.creator = creator
+
 
 
     def __repr__(self):
@@ -90,16 +94,18 @@ class Player(db.Model):
     hero_id = db.Column(db.Integer, db.ForeignKey("hero.id"), nullable=False)
     level = db.Column(db.String, nullable=False)
     url = db.Column(db.String, nullable=False)
+    creator = db.Column(db.String)
 
     achievements = db.relationship('Achievement', secondary=player_achievement ,backref=db.backref('players', lazy='dynamic'))
     
     hero = db.relationship("Hero",backref='Player',uselist=False,foreign_keys=[hero_id])
 
-    def __init__(self, name, server, level, url):
+    def __init__(self, name, server, level, url, creator):
         self.name = name
         self.server = server 
         self.level = level
         self.url = url
+        self.creator = creator
 
     def __repr__(self):
         return "<Player(name='%s', server=%s, level=%s, url=%s, hero=%s, achievements=%s)>" % (
@@ -123,17 +129,19 @@ class Reward(db.Model):
     quality = db.Column(db.String, nullable=False)
     url = db.Column(db.String, nullable=False)
     cost = db.Column(db.Integer, nullable=False)
+    creator = db.Column(db.String)
     hero_id = db.Column(db.Integer, db.ForeignKey("hero.id"), nullable=True)
     achievement_id = db.Column(db.Integer, db.ForeignKey("achievement.id"), nullable=True)
 
     achievement = db.relationship("Achievement",backref='Reward',uselist=False,foreign_keys=[achievement_id])
     hero = db.relationship("Hero",backref='Reward',uselist=False,foreign_keys=[hero_id])
 
-    def __init__(self, name, quality, cost, url):
+    def __init__(self, name, quality, cost, url, creator):
         self.name = name
         self.quality = quality 
         self.cost = cost
         self.url = url
+        self.creator = creator
 
     def __repr__(self):
         return "<Reward(name='%s', quality=%s, url=%s, cost=%s, achievement=%s, hero=%s)>" % (
@@ -157,6 +165,7 @@ class Achievement(db.Model):
     description = db.Column(db.String, nullable=False)
     type = db.Column(db.String, nullable=False)
     url = db.Column(db.String, nullable=False)
+    creator = db.Column(db.String)
     hero_id = db.Column(db.Integer, db.ForeignKey("hero.id"), nullable=True)
     reward_id = db.Column(db.Integer, db.ForeignKey("reward.id"), nullable=True)
     
@@ -164,11 +173,12 @@ class Achievement(db.Model):
     reward = db.relationship("Reward",backref='Achievement',uselist=False,foreign_keys=[reward_id])
     hero = db.relationship("Hero",backref='Achievement',uselist=False,foreign_keys=[hero_id])
     
-    def __init__(self, name, description, type, url):
+    def __init__(self, name, description, type, url, creator):
         self.name = name
         self.description = description 
         self.type = type
         self.url = url
+        self.creator = creator
 
     def __repr__(self):
         return "<Achievement(name='%s', description=%s, type=%s, url=%s, reward=%s, hero=%s)>" % (
