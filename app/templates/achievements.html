@@ -15,13 +15,26 @@
   <div class="row">
   <h4>SORT BY:</h4>
   <div class="my-button">
-    <button onclick="sortFunction('ascending')">Ascending</button>
-    <button onclick="sortFunction('descending')">Descending</button>
+	{% if order == 'ascending' %}
+	    <button style="background-color: black" onclick="sortFunction('ascending')">Ascending</button>
+	    <button onclick="sortFunction('descending')">Descending</button>
+	{% else %}
+       <button onclick="sortFunction('ascending')">Ascending</button>
+       <button style="background-color: black" onclick="sortFunction('descending')">Descending</button>
+    {% endif %}
   </div>
   <h4>FILTER BY:</h4>
   <div class="my-button">
-    <button onclick="filterFunction('Linked to Hero')">Linked to Hero </button>
-    <button onclick="filterFunction('Not Linked to Hero')">Not Linked to Hero </button>
+	 {%if filter == 'Linked to Hero'%}
+	 <button style="background-color: black" onclick="filterFunction('Linked to Hero')">Linked to Hero</button>
+	 <button onclick="filterFunction('Not Linked to Hero')">Not Linked to Hero</button>
+    {% elif filter == 'Not Linked to Hero'%}
+    <button onclick="filterFunction('Linked to Hero')">Linked to Hero</button>
+    <button style="background-color: black" onclick="filterFunction('Not Linked to Hero')">Not Linked to Hero</button>
+    {%else%}
+    <button onclick="filterFunction('Linked to Hero')">Linked to Hero</button>
+	 <button onclick="filterFunction('Not Linked to Hero')">Not Linked to Hero</button>
+    {% endif %}
   </div>
   </div>
 <div class = "row">

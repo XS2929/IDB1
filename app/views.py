@@ -68,7 +68,7 @@ def players():
         return render_template('404.html', thing='Players')
     output = data[9 * (session["player page"] - 1): 9 * session["player page"]]
 
-    return render_template('players.html', data=data, output=output, page = session["player page"])
+    return render_template('players.html', data=data, output=output, page = session["player page"], order = session["player order"], filter = session["player filter"])
     
 
 
@@ -119,7 +119,7 @@ def heroes():
         return render_template('404.html', thing='Heroes')
     output = data[9 * (session["hero page"] - 1): 9 * session["hero page"]]
 
-    return render_template('heroes.html', data=data, output=output, page = session["hero page"])
+    return render_template('heroes.html', data=data, output=output, page = session["hero page"], filter = session["hero filter"], order = session["hero order"])
 
 
 @views.route('/api/heroes/<int:hero_id>', methods=['GET'])
@@ -168,7 +168,7 @@ def rewards():
         return render_template('404.html', thing='Rewards')
     output = data[54 * (session["reward page"] - 1): 54 * session["reward page"]]
 
-    return render_template('rewards.html', data=data, output=output, page= session["reward page"] )
+    return render_template('rewards.html', data=data, output=output, page= session["reward page"], order =  session["reward order"], filter = session["reward filter"])
 
 
 @views.route('/api/rewards/<int:reward_id>', methods=['GET'])
@@ -219,7 +219,7 @@ def achievements():
         return render_template('404.html', thing='Rewards')
     output = data[12 * (session["achievement page"] - 1): 12 * session["achievement page"]]
 
-    return render_template('achievements.html', data=data, output=output, page = session["achievement page"])
+    return render_template('achievements.html', data=data, output=output, page = session["achievement page"], order = session["achievement order"], filter = session["achievement filter"])
 
 @views.route('/api/achievements/<int:achievement_id>', methods=['GET'])
 def achievement(achievement_id):
