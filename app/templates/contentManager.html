@@ -7,16 +7,22 @@
 <style>
   .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:visited {
   background: #fa9c1e !important;
-  background-color: #fa9c1e !important;
 }
 
 .btn-primary {
-  background: #29292c;
-  color: #ffffff;
+  background: #2d2d30 !important;
+  color: #d5d5d5;
   box-shadow: none;
   outline: 0 none;
   border: none; 
+  border-color: transparent;
 }
+
+.dropdown-menu > li > a {
+  color: #fa9c1e !important;
+  border-color: transparent;
+}
+
 </style>
 
 <!--loader -->
@@ -27,11 +33,11 @@
     <br>
 
   <div class="container">
-    <div class="btn-group" role="group">
-      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
         Create
       </button>
-      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      <div class="dropdown-menu">
         <li> <a class="dropdown-item" href="{{ url_for('views.createHero') }}">Hero </a></li>
         <li> <a class="dropdown-item" href="{{ url_for('views.createAchievement') }}">Achievement</a></li>
         <li> <a class="dropdown-item" href="{{ url_for('views.createPlayer') }}">Player</a></li>
@@ -51,7 +57,7 @@
     </div>  
   </div> <!-- container -->  
 
-<!--   <div class="container">
+<!--   <div class="container-fluid">
     <div class="row">
     {% for item in output %}
       <div class ="col-md-4">
