@@ -464,25 +464,25 @@ def createAchievement():
 
 @views.route("/delete", methods=["GET", "POST"])
 def delete():
-  #control access to this page
+    #control access to this page
     if 'email' not in session:
         return redirect(url_for('views.login'))
 
     form = DeleteForm()
     print(form.name.data)
     print(form.model.data)
+    print(session['email'])
 
     if form.validate() == False:
         return render_template('delete.html', form=form)
-    elif form.model.data is "hero" or "Hero":
-        models.Hero.query.filter_by(name=form.name.data).delete()
+    elif form.model.data is "hero" or "Hero" :
+        models.Hero.query.filter(and_(Hero.name == form.name.data, Hero.creator == session['email'])).delete()
     elif form.model.data is "achievement" or "Achievement" :
-        print(models.Achievement.query.filter(Achievement.name == form.name.data))
-        models.Achievement.query.filter(Achievement.name == form.name.data).delete()
+        models.Achievement.query.filter(and_(Achievement.name == form.name.data, Achievement.creator == session['email'])).delete()
     elif form.model.data is "reward" or "Reward":
-        models.Reward.query.filter_by(name=form.name.data).delete()
+        models.Reward.query.filter(and_(Reward.name == form.name.data, Reward.creator == session['email'])).delete()
     elif form.model.data is "player" or "Player":
-        models.Player.query.filter_by(name=form.name.data).delete()
+        models.Player.query.filter(and_(Player.name == form.name.data, Player.creator == session['email'])).delete()
 
     db.session.commit()
     return redirect(url_for('views.index'))    

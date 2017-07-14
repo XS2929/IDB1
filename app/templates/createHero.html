@@ -3,65 +3,65 @@
 {% block content %}
 <style type="text/css">
   .signup-section .section-content h2 {
-  font-size: 30px;
-}
+    font-size: 30px;
+  }
 
-.signup-section .section-content {
-  position: relative;
-  top: 53px;
-}
+  .signup-section .section-content {
+    position: relative;
+    top: 53px;
+  }
 
-.form-group {
-  margin-bottom: 20px;
-}
+  .form-group {
+    margin-bottom: 20px;
+  }
 
-.form-group label {
-  color: #3a3a3a;
-  display: block;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 5px;
-}
+  .form-group label {
+    color: #3a3a3a;
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
 
-.form-group input {
-  border: none;
-  border-bottom: 2px solid #4285f4;
-  background-color: transparent;
-  color: #3a3a3a;
-  font-size: 18px;
-  padding: 5px 0;
-  width: 100%;
-}
+  .form-group input {
+    border: none;
+    border-bottom: 2px solid #4285f4;
+    background-color: transparent;
+    color: #3a3a3a;
+    font-size: 18px;
+    padding: 5px 0;
+    width: 100%;
+  }
 
-.form-group input:focus {
-  outline: 0;
-}
+  .form-group input:focus {
+    outline: 0;
+  }
 
-.form-group .error-message {
-  margin: 10px 0;
-  color: #db4437;
-}
+  .form-group .error-message {
+    margin: 10px 0;
+    color: #db4437;
+  }
 
-.form-group .error-message + input {
-  border-bottom: 2px solid #db4437;
-}
+  .form-group .error-message + input {
+    border-bottom: 2px solid #db4437;
+  }
 
-.error-message {
-  color: #db4437;
-}
+  .error-message {
+    color: #db4437;
+  }
 
-.btn-primary:hover, .btn-primary:focus {
-  background: #fa9c1e;
-}
+  .btn-primary:hover, .btn-primary:focus {
+    background: #fa9c1e;
+  }
 
-.btn-primary {
-  background: #29292c;
-  color: #ffffff;
-  box-shadow: none;
-  outline: 0 none;
-  border: none; 
-}
+  .btn-primary {
+    background: #29292c;
+    color: #ffffff;
+    box-shadow: none;
+    outline: 0 none;
+    border: none; 
+  }
 </style>
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/home.css') }}">
 
@@ -79,9 +79,9 @@
           {{ form.name.label }}
 
           {% if form.name.errors %}
-            {% for error in form.name.errors %}
-              <p class="error-message">{{ error }}</p>
-            {% endfor %}
+          {% for error in form.name.errors %}
+          <p class="error-message">{{ error }}</p>
+          {% endfor %}
           {% endif %}
 
           {{ form.name }}
@@ -91,9 +91,9 @@
           {{ form.age.label }}
 
           {% if form.age.errors %}
-            {% for error in form.age.errors %}
-              <p class="error-message">{{ error }}</p>
-            {% endfor %}
+          {% for error in form.age.errors %}
+          <p class="error-message">{{ error }}</p>
+          {% endfor %}
           {% endif %}
 
           {{ form.age }}
@@ -103,9 +103,9 @@
           {{ form.url.label }}
 
           {% if form.url.errors %}
-            {% for error in form.url.errors %}
-              <p class="error-message">{{ error }}</p>
-            {% endfor %}
+          {% for error in form.url.errors %}
+          <p class="error-message">{{ error }}</p>
+          {% endfor %}
           {% endif %}
 
           {{ form.url }}
@@ -115,9 +115,9 @@
           {{ form.description.label }}
 
           {% if form.description.errors %}
-            {% for error in form.description.errors %}
-              <p class="error-message">{{ error }}</p>
-            {% endfor %}
+          {% for error in form.description.errors %}
+          <p class="error-message">{{ error }}</p>
+          {% endfor %}
           {% endif %}
 
           {{ form.description }}
@@ -128,9 +128,9 @@
           {{ form.affiliation.label }}
 
           {% if form.affiliation.errors %}
-            {% for error in form.affiliation.errors %}
-              <p class="error-message">{{ error }}</p>
-            {% endfor %}
+          {% for error in form.affiliation.errors %}
+          <p class="error-message">{{ error }}</p>
+          {% endfor %}
           {% endif %}
 
           {{ form.affiliation }}
@@ -141,5 +141,5 @@
     </div>
   </main>
 </div> <!--loader -->
-  
+
 {% endblock %}
