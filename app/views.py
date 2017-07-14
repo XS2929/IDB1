@@ -5,7 +5,7 @@ import models as models
 from models import *
 from sqlalchemy import or_
 
-from forms import SignupForm, LoginForm, HeroForm, PlayerForm, AchievementForm, RewardForm
+from forms import SignupForm, LoginForm, HeroForm, PlayerForm, AchievementForm, RewardForm, DeleteForm
 
 views = Blueprint('views', __name__)
 
@@ -462,29 +462,30 @@ def createAchievement():
   elif request.method == "GET":
     return render_template('createAchievement.html', form=form)
 
-@views.route("/delete", methods=["POST"])
+@views.route("/delete", methods=["GET", "POST"])
 def delete():
   #control access to this page
-  if 'email' not in session:
-    return redirect(url_for('views.login'))
-  
-  form = AchievementForm()
+    if 'email' not in session:
+        return redirect(url_for('views.login'))
+
+    form = DeleteForm()
+    print(form.name.data)
+    print(form.model.data)
 
     if form.validate() == False:
-      return render_template('delete.html', form=form)
-    else:
-      achievement = Achievement(form.name.data, form.description.data, form.type.data, form.url.data)
-    elif form.model.data is "Hero"
+        return render_template('delete.html', form=form)
+    elif form.model.data is "hero" or "Hero":
         models.Hero.query.filter_by(name=form.name.data).delete()
-    elif form.model.data is "Achievement"
-        models.Achievement.query.filter_by(name=form.name.data).delete()
-    elif form.model.data is "Reward"
+    elif form.model.data is "achievement" or "Achievement" :
+        print(models.Achievement.query.filter(Achievement.name == form.name.data))
+        models.Achievement.query.filter(Achievement.name == form.name.data).delete()
+    elif form.model.data is "reward" or "Reward":
         models.Reward.query.filter_by(name=form.name.data).delete()
-    elif form.model.data is "Player"
+    elif form.model.data is "player" or "Player":
         models.Player.query.filter_by(name=form.name.data).delete()
 
-      db.session.commit()
-      return redirect(url_for('views.index'))    
+    db.session.commit()
+    return redirect(url_for('views.index'))    
 
 
 @views.route("/createReward", methods=["GET", "POST"])

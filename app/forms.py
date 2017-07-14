@@ -42,3 +42,8 @@ class RewardForm(Form):
   cost = IntegerField('cost', validators=[DataRequired("Please input achievement cost")])
   url = StringField('url', validators=[DataRequired("Please input reward image url.")])
   submit = SubmitField("Create")
+
+class DeleteForm(Form):
+  name = StringField('Name', validators=[DataRequired("Please input name of entity to delete.")])
+  model = StringField('Model', validators=[DataRequired("Please input model/category of entity to delete i.e. Hero, Player, Achievement, Reward.")])
+  submit = SubmitField("Delete")

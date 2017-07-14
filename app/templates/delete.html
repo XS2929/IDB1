@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style type="text/css">
+  .signup-section .section-content h2 {
+    font-size: 30px;
+  }
+
+  .signup-section .section-content {
+    position: relative;
+    top: 53px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    color: #3a3a3a;
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .form-group input {
+    border: none;
+    border-bottom: 2px solid #4285f4;
+    background-color: transparent;
+    color: #3a3a3a;
+    font-size: 18px;
+    padding: 5px 0;
+    width: 100%;
+  }
+
+  .form-group input:focus {
+    outline: 0;
+  }
+
+  .form-group .error-messmodel {
+    margin: 10px 0;
+    color: #db4437;
+  }
+
+  .form-group .error-messmodel + input {
+    border-bottom: 2px solid #db4437;
+  }
+
+  .error-messmodel {
+    color: #db4437;
+  }
+
+  .btn-primary:hover, .btn-primary:focus {
+    background: #fa9c1e;
+  }
+
+  .btn-primary {
+    background: #29292c;
+    color: #ffffff;
+    box-shadow: none;
+    outline: 0 none;
+    border: none; 
+  }
+</style>
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/home.css') }}">
+
+<div style="display:none;" id="myDiv"> <!-- loader -->
+  <main class="container delete-section">
+    <div class="section-content">
+      <br>
+      <br>
+      <h2>Delete a Player, Hero, Reward or Achievement</h2>
+
+      <form method="POST" action="/delete">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+          {{ form.name.label }}
+
+          {% if form.name.errors %}
+          {% for error in form.name.errors %}
+          <p class="error-messmodel">{{ error }}</p>
+          {% endfor %}
+          {% endif %}
+
+          {{ form.name }}
+        </div>
+
+        <div class="form-group">
+          {{ form.model.label }}
+
+          {% if form.model.errors %}
+          {% for error in form.model.errors %}
+          <p class="error-messmodel">{{ error }}</p>
+          {% endfor %}
+          {% endif %}
+
+          {{ form.model }}
+        </div>
+
+        {{ form.submit(class="btn-primary") }}
+      </form>
+    </div>
+  </main>
+</div> <!--loader -->
+
+{% endblock %}
