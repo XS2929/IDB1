@@ -45,15 +45,9 @@
       </div>
     </div>
     <div class="btn-group">
-      <button id="btnGroupDrop2" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button id="btnGroupDrop2" type="button" class="btn btn-primary" onclick="window.location.href='{{ url_for('views.delete') }}';">
           Remove
       </button>
-      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-        <li> <a class="dropdown-item" href="{{ url_for('views.createHero') }}">Hero </a></li>
-        <li> <a class="dropdown-item" href="{{ url_for('views.createAchievement') }}">Achievement</a></li>
-        <li> <a class="dropdown-item" href="{{ url_for('views.createPlayer') }}">Player</a></li>
-        <li> <a class="dropdown-item" href="{{ url_for('views.createReward') }}">Reward</a></li>
-      </div>
     </div>  
   </div> <!-- container -->  
 
