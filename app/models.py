@@ -4,6 +4,7 @@
 import sys
 
 import flask
+import views;
 
 from flask import jsonify
 
@@ -56,7 +57,7 @@ class Hero(db.Model):
     affiliation = db.Column(db.String, nullable=False)
     age = db.Column(db.String, nullable=False)
     url = db.Column(db.String, nullable=False)
-    creator = db.Column(db.String, nullable=False, default='admin')
+    creator = db.Column(db.String, nullable=False, default=views.adminUser)
 
     players = db.relationship('Player', backref='Hero',lazy='dynamic')
     achievements = db.relationship('Achievement', backref='Hero',lazy='dynamic')
@@ -96,7 +97,7 @@ class Player(db.Model):
     hero_id = db.Column(db.Integer, db.ForeignKey("hero.id"), nullable=False)
     level = db.Column(db.String, nullable=False)
     url = db.Column(db.String, nullable=False)
-    creator = db.Column(db.String, nullable=False, default='admin')
+    creator = db.Column(db.String, nullable=False, default=views.adminUser)
 
     achievements = db.relationship('Achievement', secondary=player_achievement ,backref=db.backref('players', lazy='dynamic'))
     
@@ -133,7 +134,7 @@ class Reward(db.Model):
     quality = db.Column(db.String, nullable=False)
     url = db.Column(db.String, nullable=False)
     cost = db.Column(db.Integer, nullable=False)
-    creator = db.Column(db.String, nullable=False, default='admin')
+    creator = db.Column(db.String, nullable=False, default=views.adminUser)
     hero_id = db.Column(db.Integer, db.ForeignKey("hero.id"), nullable=True)
     achievement_id = db.Column(db.Integer, db.ForeignKey("achievement.id"), nullable=True)
 
@@ -171,7 +172,7 @@ class Achievement(db.Model):
     description = db.Column(db.String, nullable=False)
     type = db.Column(db.String, nullable=False)
     url = db.Column(db.String, nullable=False)
-    creator = db.Column(db.String, nullable=False, default='admin', onupdate='admin')
+    creator = db.Column(db.String, nullable=False, default=views.adminUser)
     hero_id = db.Column(db.Integer, db.ForeignKey("hero.id"), nullable=True)
     reward_id = db.Column(db.Integer, db.ForeignKey("reward.id"), nullable=True)
     
