@@ -5,7 +5,7 @@ import models as models
 from models import *
 from sqlalchemy import or_
 
-from forms import SignupForm, LoginForm, HeroForm, PlayerForm, AchievementForm, RewardForm
+from forms import SignupForm, LoginForm, HeroForm, PlayerForm, AchievementForm, RewardForm, DeleteForm
 
 views = Blueprint('views', __name__)
 
@@ -481,6 +481,31 @@ def createAchievement():
 
   elif request.method == "GET":
     return render_template('createAchievement.html', form=form)
+
+@views.route("/delete", methods=["GET", "POST"])
+def delete():
+    #control access to this page
+    if 'email' not in session:
+        return redirect(url_for('views.login'))
+
+    form = DeleteForm()
+    print(form.name.data)
+    print(form.model.data)
+    print(session['email'])
+
+    if form.validate() == False:
+        return render_template('delete.html', form=form)
+    elif form.model.data is "hero" or "Hero" :
+        models.Hero.query.filter(and_(Hero.name == form.name.data, Hero.creator == session['email'])).delete()
+    elif form.model.data is "achievement" or "Achievement" :
+        models.Achievement.query.filter(and_(Achievement.name == form.name.data, Achievement.creator == session['email'])).delete()
+    elif form.model.data is "reward" or "Reward":
+        models.Reward.query.filter(and_(Reward.name == form.name.data, Reward.creator == session['email'])).delete()
+    elif form.model.data is "player" or "Player":
+        models.Player.query.filter(and_(Player.name == form.name.data, Player.creator == session['email'])).delete()
+
+    db.session.commit()
+    return redirect(url_for('views.index'))    
 
 
 @views.route("/createReward", methods=["GET", "POST"])
