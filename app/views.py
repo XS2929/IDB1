@@ -3,7 +3,7 @@ import json
 import traceback
 import models as models
 from models import *
-from sqlalchemy import or_
+from sqlalchemy import or_, and_
 
 from forms import SignupForm, LoginForm, HeroForm, PlayerForm, AchievementForm, RewardForm, DeleteForm
 
@@ -411,14 +411,12 @@ def contentManager():
 
     user = ""
     if ("email" in session):
-        user = session['email']
+        user = str(session['email'])
     data = [[], [], [], []]
-    data[0] += models.Achievement.query.all()
-    data[1] += models.Reward.query.all()
-    data[2] += models.Player.query.all()
-    data[3] += models.Hero.query.all()
-    data = [[d.serialize() for d in v if (d.creator == user or d.creator == None and user == adminUser)] for v in data ]
-    user_content = jsonify(data)
+    data[0] = models.Achievement.query.filter(Achievement.creator == user).all()
+    data[1] = models.Reward.query.filter(Reward.creator == user).all()
+    data[2] = models.Player.query.filter(Player.creator == user).all()
+    data[3] = models.Hero.query.filter(Hero.creator == user).all()
 
     return render_template('contentManager.html', data=data, user=user) 
         #output=output)

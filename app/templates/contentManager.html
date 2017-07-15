@@ -54,16 +54,56 @@
 
   <div class="container-fluid">
     <div class="row">
-    {% for item in data %}
+	<h2>Achievements</h2>  
+    {% for item in data[0] %}
       <div class ="col-md-4">
         <div class="filterable-item">
-          <h3>{{ item }}</h3>
+          <h3>{{ item.name }}</h3>
+          <a href = "/api/achievements/{{item.id}}"><img src="{{item.url}}" alt="" height="300" width="300"></a>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+      
+      <div class="row">
+    <h2>Rewards</h2>  
+   {% for item in data[1] %}
+      <div class ="col-md-4">
+        <div class="filterable-item">
+          <h3>{{ item.name }}</h3>
+          <a href = "/api/rewards/{{item.id}}"><img src="{{item.url}}" alt="" height="300" width="300"></a>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+       
+      <div class="row">
+	<h2>Players</h2>  
+    {% for item in data[2] %}
+      <div class ="col-md-4">
+        <div class="filterable-item">
+          <h3>{{ item.name }}</h3>
+          <a href = "/api/players/{{item.id}}"><img src="{{item.url}}" alt="" height="300" width="300"></a>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+      
+      
+      <div class="row">
+		<h2>Heroes</h2>  
+    {% for item in data[3] %}
+      <div class ="col-md-4">
+        <div class="filterable-item">
           <h3>{{ item.name }}</h3>
           <a href = "/api/heroes/{{item.id}}"><img src="{{item.url}}" alt="" height="300" width="300"></a>
         </div>
       </div>
       {% endfor %}
-    </div>
+      </div>
+     
+      
+  
   </div>
 
 
