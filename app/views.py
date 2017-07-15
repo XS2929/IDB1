@@ -440,7 +440,7 @@ def createHero():
       hero = models.Hero(form.name.data, form.description.data, form.affiliation.data, form.age.data, form.url.data, session['email'])
       db.session.add(hero)
       db.session.commit()
-      return redirect(url_for('views.index'))
+      return redirect(url_for('views.contentManager'))
 
   elif request.method == "GET":
     return render_template('createHero.html', form=form)
@@ -460,7 +460,7 @@ def createPlayer():
       player = Player(form.name.data, form.server.data, form.level.data, form.url.data, session['email'])
       db.session.add(player)
       db.session.commit()
-      return redirect(url_for('views.index'))
+      return redirect(url_for('views.contentManager'))
 
   elif request.method == "GET":
     return render_template('createPlayer.html', form=form)
@@ -481,7 +481,7 @@ def createAchievement():
       achievement = Achievement(form.name.data, form.description.data, form.type.data, form.url.data, session['email'])
       db.session.add(achievement)
       db.session.commit()
-      return redirect(url_for('views.index'))
+      return redirect(url_for('views.contentManager'))
 
   elif request.method == "GET":
     return render_template('createAchievement.html', form=form)
@@ -491,25 +491,30 @@ def delete():
     #control access to this page
     if 'email' not in session:
         return redirect(url_for('views.login'))
-
+    
     form = DeleteForm()
     print(form.name.data)
     print(form.model.data)
     print(session['email'])
 
     if form.validate() == False:
-        return render_template('delete.html', form=form)
-    elif form.model.data is "hero" or "Hero" :
+        data = [[], [], [], []]
+        data[0] = models.Achievement.query.filter(Achievement.creator == session['email']).all()
+        data[1] = models.Reward.query.filter(Reward.creator == session['email']).all()
+        data[2] = models.Player.query.filter(Player.creator == session['email']).all()
+        data[3] = models.Hero.query.filter(Hero.creator == session['email']).all()
+        return render_template('delete.html', form=form, data=data)
+    if str(form.model.data).lower() == "hero":
         models.Hero.query.filter(and_(Hero.name == form.name.data, Hero.creator == session['email'])).delete()
-    elif form.model.data is "achievement" or "Achievement" :
+    elif str(form.model.data).lower() == "achievement":
         models.Achievement.query.filter(and_(Achievement.name == form.name.data, Achievement.creator == session['email'])).delete()
-    elif form.model.data is "reward" or "Reward":
+    elif str(form.model.data).lower() == "reward":
         models.Reward.query.filter(and_(Reward.name == form.name.data, Reward.creator == session['email'])).delete()
-    elif form.model.data is "player" or "Player":
+    elif str(form.model.data).lower() == "player":
         models.Player.query.filter(and_(Player.name == form.name.data, Player.creator == session['email'])).delete()
 
     db.session.commit()
-    return redirect(url_for('views.index'))    
+    return redirect(url_for('views.contentManager'))    
 
 
 @views.route("/createReward", methods=["GET", "POST"])
@@ -527,7 +532,7 @@ def createReward():
       reward = Reward(form.name.data, form.quality.data, form.cost.data, form.url.data, session['email'])
       db.session.add(reward)
       db.session.commit()
-      return redirect(url_for('views.index'))
+      return redirect(url_for('views.contentManager'))
 
   elif request.method == "GET":
     return render_template('createReward.html', form=form)

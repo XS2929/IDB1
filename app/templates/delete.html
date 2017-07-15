@@ -101,6 +101,74 @@
 
         {{ form.submit(class="btn-primary") }}
       </form>
+      <div class="container-fluid">
+    <div class="row">
+  <h3><strong>Achievements</strong></h3>
+    {% if data[0] == []%}
+    <br>
+     <h4>You haven't created any achievements yet</h4> 
+    {% endif %}  
+    {% for item in data[0] %}
+      <div class ="col-md-3">
+        <div class="filterable-item">
+          <h4>{{ item.name }}</h4>
+          <a href = "/api/achievements/{{item.id}}"><img src="{{item.url}}" alt="" height="200" width="200"></a>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+      <br>
+      <div class="row">
+    <h3><strong>Rewards</strong></h3>
+    {% if data[1] == [] %}
+     <br>
+     <h4>You haven't created any rewards yet</h4> 
+    {% endif %}
+   {% for item in data[1] %}
+      <div class ="col-md-3">
+        <div class="filterable-item">
+          <h3>{{ item.name }}</h3>
+          <a href = "/api/rewards/{{item.id}}"><img src="{{item.url}}" alt="" height="200" width="200"></a>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+      <br>
+      <div class="row">
+    <h3><strong>Players</strong></h3>  
+    {% if data[2] == [] %}
+     <br>
+     <h4>You haven't created any players yet</h4> 
+    {% endif %}
+    {% for item in data[2] %}
+      <div class ="col-md-3">
+        <div class="filterable-item">
+          <h3>{{ item.name }}</h3>
+          <a href = "/api/players/{{item.id}}"><img src="{{item.url}}" alt="" height="200" width="200"></a>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+      <br>
+    <div class="row">
+    <h3><strong>Heroes</strong></h3> 
+    {% if data[3] == [] %}
+    <br>
+   <h4>You haven't created any heroes yet</h4> 
+    {% endif %} 
+    {% for item in data[3] %}
+      <div class ="col-md-3">
+        <div class="filterable-item">
+          <h3>{{ item.name }}</h3>
+          <a href = "/api/heroes/{{item.id}}"><img src="{{item.url}}" alt="" height="200" width="200"></a>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+     
+      
+  
+  </div>
     </div>
   </main>
 </div> <!--loader -->
