@@ -17,30 +17,30 @@ class LoginForm(FlaskForm):
 class HeroForm(FlaskForm):
   name = StringField('Name', validators=[DataRequired("Please input hero name.")])
   age = StringField('Age', validators=[DataRequired("Please input hero age.")])
-  url = StringField('url', validators=[DataRequired("Please input hero image url.")])
-  affiliation = StringField('affiliation', validators=[DataRequired("Please input hero affiliation.")])
-  description = StringField('description', validators=[DataRequired("Please input hero description.")])
+  url = StringField('Url', validators=[DataRequired("Please input hero image url.")])
+  affiliation = StringField('Affiliation', validators=[DataRequired("Please input hero affiliation.")])
+  description = StringField('Description', validators=[DataRequired("Please input hero description.")])
   submit = SubmitField("Create")
 
 class PlayerForm(FlaskForm):
   name = StringField('Name', validators=[DataRequired("Please input player name.")])
   level = StringField('Level', validators=[DataRequired("Please input player level.")])
-  url = StringField('url', validators=[DataRequired("Please input player image url.")])
-  server = StringField('server', validators=[DataRequired("Please input player server.")])
+  url = StringField('Url', validators=[DataRequired("Please input player image url.")])
+  server = StringField('Server', validators=[DataRequired("Please input player server.")])
   submit = SubmitField("Create")
 
 class AchievementForm(FlaskForm):
   name = StringField('Name', validators=[DataRequired("Please input achievement name.")])
-  description = StringField('description', validators=[DataRequired("Please input achievement description.")])
-  type = StringField('type', validators=[DataRequired("Please input achievement type")])
-  url = StringField('url', validators=[DataRequired("Please input achievement image url.")])
+  description = StringField('Description', validators=[DataRequired("Please input achievement description.")])
+  type = StringField('Type', validators=[DataRequired("Please input achievement type")])
+  url = StringField('Url', validators=[DataRequired("Please input achievement image url.")])
   submit = SubmitField("Create")
 
 class RewardForm(FlaskForm):
   name = StringField('Name', validators=[DataRequired("Please input reward name.")])
-  quality = StringField('quality', validators=[DataRequired("Please input reward quality.")])
-  cost = IntegerField('cost', validators=[DataRequired("Please input achievement cost")])
-  url = StringField('url', validators=[DataRequired("Please input reward image url.")])
+  quality = StringField('Quality', validators=[DataRequired("Please input reward quality.")])
+  cost = IntegerField('Cost', validators=[DataRequired("Please input reward cost")])
+  url = StringField('Url', validators=[DataRequired("Please input reward image url.")])
   submit = SubmitField("Create")
 
 class DeleteForm(FlaskForm):
