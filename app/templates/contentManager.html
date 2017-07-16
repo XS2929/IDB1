@@ -33,7 +33,7 @@
     <br>
 
   <div class="container">
-    <p>Hello {{ user }}</p>
+    <h1>Hello {{ user }}</h1>
     <div class="btn-group">
       <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
         Create
@@ -61,11 +61,12 @@
         <li> <a class="dropdown-item" href="/editPlayer/{{0}}">Player</a></li>
         <li> <a class="dropdown-item" href="/editReward/{{0}}">Reward</a></li>
       </div>
-    </div>
+    </div> 
   </div> <!-- container -->  
   <br>
   <br>
-  <div class="container-fluid">
+
+  <div class="container">
     <div class="row">
 	<h3><strong>Achievements</strong></h3>
     {% if data[0] == []%}
