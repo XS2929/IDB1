@@ -8,11 +8,100 @@
     margin: auto;
 }
 
+
+.arrow-wrap {
+  position:absolute;
+  z-index:1;
+  left:50%;
+  top:-5em;
+  margin-left:-5em;
+  background:#111;
+  width:10em;
+  height:10em;
+  padding:4em 2em;
+  border-radius:50%;
+  font-size:0.5em;
+  display:block;
+  box-shadow:0px 0px 5px 0px #333;
+}
+
+.arrow {
+  float:left;
+  position: relative;
+  width: 0px;
+height: 100px;
+border-style: solid;
+border-width: 3em 3em 0 3em;
+border-color: #ffffff transparent transparent transparent;
+  -webkit-transform:rotate(360deg)
+}
+
+.arrow:after {
+  content:'';
+  position:absolute;
+  top:-3.2em;
+  left:-3em;
+  width: 0px;
+height: 0px;
+border-style: solid;
+border-width: 3em 3em 0 3em;
+border-color: #111 transparent transparent transparent;
+  -webkit-transform:rotate(360deg)
+}
+
+
+.hint {
+  position:absolute;
+  top:0.6em;
+  width:100%;
+  left:0;
+  font-size:2em;
+  font-style:italic;
+  text-align:center;
+  color:#fff;
+  opacity:0;
+}
+
+section {
+  float:left;
+  width:100%;
+  background:#fff;
+  position:relative;
+  box-shadow:0 0 5px 0px #333;
+}
+
+.arrow-wrap:hover .hint {
+  opacity:1;
+}
+
+
+  @-webkit-keyframes arrows {
+    0% { top:0; }
+    10% { top:12%; }
+    20% { top:0; }
+    30% { top:12%; }
+    40% { top:-12%; }
+    50% { top:12%; }
+    60% { top:0; }
+    70% { top:12%; }
+    80% { top:-12%; }
+    90% { top:12%; }
+    100% { top:0; }
+  }
+  
+  .arrow-wrap .arrow {
+    -webkit-animation: arrows 2.8s 0.4s;
+    -webkit-animation-delay: 3s;
+  }
+
 </style>
 <!-- OverwatchDB home style sheet -->
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/home.css') }}">
 <!--loader -->
 <div style="display:none;" id="myDiv"> 
+
+
+<div class="container-flex">
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -42,9 +131,10 @@
         <img src="https://raw.githubusercontent.com/XS2929/idb/master/app/static/images/background_pic/OverwatchCharacters2.jpg" alt="Los Angeles" width="1200" height="700">
         <div class="carousel-caption">
           
-        </div>      
+        </div>     
       </div>
     </div>
+
 
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -56,6 +146,16 @@
       <span class="sr-only">Next</span>
     </a>
 </div>
+          <section>
+          <a class="arrow-wrap" href="#content">
+          <span class="arrow"></span>
+          <!--ref: https://codepen.io/anon/pen/weZqEG-->
+          </a>
+          </section> 
+</div>
+
+
+
 
 <div class="row" style="background-size: 100%; background-color: #292f33;">
 <div class="col-md-12 col-sm-12 col-xs-12 text-center">
@@ -63,9 +163,56 @@
     
     <a href="https://twitter.com/PlayOverwatch" class="twitter-follow-button" data-show-count="false">Follow @PlayOverwatch</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
+
 </div>
 
 <footer></footer>
 </div> <!--loader-->
+<script type="text/javascript">
+  //this is where we apply opacity to the arrow
+$(window).scroll( function(){
+
+  //get scroll position
+  var topWindow = $(window).scrollTop();
+  //multipl by 1.5 so the arrow will become transparent half-way up the page
+  var topWindow = topWindow * 1.5;
+  
+  //get height of window
+  var windowHeight = $(window).height();
+      
+  //set position as percentage of how far the user has scrolled 
+  var position = topWindow / windowHeight;
+  //invert the percentage
+  position = 1 - position;
+
+  //define arrow opacity as based on how far up the page the user has scrolled
+  //no scrolling = 1, half-way up the page = 0
+  $('.arrow-wrap').css('opacity', position);
+
+});
+
+
+
+
+
+
+//Code stolen from css-tricks for smooth scrolling:
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+</script>
+
+
 {% endblock %}
 
