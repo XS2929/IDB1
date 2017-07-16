@@ -409,9 +409,7 @@ def contentManager():
     if 'email' not in session:
       return redirect(url_for('views.login'))
 
-    user = ""
-    if ("email" in session):
-        user = str(session['email'])
+    user = str(session['email'])
     data = [[], [], [], []]
     data[0] = models.Achievement.query.filter(Achievement.creator == user).all()
     data[1] = models.Reward.query.filter(Reward.creator == user).all()
@@ -485,6 +483,25 @@ def createAchievement():
 
   elif request.method == "GET":
     return render_template('createAchievement.html', form=form)
+	
+@views.route("/btn/delete", methods=["GET", "POST"])
+def delete_btn():
+    if 'email' not in session:
+        return redirect(url_for('views.login'))
+	id = request.args.get('id')
+	type = request.args.get('type')
+	user = str(session['email']);
+	if (type == "achievement"):
+		models.Achievement.query.filter_by(and_(Achievement.creator == user, Achievement.id == id)).delete()
+	if (type == "hero"):
+		models.Hero.query.filter_by(and_(Hero.creator == user, Hero.id == id)).delete()
+	if (type == "player"):
+		models.Player.query.filter_by(and_(Player.creator == user, Player.id == id)).delete()
+	if (type == "reward"):
+		models.Reward.query.filter_by(and_(Reward.creator == user, Reward.id == id)).delete()
+    db.session.commit()
+    return redirect(url_for('views.contentManager'))    
+	
 
 @views.route("/delete", methods=["GET", "POST"])
 def delete():
