@@ -1,0 +1,168 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style type="text/css">
+  .signup-section .section-content h2 {
+    font-size: 30px;
+  }
+
+  .signup-section .section-content {
+    position: relative;
+    top: 53px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    color: #3a3a3a;
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .form-group input {
+    border: none;
+    border-bottom: 2px solid #4285f4;
+    background-color: transparent;
+    color: #3a3a3a;
+    font-size: 18px;
+    padding: 5px 0;
+    width: 100%;
+  }
+
+  .form-group input:focus {
+    outline: 0;
+  }
+
+  .form-group .error-message {
+    margin: 10px 0;
+    color: #db4437;
+  }
+
+  .form-group .error-message + input {
+    border-bottom: 2px solid #db4437;
+  }
+
+  .error-message {
+    color: #db4437;
+  }
+
+  .btn-primary:hover, .btn-primary:focus {
+    background: #fa9c1e;
+  }
+
+  .btn-primary {
+    background: #29292c;
+    color: #ffffff;
+    box-shadow: none;
+    outline: 0 none;
+    border: none; 
+  }
+</style>
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/home.css') }}">
+
+<div style="display:none;" id="myDiv"> <!-- loader -->
+  <main class="container createHero-section">
+    <div class="section-content">
+      <br>
+      <br>
+      {% if show_players ==1 %}
+      <h2>Click the player you wanna edit</h2>
+     {% for item in players %}
+      <div class ="col-md-4">
+        <div class="filterable-item">
+          <a href = "/editPlayer/{{item.id}}"><img src="{{item.url}}" alt="" height="300" width="300"></a>
+          <h3>Name: {{item.name}}</h3>
+          <h3>Server: {{item.server}}</h3>
+          <h3>Level: {{item.level}}</h3>
+          <h3>Url: {{item.url}}</h3>
+        </div>
+      </div>
+      {% endfor %}
+      {% endif %}
+
+     <br>
+      <br>
+      <div class ="col-md-12">
+        {% if show_player ==1 %}
+       <img class="img-circle" src="{{player.url}}" width="200" height="200">          
+          <h5>Name: {{player[0].name}}</h5>
+          <h5>Server: {{player[0].server}}</h5>
+          <h5>Level: {{player[0].level}}</h5>
+          <h5>Url: {{player[0].url}}</h5>
+        {% endif %}
+      </div>
+
+      <br>
+      <div>
+      {% if show_form ==1 %}
+      <hr>
+
+      <h2>Please input updated info for {{player[0].name}}</h2>
+      <br>
+      <br>
+        <form method="POST" action="/editPlayer/{{player[0].id}}">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+          {{ form.name.label }}
+
+          {% if form.name.errors %}
+            {% for error in form.name.errors %}
+              <p class="error-message">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+
+          {{ form.name }}
+        </div>
+
+        <div class="form-group">
+          {{ form.level.label }}
+
+          {% if form.level.errors %}
+            {% for error in form.level.errors %}
+              <p class="error-message">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+
+          {{ form.level }}
+        </div>
+
+        <div class="form-group">
+          {{ form.url.label }}
+
+          {% if form.url.errors %}
+            {% for error in form.url.errors %}
+              <p class="error-message">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+
+          {{ form.url }}
+        </div>
+
+        <div class="form-group">
+          {{ form.server.label }}
+
+          {% if form.server.errors %}
+            {% for error in form.server.errors %}
+              <p class="error-message">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+
+          {{ form.server }}
+        </div>
+
+
+        {{ form.submit(class="btn-primary") }}
+      </form>
+     {% endif %}
+     <div>
+    </div>
+  </main>
+</div> <!--loader -->
+
+{% endblock %}

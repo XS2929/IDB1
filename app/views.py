@@ -493,9 +493,6 @@ def delete():
         return redirect(url_for('views.login'))
     
     form = DeleteForm()
-    print(form.name.data)
-    print(form.model.data)
-    print(session['email'])
 
     if form.validate() == False:
         data = [[], [], [], []]
@@ -537,5 +534,84 @@ def createReward():
   elif request.method == "GET":
     return render_template('createReward.html', form=form)
 
+@views.route("/editHero/<int:hero_id>", methods=["GET", "POST"])
+def editHero(hero_id = 0 ):
+  #control access to this page
+    if 'email' not in session:
+        return redirect(url_for('views.login'))
+    form = HeroForm()
+    if form.validate() == False:
+        if hero_id == 0:
+            heroes = models.Hero.query.filter(Hero.creator == session['email']).all()
+            return render_template('editHero.html', heroes=heroes, show_form =0, show_heroes =1, show_hero = 0)
+        else: 
+            hero = models.Hero.query.filter(and_(Hero.id == hero_id, Hero.creator == session['email'])).all()
+            return render_template('editHero.html', hero=hero, form =form, show_form =1, show_heroes =0, show_hero = 1 )
+    else:
+        models.Hero.query.filter(and_(Hero.id == hero_id, Hero.creator == session['email'])).delete()
+        hero = models.Hero(form.name.data, form.description.data, form.affiliation.data, form.age.data, form.url.data, session['email'])
+        db.session.add(hero)
+        db.session.commit()
+        return redirect(url_for('views.contentManager'))
+
+@views.route("/editAchievement/<int:achievement_id>", methods=["GET", "POST"])
+def editAchievement(achievement_id = 0 ):
+  #control access to this page
+    if 'email' not in session:
+        return redirect(url_for('views.login'))
+    form = AchievementForm()
+    if form.validate() == False:
+        if achievement_id == 0:
+            achievements = models.Achievement.query.filter(Achievement.creator == session['email']).all()
+            return render_template('editAchievement.html', achievements=achievements, show_form =0, show_achievements =1, show_achievement = 0)
+        else: 
+            achievement = models.Achievement.query.filter(and_(Achievement.id == achievement_id, Achievement.creator == session['email'])).all()
+            return render_template('editAchievement.html', achievement=achievement, form =form, show_form =1, show_achievements =0, show_achievement = 1 )
+    else:
+        models.Achievement.query.filter(and_(Achievement.id == achievement_id, Achievement.creator == session['email'])).delete()
+        achievement = Achievement(form.name.data, form.description.data, form.type.data, form.url.data, session['email'])
+        db.session.add(achievement)
+        db.session.commit()
+        return redirect(url_for('views.contentManager'))
+
+@views.route("/editReward/<int:reward_id>", methods=["GET", "POST"])
+def editReward(reward_id = 0 ):
+  #control access to this page
+    if 'email' not in session:
+        return redirect(url_for('views.login'))
+    form = RewardForm()
+    if form.validate() == False:
+        if reward_id == 0:
+            rewards = models.Reward.query.filter(Reward.creator == session['email']).all()
+            return render_template('editReward.html', rewards=rewards, show_form =0, show_rewards =1, show_reward = 0)
+        else: 
+            reward = models.Reward.query.filter(and_(Reward.id == reward_id, Reward.creator == session['email'])).all()
+            return render_template('editReward.html', reward=reward, form =form, show_form =1, show_rewards =0, show_reward = 1 )
+    else:
+        models.Reward.query.filter(and_(Reward.id == reward_id, Reward.creator == session['email'])).delete()
+        reward = Reward(form.name.data, form.quality.data, form.cost.data, form.url.data, session['email'])
+        db.session.add(reward)
+        db.session.commit()
+        return redirect(url_for('views.contentManager'))
+
+@views.route("/editPlayer/<int:player_id>", methods=["GET", "POST"])
+def editPlayer(player_id = 0 ):
+  #control access to this page
+    if 'email' not in session:
+        return redirect(url_for('views.login'))
+    form = PlayerForm()
+    if form.validate() == False:
+        if player_id == 0:
+            players = models.Player.query.filter(Player.creator == session['email']).all()
+            return render_template('editPlayer.html', players=players, show_form =0, show_players =1, show_player = 0)
+        else: 
+            player = models.Player.query.filter(and_(Player.id == player_id, Player.creator == session['email'])).all()
+            return render_template('editPlayer.html', player=player, form =form, show_form =1, show_players =0, show_player = 1 )
+    else:
+        models.Player.query.filter(and_(Player.id == player_id, Player.creator == session['email'])).delete()
+        player = Player(form.name.data, form.server.data, form.level.data, form.url.data, session['email'])
+        db.session.add(player)
+        db.session.commit()
+        return redirect(url_for('views.contentManager'))
 
 
