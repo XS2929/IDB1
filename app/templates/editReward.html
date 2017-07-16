@@ -72,6 +72,13 @@
       <br>
       {% if show_rewards ==1 %}
       <h2>Click the reward you wanna edit</h2>
+      <br>
+      {% if not rewards[0] %}
+      <h3>You haven't created any rewards</h3>
+      <br>
+      <br>
+      <li><a href="{{ url_for('views.contentManager') }}">Back To Content Manager</a></li>
+      {% endif %}
      {% for item in rewards %}
       <div class ="col-md-4">
         <div class="filterable-item">

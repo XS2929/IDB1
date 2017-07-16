@@ -72,6 +72,13 @@
       <br>
       {% if show_players ==1 %}
       <h2>Click the player you wanna edit</h2>
+      <br>
+      {% if not players[0] %}
+      <h3>You haven't created any players</h3>
+      <br>
+      <br>
+      <li><a href="{{ url_for('views.contentManager') }}">Back To Content Manager</a></li>
+      {% endif %}
      {% for item in players %}
       <div class ="col-md-4">
         <div class="filterable-item">

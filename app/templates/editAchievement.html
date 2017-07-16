@@ -72,6 +72,13 @@
       <br>
       {% if show_achievements ==1 %}
       <h2>Click the achievement you wanna edit</h2>
+      <br>
+      {% if not achievements[0] %}
+      <h3>You haven't created any achievements</h3>
+      <br>
+      <br>
+      <li><a href="{{ url_for('views.contentManager') }}">Back To Content Manager</a></li>
+      {% endif %}
      {% for item in achievements %}
       <div class ="col-md-4">
         <div class="filterable-item">

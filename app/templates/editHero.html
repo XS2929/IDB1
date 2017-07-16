@@ -71,7 +71,16 @@
       <br>
       <br>
       {% if show_heroes ==1 %}
-      <h2>Click the hero you wanna edit</h2>
+      <h2><strong>Click the hero you wanna edit</strong></h2>
+      <br>
+      {% if not heroes[0] %}
+      <h3>You haven't created any heroes</h3>
+      <br>
+      <br>
+      <li><a href="{{ url_for('views.contentManager') }}">Back To Content Manager</a></li>
+
+
+      {% endif %}
      {% for item in heroes %}
       <div class ="col-md-4">
         <div class="filterable-item">
