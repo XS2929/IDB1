@@ -1,0 +1,11 @@
+TASK													HOURS ESTIMATED 			HOURS TAKEN
+Implement Content Management									5						4
+Implement Edit													20						15
+Refine the Website												2						1.5
+Complete Technical Report										5						4
+Improve Website Design											2						1
+Create Presentation Script										2						1
+Create Presentation												4						3
+Add Unit Tests													0.5						0.5
+Set up PlanItPoker												0.5						.5
+Update Trello Issues											0.5						.5
