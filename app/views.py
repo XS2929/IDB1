@@ -17,12 +17,12 @@ def index():
 
 @views.route("/ov_loader")
 def ov_loader():
-  return render_template('ov_loader.html')
+	return render_template('ov_loader.html')
 
 @views.route('/tests/run')
 def run_tests():
 	""" Runs all the unittests and returns the text result with verbosity 2 """
-	import overwatchdb.test_runner as test_runner
+	import test_runner as test_runner
 	return test_runner.run_tests()
 
 
@@ -320,7 +320,7 @@ def getContext(val, search):
 				return [val]
 		except Exception:
 			return results
-	if (type(val) is unicode):
+	if (type(val) is unicode or type(val) is str):
 		index = val.find(search)
 		while (index != -1):
 			front = index
@@ -347,55 +347,55 @@ def getContext(val, search):
 
 @views.route("/signup", methods=["GET", "POST"])
 def signup():
-  if 'email' in session:
-	return redirect(url_for('views.index')) 
-  
-  form = SignupForm()
+	if 'email' in session:
+		return redirect(url_for('views.index'))
 
-  if request.method == "POST":
-	if form.validate() == False:
-	  return render_template('signup.html', form=form)
-	else:
-	  newuser = User(form.first_name.data, form.last_name.data, form.email.data, form.password.data)
-	  db.session.add(newuser)
-	  db.session.commit()
+	form = SignupForm()
 
-	  session['email'] = newuser.email
-	  return redirect(url_for('views.index'))
+	if request.method == "POST":
+		if form.validate() == False:
+			return render_template('signup.html', form=form)
+		else:
+			newuser = User(form.first_name.data, form.last_name.data, form.email.data, form.password.data)
+			db.session.add(newuser)
+			db.session.commit()
 
-  elif request.method == "GET":
-	return render_template('signup.html', form=form)
+			session['email'] = newuser.email
+		return redirect(url_for('views.index'))
+
+	elif request.method == "GET":
+		return render_template('signup.html', form=form)
 
 
 @views.route("/login", methods=["GET","POST"])
 def login():
-  if 'email' in session:
-	return redirect(url_for('views.index'))  
+	if 'email' in session:
+		return redirect(url_for('views.index'))
 
-  form = LoginForm()
+	form = LoginForm()
 
-  if request.method == "POST":
-	if form.validate() == False:
-		return render_template("login.html", form=form)
-	else:
-	  email = form.email.data
-	  password = form.password.data
+	if request.method == "POST":
+		if form.validate() == False:
+			return render_template("login.html", form=form)
+		else:
+			email = form.email.data
+			password = form.password.data
 
-	  user = models.User.query.filter_by(email=email).first()
-	  if user is not None and user.check_password(password):
-		session['email'] = form.email.data
-		return redirect(url_for('views.contentManager'))
-	  else:
-		return redirect(url_for('views.login'))
+		user = models.User.query.filter_by(email=email).first()
+		if user is not None and user.check_password(password):
+			session['email'] = form.email.data
+			return redirect(url_for('views.contentManager'))
+		else:
+			return redirect(url_for('views.login'))
 
-  elif request.method == "GET":
-	return render_template('login.html', form=form)
+	elif request.method == "GET":
+		return render_template('login.html', form=form)
 
 
 @views.route("/logout")
 def logout():
-  session.pop('email', None)
-  return redirect(url_for('views.index'))
+	session.pop('email', None)
+	return redirect(url_for('views.index'))
 
 
 
@@ -407,7 +407,7 @@ adminUser = "admin@overwatchdb.me"; # pass is admin123
 @views.route('/api/contentManager', methods=["GET"])
 def contentManager():
 	if 'email' not in session:
-	  return redirect(url_for('views.login'))
+		return redirect(url_for('views.login'))
 
 	user = str(session['email'])
 	data = [[], [], [], []]
@@ -425,64 +425,64 @@ def contentManager():
 #Create Hero -----
 @views.route("/createHero", methods=["GET", "POST"])
 def createHero():
-  #control access to this page
-  if 'email' not in session:
-	return redirect(url_for('views.login'))
-  
-  form = HeroForm()
+	#control access to this page
+	if 'email' not in session:
+		return redirect(url_for('views.login'))
 
-  if request.method == "POST":
-	if form.validate() == False:
-	  return render_template('createHero.html', form=form)
-	else:
-	  hero = models.Hero(form.name.data, form.description.data, form.affiliation.data, form.age.data, form.url.data, session['email'])
-	  db.session.add(hero)
-	  db.session.commit()
-	  return redirect(url_for('views.contentManager'))
+	form = HeroForm()
 
-  elif request.method == "GET":
-	return render_template('createHero.html', form=form)
+	if request.method == "POST":
+		if form.validate() == False:
+			return render_template('createHero.html', form=form)
+		else:
+			hero = models.Hero(form.name.data, form.description.data, form.affiliation.data, form.age.data, form.url.data, session['email'])
+			db.session.add(hero)
+			db.session.commit()
+			return redirect(url_for('views.contentManager'))
+
+	elif request.method == "GET":
+		return render_template('createHero.html', form=form)
 
 @views.route("/createPlayer", methods=["GET", "POST"])
 def createPlayer():
-  #control access to this page
-  if 'email' not in session:
-	return redirect(url_for('views.login'))
-  
-  form = PlayerForm()
+	#control access to this page
+	if 'email' not in session:
+		return redirect(url_for('views.login'))
 
-  if request.method == "POST":
-	if form.validate() == False:
-	  return render_template('createPlayer.html', form=form)
-	else:
-	  player = Player(form.name.data, form.server.data, form.level.data, form.url.data, session['email'])
-	  db.session.add(player)
-	  db.session.commit()
-	  return redirect(url_for('views.contentManager'))
+	form = PlayerForm()
 
-  elif request.method == "GET":
-	return render_template('createPlayer.html', form=form)
+	if request.method == "POST":
+		if form.validate() == False:
+			return render_template('createPlayer.html', form=form)
+		else:
+			player = Player(form.name.data, form.server.data, form.level.data, form.url.data, session['email'])
+			db.session.add(player)
+			db.session.commit()
+			return redirect(url_for('views.contentManager'))
+
+	elif request.method == "GET":
+		return render_template('createPlayer.html', form=form)
 
 
 @views.route("/createAchievement", methods=["GET", "POST"])
 def createAchievement():
-  #control access to this page
-  if 'email' not in session:
-	return redirect(url_for('views.login'))
-  
-  form = AchievementForm()
+	#control access to this page
+	if 'email' not in session:
+		return redirect(url_for('views.login'))
 
-  if request.method == "POST":
-	if form.validate() == False:
-	  return render_template('createAchievement.html', form=form)
-	else:
-	  achievement = Achievement(form.name.data, form.description.data, form.type.data, form.url.data, session['email'])
-	  db.session.add(achievement)
-	  db.session.commit()
-	  return redirect(url_for('views.contentManager'))
+	form = AchievementForm()
 
-  elif request.method == "GET":
-	return render_template('createAchievement.html', form=form)
+	if request.method == "POST":
+		if form.validate() == False:
+			return render_template('createAchievement.html', form=form)
+		else:
+			achievement = Achievement(form.name.data, form.description.data, form.type.data, form.url.data, session['email'])
+			db.session.add(achievement)
+			db.session.commit()
+			return redirect(url_for('views.contentManager'))
+
+	elif request.method == "GET":
+		return render_template('createAchievement.html', form=form)
 		
 @views.route("/btn/delete", methods=["GET", "POST"])
 def delete_btn():
@@ -533,27 +533,27 @@ def delete():
 
 @views.route("/createReward", methods=["GET", "POST"])
 def createReward():
-  #control access to this page
-  if 'email' not in session:
-	return redirect(url_for('views.login'))
-  
-  form = RewardForm()
+	#control access to this page
+	if 'email' not in session:
+		return redirect(url_for('views.login'))
 
-  if request.method == "POST":
-	if form.validate() == False:
-	  return render_template('createReward.html', form=form)
-	else:
-	  reward = Reward(form.name.data, form.quality.data, form.cost.data, form.url.data, session['email'])
-	  db.session.add(reward)
-	  db.session.commit()
-	  return redirect(url_for('views.contentManager'))
+	form = RewardForm()
 
-  elif request.method == "GET":
-	return render_template('createReward.html', form=form)
+	if request.method == "POST":
+		if form.validate() == False:
+			return render_template('createReward.html', form=form)
+		else:
+			reward = Reward(form.name.data, form.quality.data, form.cost.data, form.url.data, session['email'])
+			db.session.add(reward)
+			db.session.commit()
+			return redirect(url_for('views.contentManager'))
+
+	elif request.method == "GET":
+		return render_template('createReward.html', form=form)
 
 @views.route("/editHero/<int:hero_id>", methods=["GET", "POST"])
 def editHero(hero_id = 0 ):
-  #control access to this page
+	#control access to this page
 	if 'email' not in session:
 		return redirect(url_for('views.login'))
 	form = HeroForm()
@@ -573,7 +573,7 @@ def editHero(hero_id = 0 ):
 
 @views.route("/editAchievement/<int:achievement_id>", methods=["GET", "POST"])
 def editAchievement(achievement_id = 0 ):
-  #control access to this page
+	#control access to this page
 	if 'email' not in session:
 		return redirect(url_for('views.login'))
 	form = AchievementForm()
@@ -593,7 +593,7 @@ def editAchievement(achievement_id = 0 ):
 
 @views.route("/editReward/<int:reward_id>", methods=["GET", "POST"])
 def editReward(reward_id = 0 ):
-  #control access to this page
+	#control access to this page
 	if 'email' not in session:
 		return redirect(url_for('views.login'))
 	form = RewardForm()
@@ -613,7 +613,7 @@ def editReward(reward_id = 0 ):
 
 @views.route("/editPlayer/<int:player_id>", methods=["GET", "POST"])
 def editPlayer(player_id = 0 ):
-  #control access to this page
+	#control access to this page
 	if 'email' not in session:
 		return redirect(url_for('views.login'))
 	form = PlayerForm()

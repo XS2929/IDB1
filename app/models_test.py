@@ -4,6 +4,7 @@ from flask_testing import TestCase
 
 # from __init__ import create_app
 from models import db, Player, Hero, Reward, Achievement
+from views import getContext
 
 
 class ModelsTest(TestCase):
@@ -158,4 +159,14 @@ class ModelsTest(TestCase):
         self.assertIn(reward1, db_achievement.rewards)
         self.assertIn(reward2, db_achievement.rewards)
 
-    
+    def test_context(self):
+        context = views.getContext("This is a test", "bingo")
+        self.assertEqual(context, [])
+
+    def test_context2(self):
+        context = views.getContext("This is a test", "test")
+        self.assertEqual(context, ['This is a test'])
+
+    def test_context3(self):
+        context = views.getContext("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua", "a")
+        self.assertEqual(context, ['Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do', ' eiusmod tempor incididunt ut labore et dolore magna aliqua'])
