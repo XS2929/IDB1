@@ -166,7 +166,7 @@ def rewards():
 	
 	if not data:
 		return render_template('404.html', thing='Rewards')
-	output = data[54 * (session["reward page"] - 1): 54 * session["reward page"]]
+	output = data[16 * (session["reward page"] - 1): 16 * session["reward page"]]
 
 	return render_template('rewards.html', data=data, output=output, page= session["reward page"], order =  session["reward order"], filter = session["reward filter"])
 

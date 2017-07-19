@@ -43,10 +43,10 @@
   <div id ="content"
     <hr>
     {% for item in output %}
-      <div class ="col-md-2">
+      <div class ="col-md-3">
         <div class="container-fluid">
           <h6>{{item.name}}</h6>
-          <a href = "/api/rewards/{{item.id}}"><img src="{{item.url}}" alt="" height="80" width="80"></a>
+          <a href = "/api/rewards/{{item.id}}"><img src="{{item.url}}" alt="" height="100" width="100"></a>
         </div>
       </div>
     {% endfor %}
@@ -54,7 +54,7 @@
 </div>
 <div class = "row">    
   <div class="pagination">
-  {% for i in range((data|length/54)|round(0,'ceil')|int) %}
+  {% for i in range((data|length/16)|round(0,'ceil')|int) %}
   {% if i+1 == page %}
 		<button style="background-color: black" onclick="pageFunction({{i+1}})">{{i+1}}</button>
 	{% else %}
