@@ -29,23 +29,23 @@
 
 ###Demonstrate our website
 <br>
-<span style="color: #666666">Navigate</span>
+###Navigate
+<br>
 ###Search
-<span style="color: #666666">Search</span>
+<br>
 ###Edit
-<span style="color: #666666">Edit</span>
+<br>
 ###Run unit tests
-<span style="color: #666666">Run unit tests</span>
 ---
 
 <br>
-### Just <span style="color: #">What we did well</span>
+###<span style="color: #">What we did well</span>
 <span style="color: #e49436">to add</span>
-### Just <span style="color: #">What did we learn</span>
+###<span style="color: #">What did we learn</span>
 <span style="color: #e49436">to add</span>
-### Just <span style="color: #">What can we do better</span>
+###<span style="color: #">What can we do better</span>
 <span style="color: #e49436">to add</span>
-### Just <span style="color: #">What puzzles us</span>
+###<span style="color: #">What puzzles us</span>
 <span style="color: #e49436">to add</span>
 
 ---
