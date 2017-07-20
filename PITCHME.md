@@ -19,20 +19,20 @@
 
 ### XUJIAN SHAO <span style="color: #666666"> to add</span>
 
-### CALVIN LIU <span style="color: #666666>to add</span>
+### CALVIN LIU <span style="color: #666666">to add</span>
 
 ### AUSTIN SIU <span style="color: #666666">to add</span>
 
 ### STEPHEN QING <span style="color: #666666"> to add</span>
 ---
 ###Demonstrate our website
-<br>
+
 ###Navigate
-<br>
+
 ###Search
-<br>
+
 ###Edit
-<br>
+
 ###Run unit tests
 ---
 ###<span style="color: #">What we did well</span>
