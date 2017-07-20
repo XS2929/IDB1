@@ -15,7 +15,7 @@
 <span style="color:gray; font-size:0.6em;">The Tiger Team</span>
 
 ---
-### FREDERICK COPES <span style="color: #666666"> to add</span>
+### FREDERICK COPES <span style="color: #666666"></span>
 <br>
 <span style="color: #666666"> Searching</span>
 <br>
