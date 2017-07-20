@@ -16,6 +16,14 @@
 
 ---
 ### FREDERICK COPES <span style="color: #666666"> to add</span>
+<br>
+<span style="color: #666666"> Searching</span>
+<br>
+<span style="color: #666666"> Filtering and pagination</span>
+<br>
+<span style="color: #666666"> Deleting</span>
+<br>
+<span style="color: #666666"> Sorting</span>
 
 ---
 ### XUJIAN SHAO 
