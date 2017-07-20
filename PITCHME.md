@@ -64,14 +64,19 @@
 <br>
 ###Edit
 <br>
-###Run unit tests
+###Unit tests
 
 ---
 ###Self-critique
 
 ---
 ###<span style="color: #">What we did well</span>
-<span style="color: #e49436">to add</span>
+<br>
+<span style="color: #e49436">Login-based editing makes our data safe</span>
+<br>
+<span style="color: #e49436">Visitor counting feature</span>
+<br>
+<span style="color: #e49436">User friendly features in content manager</span>
 
 ---
 ###<span style="color: #">What did we learn</span>
@@ -79,7 +84,10 @@
 
 ---
 ###<span style="color: #">What can we do better</span>
-<span style="color: #e49436">to add</span>
+<br>
+<span style="color: #e49436">Data gap, can't feed distinct images to rewards</span>
+<br>
+<span style="color: #e49436">Use flask-restless to implement pagination, sorting and filtering</span>
 
 ---
 ###<span style="color: #">What puzzles us</span>
