@@ -15,18 +15,16 @@
 <span style="color:gray; font-size:0.6em;">The Tiger Team</span>
 
 ---
-### FREDERICK COPES <span style="color: #666666"> Technical Report, Trello setting and Back-end</span>
+### FREDERICK COPES <span style="color: #666666"> to add</span>
 
-### XUJIAN SHAO <span style="color: #666666"> Back-end, Database</span>
+### XUJIAN SHAO <span style="color: #666666"> to add</span>
 
-### CALVIN LIU <span style="color: #666666">Front-end, Technical Report and Debug</span>
+### CALVIN LIU <span style="color: #666666>to add</span>
 
-### AUSTIN SIU <span style="color: #666666"> Flask, leading the Phantom Thieves of Hearts, API, stopping Calamity Ganon, React, programming sometimeS</span>
+### AUSTIN SIU <span style="color: #666666">to add</span>
 
-### STEPHEN QING <span style="color: #666666"> Front-end, Technical Report, Website Design and Hosting</span>
+### STEPHEN QING <span style="color: #666666"> to add</span>
 ---
-
-
 ###Demonstrate our website
 <br>
 ###Navigate
@@ -37,8 +35,6 @@
 <br>
 ###Run unit tests
 ---
-
-<br>
 ###<span style="color: #">What we did well</span>
 <span style="color: #e49436">to add</span>
 ###<span style="color: #">What did we learn</span>
