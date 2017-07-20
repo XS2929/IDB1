@@ -25,14 +25,12 @@
 
 ### STEPHEN QING <span style="color: #666666"> to add</span>
 ---
-###Demonstrate our website
-
 ###Navigate
-
+<br>
 ###Search
-
+<br>
 ###Edit
-
+<br>
 ###Run unit tests
 ---
 ###<span style="color: #">What we did well</span>
