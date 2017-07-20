@@ -30,15 +30,16 @@
 
 ---
 ### CALVIN LIU <span style="color: #666666"></span>
-###Instance pages
 <br>
-###Filtering 
+<span style="color: #666666">Instance pages</span>
 <br>
-###Pagination 
+<span style="color: #666666">Filtering </span>
 <br>
-###Sorting 
+<span style="color: #666666">Pagination </span>
 <br>
-###Front-end Styling
+<span style="color: #666666">Sorting </span>
+<br>
+<span style="color: #666666">Front-end Styling</span>
 ---
 
 ### AUSTIN SIU <span style="color: #666666">to add</span>
