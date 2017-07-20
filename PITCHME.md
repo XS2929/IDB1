@@ -21,8 +21,11 @@
 ### XUJIAN SHAO 
 <br>
 <span style="color: #666666"> Database creating and populating</span>
+<br>
 <span style="color: #666666"> Back-end filtering, sorting and pagination</span>
+<br>
 <span style="color: #666666"> Editing and adding</span>
+<br>
 <span style="color: #666666"> Helped with front-end styling</span>
 
 ---
