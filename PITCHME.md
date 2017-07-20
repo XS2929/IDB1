@@ -18,7 +18,12 @@
 ### FREDERICK COPES <span style="color: #666666"> to add</span>
 
 ---
-### XUJIAN SHAO <span style="color: #666666"> to add</span>
+### XUJIAN SHAO 
+<br>
+<span style="color: #666666"> Database creating and populating</span>
+<span style="color: #666666"> Back-end filtering, sorting and pagination</span>
+<span style="color: #666666"> Editing and adding</span>
+<span style="color: #666666"> Helped with front-end styling</span>
 
 ---
 ### CALVIN LIU <span style="color: #666666"></span>
