@@ -1,12 +1,6 @@
 ![LOGO](http://www.hdwallpaper.nu/wp-content/uploads/2016/05/overwatch-logo-hd-wallpaper.jpg)
 
 #### Welcome to Overwatchdb.me!
-<br>
-<span style="color:gray">IDB</span>
-<br>
-<span style="color:gray">Group5</span>
-<br>
-<span style="color:gray">Presentation</span>
 
 ---
 
@@ -121,7 +115,7 @@
 
 ---
 
-### marveldb.net Critique
+### marveldb.net <span style="color: #666666">CRITIQUE</span>
 
 ---
 ###<span style="color: #">What did they do well</span>
