@@ -89,7 +89,6 @@
           <h3>Description: {{item.description}}</h3>
           <h3>Age: {{item.age}}</h3>
           <h3>Affiliation: {{item.affiliation}}</h3>
-          <h3>Url: {{item.url}}</h3>
         </div>
       </div>
       {% endfor %}
@@ -99,7 +98,7 @@
       <br>
       <div class ="col-md-12">
         {% if show_hero ==1 %}
-       <img class="img-circle" src="{{hero.url}}" width="200" height="200">          
+       <img class="img-circle" src="{{hero[0].url}}" width="200" height="200">          
           <h5>Name: {{hero[0].name}}</h5>
           <h5>Description: {{hero[0].description}}</h5>
           <h5>Age: {{hero[0].age}}</h5>
