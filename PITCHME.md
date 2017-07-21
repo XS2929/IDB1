@@ -142,6 +142,4 @@
 
 ---
 
-# Thank you!
-
----
+# Thank <span style="color: #e49436">YOU</span>!
