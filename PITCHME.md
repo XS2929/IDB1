@@ -117,18 +117,20 @@
 
 ---
 ###<span style="color: #">What did they do well</span>
-<span style="color: #e49436">to add</span>
-- Well-coordinated aesthetic with sizing, colors, placement
-- Site feels responsive
+<span style="color: #e49436"></span>
+- Well-coordinated aesthetic
+- UI is responsive
+- Mobile-friendly
 
 ---
 ###<span style="color: #"> What did we learn from their website?
 <span style="color: #e49436">to add</span>
-
+- Our UX could be more responsive
+- Aesthetic should have been better coordinated
 
 ---
 ###<span style="color: #">What can they do better?</span>
-<span style="color: #e49436">to add</span>
+<span style="color: #e49436"></span>
 - Can't layer multiple filters together
 - No way to filter by "Unavailable"
 - Error messages during Editing too vague ("Ooops, something was wrong with your input.")
@@ -136,7 +138,7 @@
 
 ---
 ###<span style="color: #">What puzzles us about their website?</span></span>
-<span style="color: #e49436">to add</span>
+<span style="color: #e49436"></span>
 - No login? At least not intuitive
 - API doesn't seem to work
 
