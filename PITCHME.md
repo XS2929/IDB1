@@ -1,6 +1,6 @@
 ![LOGO](http://www.hdwallpaper.nu/wp-content/uploads/2016/05/overwatch-logo-hd-wallpaper.jpg)
 
-#### Welcome to  <span style="color: #666666">OVERWATCH.ME!</span>
+#### Welcome to  <span style="color: #e49436">OVERWATCH.ME!</span>
 
 ---
 
@@ -9,7 +9,7 @@
 <span style="color:gray; font-size:0.6em;">The Tiger Team</span>
 
 ---
-### FREDERICK <span style="color: #666666">COPES</span>
+### FREDERICK <span style="color: #e49436">COPES</span>
 <br>
 <span style="color: #666666"> Searching</span>
 <br>
@@ -20,7 +20,7 @@
 <span style="color: #666666"> Sorting</span>
 
 ---
-### XUJIAN <span style="color: #666666">SHAO</span>
+### XUJIAN <span style="color: #e49436">SHAO</span>
 <br>
 <span style="color: #666666"> Database creating and populating</span>
 <br>
@@ -31,7 +31,7 @@
 <span style="color: #666666"> Helped with front-end styling</span>
 
 ---
-### CALVIN <span style="color: #666666">LIU</span>
+### CALVIN <span style="color: #e49436">LIU</span>
 <br>
 <span style="color: #666666">Instance pages</span>
 <br>
@@ -45,7 +45,7 @@
 
 ---
 
-### AUSTIN <span style="color: #666666">SIU</span>
+### AUSTIN <span style="color: #e49436">SIU</span>
 <br>
 <span style="color: #666666">RESTful API</span>
 <br>
@@ -59,7 +59,7 @@
 
 ---
 
-### STEPHEN <span style="color: #666666">QING</span>
+### STEPHEN <span style="color: #e49436">QING</span>
 <br>
 <span style="color: #666666">Hosting</span>
 <br>
@@ -116,7 +116,7 @@
 
 ---
 
-### marveldb.net <span style="color: #666666">CRITIQUE</span>
+### marveldb.net <span style="color: #e49436">CRITIQUE</span>
 
 ---
 ###<span style="color: #">What did they do well</span>
