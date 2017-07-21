@@ -139,7 +139,8 @@
 ---
 ###<span style="color: #">What puzzles us about their website?</span></span>
 <span style="color: #e49436"></span>
-- No login? At least not intuitive
+- No login?
+- Doesn't seem to be restriction on Add, Delete, Edit
 - API doesn't seem to work
 
 ---
