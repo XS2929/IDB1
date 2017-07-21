@@ -118,24 +118,27 @@
 ---
 ###<span style="color: #">What did they do well</span>
 <span style="color: #e49436">to add</span>
-- Appearance
-![Logo](https://yt3.ggpht.com/-058HlQo6Dfc/AAAAAAAAAAI/AAAAAAAAAAA/h3mTqyvMa8E/s900-c-k-no-mo-rj-c0xffffff/photo.jpg)
-- Fast
-- Mobile Friendly
+- Well-coordinated aesthetic with sizing, colors, placement
+- Site feels responsive
 
 ---
 ###<span style="color: #"> What did we learn from their website?
 <span style="color: #e49436">to add</span>
 
+
 ---
 ###<span style="color: #">What can they do better?</span>
 <span style="color: #e49436">to add</span>
-- Working API
+- Can't layer multiple filters together
+- No way to filter by "Unavailable"
+- Error messages during Editing too vague ("Ooops, something was wrong with your input.")
+- Strange resizing behavior of forms
 
 ---
 ###<span style="color: #">What puzzles us about their website?</span></span>
 <span style="color: #e49436">to add</span>
-- Why doesn't the API work?
+- No login? At least not intuitive
+- API doesn't seem to work
 
 ---
 
