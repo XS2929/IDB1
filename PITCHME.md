@@ -2,71 +2,62 @@
 
 ---
 
-# About <span style="color: #e49436; text-transform: none">US</span>
+# About the <span style="color: #e49436; text-transform: none">TEAM</span>
 
 +++
 
 ## FREDERICK <span style="color: #e49436">COPES</span>
-<br>
-<span style="color: #666666"> Searching</span>
-<br>
-<span style="color: #666666"> Filtering and pagination</span>
-<br>
-<span style="color: #666666"> Deleting</span>
-<br>
-<span style="color: #666666"> Sorting</span>
+
+-  Searching
+-  Filtering and pagination
+-  Deleting
+-  Sorting
 
 +++
 
 ## XUJIAN <span style="color: #e49436">SHAO</span>
-<br>
-<span style="color: #666666"> Database creating and populating</span>
-<br>
-<span style="color: #666666"> Back-end filtering, sorting and pagination</span>
-<br>
-<span style="color: #666666"> Editing and adding</span>
-<br>
-<span style="color: #666666"> Helped with front-end styling</span>
+
+-  Database creating and populating
+-  Back-end filtering, sorting and pagination
+-  Editing and adding
+-  Helped with front-end styling
 
 +++
 
 ##  CALVIN <span style="color: #e49436">LIU</span>
-<br>
-<span style="color: #666666">Instance pages</span>
-<br>
-<span style="color: #666666">Filtering </span>
-<br>
-<span style="color: #666666">Pagination </span>
-<br>
-<span style="color: #666666">Sorting </span>
-<br>
-<span style="color: #666666">Front-end Styling</span>
+
+- Instance pages
+- Filtering 
+- Pagination 
+- Sorting 
+- Front-end Styling
 
 +++
 
 ## AUSTIN <span style="color: #e49436">SIU</span>
-<br>
-<span style="color: #666666">RESTful API</span>
-<br>
-<span style="color: #666666">Apiary and Models</span>
-<br>
-<span style="color: #666666">Flask</span>
-<br>
-<span style="color: #666666">Front-end Searching</span>
-<br>
-<span style="color: #666666">Deleting</span>
+
+- RESTful API
+- Apiary and Models
+- Flask
+- Front-end Searching
+- Deleting
 
 +++
 
 ## STEPHEN <span style="color: #e49436">QING</span>
-<br>
-<span style="color: #666666">Hosting</span>
-<br>
-<span style="color: #666666">Website Design</span>
-<br>
-<span style="color: #666666">Page Templates</span>
-<br>
-<span style="color: #666666">Debugging Front-end/Back-end code issues</span>
+
+- Hosting
+- Website Design
+- Page Templates
+- Debugging Front-end/Back-end code issues
+
++++
+
+## Graham <span style="color: #e49436">BRYAN</span>
+
+- Misc. Front-end/Back-end Features
+- Website Design
+- Debugging Front-end/Back-end code issues
 
 ---
 
@@ -85,7 +76,7 @@
 
 ## <span style="color: #">What we did <span style="color: #e49436">WELL</span></span>
 
-- <span style="color: #e49436">Login-based editing makes our data safe</span>
+- <span style="color: #e49436">Login-based editing protects data integrity</span>
 - <span style="color: #e49436">Visitor counting feature</span>
 - <span style="color: #e49436">User friendly features in content manager</span>
 
@@ -93,21 +84,23 @@
 
 ## <span style="color: #">What did we <span style="color: #e49436">LEARN</span></span>
 
-- <span style="color: #e49436">Postgres SQL</span>
-- <span style="color: #e49436">Back-end routing</span>
-- <span style="color: #e49436">Front-end styling</span>
+- <span style="color: #e49436">Postgres SQL and SQLAlchemy</span>
+- <span style="color: #e49436">Flask Web Framework</span>
+- <span style="color: #e49436">Front-end styling with Bootstrap</span>
 
 +++
 
 ## <span style="color: #">What can we do <span style="color: #e49436">BETTER</span></span>
 - <span style="color: #e49436">Data gap, can't feed distinct images to rewards</span>
 - <span style="color: #e49436">Use flask-restless to implement pagination, sorting and filtering</span>
-- <span style="color: #e49436">Should use more JS instead of HTMLs</span>
+- <span style="color: #e49436">Better Web practices i.e. No inline JavaScript</span>
+- <span style="color: #e49436">Wider usage of React</span>
+- <span style="color: #e49436">Resizing user-submitted images w/o distortion</span>
 
 +++
 
 ## <span style="color: #">What <span style="color: #e49436">PUZZLES</span> us</span>
-<span style="color: #e49436">to add</span>
+- <span style="color: #e49436">Client-side vs Server-side Pagination/Filtering/Sorting</span>
 
 ---
 
