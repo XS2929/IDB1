@@ -1,7 +1,5 @@
 ---?image=Untitled.png
 
-#### Welcome to  <span style="color: #e49436">OVERWATCH.ME!</span>
-
 ---
 
 # About <span style="color: #e49436; text-transform: none">US</span>
