@@ -72,7 +72,7 @@
 
 ---
 
-# Demonstration
+## Demonstration
 
 - Navigate
 - Search
@@ -83,41 +83,32 @@
 
 # In Retrospect
 
----
-
-# <span style="color: #">What we did <span style="color: #e49436">WELL</span></span>
-
 +++
 
+## <span style="color: #">What we did <span style="color: #e49436">WELL</span></span>
+
 - <span style="color: #e49436">Login-based editing makes our data safe</span>
-<br>
 - <span style="color: #e49436">Visitor counting feature</span>
-<br>
 - <span style="color: #e49436">User friendly features in content manager</span>
 
 +++
 
-# <span style="color: #">What did we <span style="color: #e49436">LEARN</span></span>
-<br>
-<span style="color: #e49436">Postgres SQL</span>
-<br>
-<span style="color: #e49436">Back-end routing</span>
-<br>
-<span style="color: #e49436">Front-end styling</span>
+## <span style="color: #">What did we <span style="color: #e49436">LEARN</span></span>
+
+- <span style="color: #e49436">Postgres SQL</span>
+- <span style="color: #e49436">Back-end routing</span>
+- <span style="color: #e49436">Front-end styling</span>
 
 +++
 
-# <span style="color: #">What can we do <span style="color: #e49436">BETTER</span></span>
-<br>
-<span style="color: #e49436">Data gap, can't feed distinct images to rewards</span>
-<br>
-<span style="color: #e49436">Use flask-restless to implement pagination, sorting and filtering</span>
-<br>
-<span style="color: #e49436">Should use more JS instead of HTMLs</span>
+## <span style="color: #">What can we do <span style="color: #e49436">BETTER</span></span>
+- <span style="color: #e49436">Data gap, can't feed distinct images to rewards</span>
+- <span style="color: #e49436">Use flask-restless to implement pagination, sorting and filtering</span>
+- <span style="color: #e49436">Should use more JS instead of HTMLs</span>
 
 +++
 
-# <span style="color: #">What <span style="color: #e49436">PUZZLES</span> us</span>
+## <span style="color: #">What <span style="color: #e49436">PUZZLES</span> us</span>
 <span style="color: #e49436">to add</span>
 
 ---
