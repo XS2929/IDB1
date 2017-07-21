@@ -1,4 +1,4 @@
-![LOGO](https://raw.githubusercontent.com/XS2929/idb/master/static/gitpitch_pic/logo.png)
+![LOGO](http://www.hdwallpaper.nu/wp-content/uploads/2016/05/overwatch-logo-hd-wallpaper.jpg)
 
 #### Welcome to Overwatchdb.me!
 <br>
