@@ -129,4 +129,8 @@
 
 ---
 
-# Thank <span style="color: #e49436">YOU</span>!
+# Questions?
+
+---
+
+# Thank <span style="color: #e49436">You</span>!
