@@ -52,6 +52,14 @@
 ---
 
 ### AUSTIN SIU <span style="color: #666666">to add</span>
+<br>
+<span style="color: #666666">API Implementation with Flask</span>
+<br>
+<span style="color: #666666">Apiary and API Design</span>
+<br>
+<span style="color: #666666">Search Page and Bar with React</span>
+<br>
+<span style="color: #666666">Deleting</span>
 
 ---
 
