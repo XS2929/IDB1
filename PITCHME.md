@@ -116,7 +116,6 @@
 +++
 
 ## <span style="color: #">What can they do <span style="color: #e49436">BETTER</span>?</span>
-- Can't layer multiple filters together
 - No way to filter by "Unavailable"
 - Error messages during Editing too vague ("Ooops, something was wrong with your input.")
 - Strange resizing behavior of form inputs
