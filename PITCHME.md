@@ -65,7 +65,15 @@
 
 ---
 
-### STEPHEN QING <span style="color: #666666"> to add</span>
+### STEPHEN QING <span style="color: #666666"></span>
+<br>
+<span style="color: #666666">Hosting</span>
+<br>
+<span style="color: #666666">Website Design</span>
+<br>
+<span style="color: #666666">Page Templates</span>
+<br>
+<span style="color: #666666">Debugging Front-end/Back-end code issues</span>
 
 ---
 ###Navigate
