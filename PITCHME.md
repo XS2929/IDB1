@@ -7,7 +7,6 @@
 +++
 
 ## FREDERICK <span style="color: #e49436">COPES</span>
-
 -  Searching
 -  Filtering and pagination
 -  Deleting
@@ -16,7 +15,6 @@
 +++
 
 ## XUJIAN <span style="color: #e49436">SHAO</span>
-
 -  Database creating and populating
 -  Back-end filtering, sorting and pagination
 -  Editing and adding
@@ -25,7 +23,6 @@
 +++
 
 ##  CALVIN <span style="color: #e49436">LIU</span>
-
 - Instance pages
 - Filtering 
 - Pagination 
@@ -35,17 +32,15 @@
 +++
 
 ## AUSTIN <span style="color: #e49436">SIU</span>
-
-- RESTful API
-- Apiary and Models
+- RESTful API Implementation
+- Apiary and Model designs
 - Flask
-- Front-end Searching
+- Searching (Bar and Page)
 - Deleting
 
 +++
 
 ## STEPHEN <span style="color: #e49436">QING</span>
-
 - Hosting
 - Website Design
 - Page Templates
@@ -54,15 +49,15 @@
 +++
 
 ## Graham <span style="color: #e49436">BRYAN</span>
-
-- Misc. Front-end/Back-end Features
+- Front-end Styling
+- Editing
 - Website Design
 - Debugging Front-end/Back-end code issues
+- Misc. Front-end/Back-end Features
 
 ---
 
 ## Demonstration
-
 - Navigate
 - Search
 - Edit
@@ -75,32 +70,30 @@
 +++
 
 ## <span style="color: #">What we did <span style="color: #e49436">WELL</span></span>
-
-- <span style="color: #e49436">Login-based editing protects data integrity</span>
-- <span style="color: #e49436">Visitor counting feature</span>
-- <span style="color: #e49436">User friendly features in content manager</span>
+- Login-based editing protects data integrity
+- Visitor counting feature
+- User friendly features in content manager
 
 +++
 
 ## <span style="color: #">What did we <span style="color: #e49436">LEARN</span></span>
-
-- <span style="color: #e49436">Postgres SQL and SQLAlchemy</span>
-- <span style="color: #e49436">Flask Web Framework</span>
-- <span style="color: #e49436">Front-end styling with Bootstrap</span>
+- Postgres SQL and SQLAlchemy
+- Flask Web Framework
+- Front-end styling with Bootstrap
 
 +++
 
 ## <span style="color: #">What can we do <span style="color: #e49436">BETTER</span></span>
-- <span style="color: #e49436">Data gap, can't feed distinct images to rewards</span>
-- <span style="color: #e49436">Use flask-restless to implement pagination, sorting and filtering</span>
-- <span style="color: #e49436">Better Web practices i.e. No inline JavaScript</span>
-- <span style="color: #e49436">Wider usage of React</span>
-- <span style="color: #e49436">Resizing user-submitted images w/o distortion</span>
+- Data gap, can't feed distinct images to rewards
+- Use flask-restless to implement pagination, sorting and filtering
+- Better Web practices i.e. No inline JavaScript
+- Wider usage of React
+- Resizing user-submitted images w/o distortion
 
 +++
 
 ## <span style="color: #">What <span style="color: #e49436">PUZZLES</span> us</span>
-- <span style="color: #e49436">Client-side vs Server-side Pagination/Filtering/Sorting</span>
+- Client-side vs Server-side Pagination/Filtering/Sorting
 
 ---
 
