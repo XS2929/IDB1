@@ -105,11 +105,13 @@
 
 ---
 
-###Critique Marveldb.net
+### marveldb.net Critique
 
 ---
 ###<span style="color: #">What did they do well</span>
 <span style="color: #e49436">to add</span>
+- Appearance
+![Logo](https://yt3.ggpht.com/-058HlQo6Dfc/AAAAAAAAAAI/AAAAAAAAAAA/h3mTqyvMa8E/s900-c-k-no-mo-rj-c0xffffff/photo.jpg)
 
 ---
 ###<span style="color: #"> What did we learn from their website?
