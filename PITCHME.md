@@ -69,30 +69,31 @@
 
 +++
 
-## <span style="color: #">What we did <span style="color: #e49436">WELL</span></span>
-- Login-based editing protects data integrity
-- Visitor counting feature
-- User friendly features in content manager
+## <span style="color: #">What did we do <span style="color: #e49436">WELL</span>?</span>
+- Login-based Editing protects data integrity
+- Content Manager is provides both better UX and Data Safety
+- Decently responsive UI with highlights and animations for UX
 
 +++
 
-## <span style="color: #">What did we <span style="color: #e49436">LEARN</span></span>
+## <span style="color: #">What did we <span style="color: #e49436">LEARN</span>?</span>
 - Postgres SQL and SQLAlchemy
 - Flask Web Framework
 - Front-end styling with Bootstrap
 
 +++
 
-## <span style="color: #">What can we do <span style="color: #e49436">BETTER</span></span>
+## <span style="color: #">What can we do <span style="color: #e49436">BETTER</span>?</span>
 - Data gap, can't feed distinct images to rewards
 - Use flask-restless to implement pagination, sorting and filtering
 - Better Web practices i.e. No inline JavaScript
 - Wider usage of React
 - Resizing user-submitted images w/o distortion
+- API needs response format rework
 
 +++
 
-## <span style="color: #">What <span style="color: #e49436">PUZZLES</span> us</span>
+## <span style="color: #">What <span style="color: #e49436">PUZZLES</span> us?</span>
 - Client-side vs Server-side Pagination/Filtering/Sorting
 
 ---
@@ -123,8 +124,8 @@
 +++
 
 ## <span style="color: #">What <span style="color: #e49436">PUZZLES</span> us about their website?</span>
-- Unknown restriction on Delete
-- API doesn't seem to work
+- API doesn't seem to work, returns HTML
+- Unintuitive rules over Deleting
 
 ---
 
