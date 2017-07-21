@@ -120,6 +120,8 @@
 <span style="color: #e49436">to add</span>
 - Appearance
 ![Logo](https://yt3.ggpht.com/-058HlQo6Dfc/AAAAAAAAAAI/AAAAAAAAAAA/h3mTqyvMa8E/s900-c-k-no-mo-rj-c0xffffff/photo.jpg)
+- Fast
+- Mobile Friendly
 
 ---
 ###<span style="color: #"> What did we learn from their website?
@@ -128,10 +130,12 @@
 ---
 ###<span style="color: #">What can they do better?</span>
 <span style="color: #e49436">to add</span>
+- Working API
 
 ---
 ###<span style="color: #">What puzzles us about their website?</span></span>
 <span style="color: #e49436">to add</span>
+- Why doesn't the API work?
 
 ---
 
