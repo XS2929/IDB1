@@ -90,7 +90,12 @@
 
 ---
 ###<span style="color: #">What did we learn</span>
-<span style="color: #e49436">to add</span>
+<br>
+<span style="color: #e49436">Postgres SQL</span>
+<br>
+<span style="color: #e49436">Back-end routing</span>
+<br>
+<span style="color: #e49436">Front-end styling</span>
 
 ---
 ###<span style="color: #">What can we do better</span>
@@ -98,6 +103,9 @@
 <span style="color: #e49436">Data gap, can't feed distinct images to rewards</span>
 <br>
 <span style="color: #e49436">Use flask-restless to implement pagination, sorting and filtering</span>
+<br>
+<span style="color: #e49436">Should use more JS instead of HTMLs</span>
+
 
 ---
 ###<span style="color: #">What puzzles us</span>
