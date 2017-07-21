@@ -1,6 +1,6 @@
 ![LOGO](http://www.hdwallpaper.nu/wp-content/uploads/2016/05/overwatch-logo-hd-wallpaper.jpg)
 
-#### Welcome to Overwatchdb.me!
+#### Welcome to  <span style="color: #666666">OVERWATCH.ME!</span>
 
 ---
 
@@ -9,7 +9,7 @@
 <span style="color:gray; font-size:0.6em;">The Tiger Team</span>
 
 ---
-### FREDERICK COPES <span style="color: #666666"></span>
+### FREDERICK <span style="color: #666666">COPES</span>
 <br>
 <span style="color: #666666"> Searching</span>
 <br>
@@ -20,7 +20,7 @@
 <span style="color: #666666"> Sorting</span>
 
 ---
-### XUJIAN SHAO 
+### XUJIAN <span style="color: #666666">SHAO</span>
 <br>
 <span style="color: #666666"> Database creating and populating</span>
 <br>
@@ -31,7 +31,7 @@
 <span style="color: #666666"> Helped with front-end styling</span>
 
 ---
-### CALVIN LIU <span style="color: #666666"></span>
+### CALVIN <span style="color: #666666">LIU</span>
 <br>
 <span style="color: #666666">Instance pages</span>
 <br>
@@ -45,7 +45,7 @@
 
 ---
 
-### AUSTIN SIU <span style="color: #666666"></span>
+### AUSTIN <span style="color: #666666">SIU</span>
 <br>
 <span style="color: #666666">RESTful API</span>
 <br>
@@ -59,7 +59,7 @@
 
 ---
 
-### STEPHEN QING <span style="color: #666666"></span>
+### STEPHEN <span style="color: #666666">QING</span>
 <br>
 <span style="color: #666666">Hosting</span>
 <br>
@@ -70,6 +70,7 @@
 <span style="color: #666666">Debugging Front-end/Back-end code issues</span>
 
 ---
+### Demonstration
 ###Navigate
 <br>
 ###Search
@@ -79,7 +80,7 @@
 ###Unit tests
 
 ---
-###Self-critique
+### Self-critique
 
 ---
 ###<span style="color: #">What we did well</span>
