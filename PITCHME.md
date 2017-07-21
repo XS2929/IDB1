@@ -119,20 +119,21 @@
 ### marveldb.net <span style="color: #e49436">CRITIQUE</span>
 
 ---
-###<span style="color: #">What did they do well</span>
-<span style="color: #e49436"></span>
+
+### <span style="color: #">What did they do <span style="color: #e49436">WELL</span></span>
 - Well-coordinated aesthetic
 - UI is responsive
 - Mobile-friendly
 
 ---
-###<span style="color: #"> What did we learn from their website?
-<span style="color: #e49436">to add</span>
+
+### <span style="color: #"> What did we <span style="color: #e49436">LEARN</span> from their website?
 - Our UX could be more responsive
 - Aesthetic should have been better coordinated
 
 ---
-###<span style="color: #">What can they do better?</span>
+
+### <span style="color: #">What can they do better?</span>
 <span style="color: #e49436"></span>
 - Can't layer multiple filters together
 - No way to filter by "Unavailable"
@@ -140,7 +141,8 @@
 - Strange resizing behavior of form inputs
 
 ---
-###<span style="color: #">What puzzles us about their website?</span></span>
+
+### <span style="color: #">What puzzles us about their website?</span></span>
 <span style="color: #e49436"></span>
 - Unknown restriction on Delete
 - API doesn't seem to work
