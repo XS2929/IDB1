@@ -5,11 +5,8 @@
 ---
 
 ### About <span style="color: #e49436; text-transform: none">US</span>
-<br>
-<span style="color:gray; font-size:0.6em;">The Tiger Team</span>
 
----
-### FREDERICK <span style="color: #e49436">COPES</span>
+## FREDERICK <span style="color: #e49436">COPES</span>
 <br>
 <span style="color: #666666"> Searching</span>
 <br>
@@ -19,8 +16,9 @@
 <br>
 <span style="color: #666666"> Sorting</span>
 
----
-### XUJIAN <span style="color: #e49436">SHAO</span>
++++
+
+## XUJIAN <span style="color: #e49436">SHAO</span>
 <br>
 <span style="color: #666666"> Database creating and populating</span>
 <br>
@@ -30,8 +28,9 @@
 <br>
 <span style="color: #666666"> Helped with front-end styling</span>
 
----
-### CALVIN <span style="color: #e49436">LIU</span>
++++
+
+##  CALVIN <span style="color: #e49436">LIU</span>
 <br>
 <span style="color: #666666">Instance pages</span>
 <br>
@@ -43,9 +42,9 @@
 <br>
 <span style="color: #666666">Front-end Styling</span>
 
----
++++
 
-### AUSTIN <span style="color: #e49436">SIU</span>
+## AUSTIN <span style="color: #e49436">SIU</span>
 <br>
 <span style="color: #666666">RESTful API</span>
 <br>
@@ -57,9 +56,9 @@
 <br>
 <span style="color: #666666">Deleting</span>
 
----
++++
 
-### STEPHEN <span style="color: #e49436">QING</span>
+## STEPHEN <span style="color: #e49436">QING</span>
 <br>
 <span style="color: #666666">Hosting</span>
 <br>
