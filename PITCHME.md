@@ -134,13 +134,12 @@
 - Can't layer multiple filters together
 - No way to filter by "Unavailable"
 - Error messages during Editing too vague ("Ooops, something was wrong with your input.")
-- Strange resizing behavior of forms
+- Strange resizing behavior of form inputs
 
 ---
 ###<span style="color: #">What puzzles us about their website?</span></span>
 <span style="color: #e49436"></span>
-- No login?
-- Doesn't seem to be restriction on Add, Delete, Edit
+- Unknown restriction on Delete
 - API doesn't seem to work
 
 ---
