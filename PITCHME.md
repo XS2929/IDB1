@@ -14,7 +14,7 @@
 
 +++
 
-## XUJIAN <span style="color: #e49436">SHAO</span>
+## EDWIN <span style="color: #e49436">SHAO</span>
 -  Database creating and populating
 -  Back-end filtering, sorting and pagination
 -  Editing and adding
