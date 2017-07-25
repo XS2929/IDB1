@@ -15,7 +15,7 @@ def create_app():
         '{engine}://{username}:{password}@{hostname}/{database}'.format(
             engine='postgresql',
             username='overwatchdb',
-            password='cs373summer',
+            password='overwatchsummer',
             hostname='overwatchdb.culm9jl6euht.us-east-2.rds.amazonaws.com:5432',
             database='overwatchdb')
 
